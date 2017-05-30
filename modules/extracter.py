@@ -113,9 +113,6 @@ class Extracter(object):
                     title_row_offset = item['title_row_offset']
 
                 data_of_range = rows[start_line + title_row_offset+ 1 : next_start_line]
-                print(item['target_table'])
-                print('start_line=%s, next_start_line=%s' % (start_line, next_start_line))
-                print(data_of_range)
 
                 for data in data_of_range:
                     cells = data.select('td')

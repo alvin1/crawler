@@ -3,7 +3,6 @@
 - python: 2.7.10
 - pip
 - bs4
-- sqlalchemy
 - threadpool
 
 #### 运行环境配置

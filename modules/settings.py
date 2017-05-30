@@ -3,14 +3,17 @@ import re
 
 class Settings(object):
     # Extract settings
-    RETRY_TIMES = 3
+    RETRY_TIMES = 10
     MAX_EXTRACTS_EVERY_TIME = 100
     PAGE_SIZE = 20
     DOMAIN = 'http://www.spprec.com'
     URL = DOMAIN + '/sczw/jyfwpt/005001/005001003/MoreInfo.aspx?CategoryNum=005001003'
-    MAX_CLIENTS = 20
-    DETAIL_URL = 'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=24f6286a-2b86-4999-a394-17039eba98fb&CategoryNum=005001003'
-    DETAIL_URL = 'http://www.spprec.com/sczw/InfoDetail/?InfoID=daa4f6de-e403-48c3-bf69-de9c37bef1af&CategoryNum=005001003'
+    MAX_CLIENTS = 100
+    DB_HOST = '127.0.0.1'
+    DB_PORT = 3306
+    DB_USER = 'root'
+    DB_PASSWD = 'abcd1234'
+    DB_NAME = 'crawler'
 
     DETAIL_COORDINATE = [
         {
@@ -112,7 +115,7 @@ class Settings(object):
                 },
                 {
                     'field_name': 'tender_ceil_price',
-                    'data_type': 'decimal',
+                    'data_type': 'string',
                     'extract': {
                         'row': 6,
                         'column': 3
@@ -147,7 +150,7 @@ class Settings(object):
                 {
                     'field_name': 'tender_price',
                     'field_title': u'\u6295\u6807\u62a5\u4ef7\uff08\u5143\uff09',
-                    'data_type': 'decimal',
+                    'data_type': 'string',
                     'extract': {
                         'column': 2
                     }
@@ -155,7 +158,7 @@ class Settings(object):
                 {
                     'field_name': 'tender_price_review',
                     'field_title': u'\u7ecf\u8bc4\u5ba1\u7684\u6295\u6807\u4ef7\uff08\u5143\uff09',
-                    'data_type': 'decimal',
+                    'data_type': 'string',
                     'extract': {
                         'column': 3
                     }
