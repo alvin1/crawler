@@ -1,7 +1,18 @@
 from datetime import datetime
+import json
+import re
+import uuid
 
 from .settings import Settings
 from .file_helper import FileHelper
+
+from database.models.tender_info import TrenderInfo
+from database.models.candidate import Candidate
+from database.models.candidate_incharge import CandidateIncharge
+from database.models.candidate_incharge_projects import CandidateInChargeProjects
+from database.models.candidate_projects import CandidateProjects
+from database.models.other_tenderer_review import OtherTendererReview
+from database.models.review_board_member import ReviewBoardMember
 
 class Extracter(object):
     def __init__(self):
@@ -14,15 +25,20 @@ class Extracter(object):
 
     def extract_list(self, soup, page):
         list = []
+
+        info_id_pattarn = re.compile(u'.+InfoID=(?P<INFOID>.+)&.+')
         for item in soup.select('#MoreInfoList1_tdcontent tr'):
             a = item.select('a')[0]
-            date = self.clean_content(item.select('td[width=80]')[0].string)
+            match = info_id_pattarn.match(a['href'])
+            # date = self.clean_content(item.select('td[width=80]')[0].string)
+            date = self.clean_content(item.select('td')[2].string)
 
             list.append({
                 'title': a['title'].encode("utf8"),
                 'publish_date': date,
                 'page_url': "%s%s" % (Settings.DOMAIN, a['href']),
-                'page_index': page
+                'page_index': page,
+                'info_id': match.group('INFOID') if match else ''
             })
         return list
 
@@ -61,14 +77,17 @@ class Extracter(object):
         start_line = 0
         for row in rows:
             for item in [item.string for item in row.select('td')]:
-                if item and key in item:
-                    return start_line
+                for key_item in key:
+                    if item and key_item in item:
+                        return start_line
             start_line += 1
         return None
     
     def extract_detail(self, soup):
         detail = {}
         rows = soup.select('#_Sheet1 tr')
+        if len(soup.select('#_Sheet1')) == 0:
+          print soup
 
         for item in Settings.DETAIL_COORDINATE:
             target_table = item['target_table']
@@ -78,6 +97,8 @@ class Extracter(object):
                 detail[target_table] = []
             if not multiple_lines:
                 data = {}
+                if 'identity' in item:
+                    data['identity'] = item['identity']
                 for field in item['fields']:
                     field_name  = field['field_name']
                     data_type = field['data_type']
@@ -86,7 +107,6 @@ class Extracter(object):
                         row = extract_rule['row']
                     else:
                         row = self.find_row_number_by_key(title_row_key, rows)
-
                     value_of_key = rows[row + 1].select('td')[extract_rule['column']].string
 
                     if 'split_pattern' in extract_rule:
@@ -119,7 +139,11 @@ class Extracter(object):
                     if len(cells) == 0:
                         continue
                     row_data = {}
+                    if 'identity' in item:
+                        row_data['identity'] = item['identity']
                     for field in item['fields']:
+                        print(field)
+                        print(item)
                         content = cells[field['extract']['column']].contents
                         field_value = None
                         if len(content) > 0:
@@ -135,7 +159,102 @@ class Extracter(object):
                                     row_data[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
                         else:
                             row_data[field['field_name']] = self.convert_type(field['data_type'], field_value)
-                    if len(row_data.items()) > 0:
+                    if ('identity' in item and len(row_data.items()) > 1) or ('identity' not in item and len(row_data.items()) > 0):
                         detail[target_table].append(row_data)
 
         return detail
+
+    def save_extracted_data(self, list_item, item_detail):
+        trender_info = TrenderInfo(tender_id=list_item['info_id'],
+                                   tender_name=item_detail['tender_info'][0]['tender_name'],
+                                   pubdate=list_item['publish_date'],
+                                   page_url=list_item['page_url'],
+                                   owner=item_detail['tender_info'][0]['owner'],
+                                   owner_phone=item_detail['tender_info'][0]['owner_phone'],
+                                   tenderee=item_detail['tender_info'][0]['tenderee'],
+                                   tenderee_phone=item_detail['tender_info'][0]['tenderee_phone'],
+                                   tenderee_proxy=item_detail['tender_info'][0]['tenderee_proxy'],
+                                   tenderee_proxy_phone=item_detail['tender_info'][0]['tenderee_proxy_phone'],
+                                   tender_openning_location=item_detail['tender_info'][0]['tender_openning_location'],
+                                   tender_openning_time=item_detail['tender_info'][0]['tender_openning_time'],
+                                   tender_ceil_price=item_detail['tender_info'][0]['tender_ceil_price'],
+                                   publicity_start=item_detail['tender_info'][0]['publicity_start'],
+                                   publicity_end=item_detail['tender_info'][0]['publicity_end'],
+                                   other_description=item_detail['other_description'][0]['other_description'],
+                                   review_department=item_detail['review_department'][0]['review_department'],
+                                   review_department_phone=item_detail['review_department'][0]['review_department_phone'],
+                                   administration_department=item_detail['administration_department'][0]['administration_department'],
+                                   administration_department_phone=item_detail['administration_department'][0]['administration_department_phone']
+                                   )
+        trender_info.save()
+
+        candidate_index = 1
+        for item in item_detail['candidate']:
+            candidate = Candidate(tender_id=list_item['info_id'],
+                                  ranking=item['ranking'],
+                                  candidate_name=item['candidate_name'],
+                                  tender_price=item['tender_price'],
+                                  tender_price_review=item['tender_price_review'],
+                                  review_score=item['review_score'])
+            candidate_id = candidate.save()
+            item['candidate_id'] = candidate_id
+            identity_key = "candidate_%s" % candidate_index
+            for incharge_item in [incharge_item for incharge_item in item_detail['candidate_incharge'] if
+                                  incharge_item['identity'] == identity_key]:
+                candidate_incharge = CandidateIncharge(tender_id=list_item['info_id'],
+                                                       candidate_id=candidate_id,
+                                                       incharge_id='',
+                                                       incharge_type=incharge_item['incharge_type'],
+                                                       incharge_name=incharge_item['incharge_name'],
+                                                       incharge_certificate_name=incharge_item['incharge_certificate_name'],
+                                                       incharge_certificate_no=incharge_item['incharge_certificate_no'],
+                                                       professional_grade=incharge_item['professional_grade'],
+                                                       professional_titles=incharge_item['professional_titles'])
+                incharge_id = candidate_incharge.save()
+                incharge_item['incharge_id'] = incharge_id
+
+                if u'\u9879\u76ee\u8d1f\u8d23\u4eba' in incharge_item['incharge_type'].decode('utf8'):
+                    for project_item in [project_item for project_item in item_detail['candidate_incharge_projects'] if
+                                         project_item['identity'] == identity_key]:
+
+                        candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['info_id'],
+                                                                                candidate_id=candidate_id,
+                                                                                incharge_id=incharge_id,
+                                                                                owner=project_item['owner'],
+                                                                                name=project_item['name'],
+                                                                                kick_off_date=project_item['kick_off_date'],
+                                                                                deliver_date=project_item['deliver_date'],
+                                                                                finish_date=project_item['finish_date'],
+                                                                                scale=project_item['scale'],
+                                                                                contract_price=project_item['contract_price'],
+                                                                                tech_incharge_name=project_item['tech_incharge_name'])
+                        candidate_incharge_projects.save()
+
+                for project_item in [project_item for project_item in item_detail['candidate_projects'] if
+                                      project_item['identity'] == identity_key]:
+                    candidate_projects = CandidateProjects(tender_id=list_item['info_id'],
+                                                           candidate_id=candidate_id,
+                                                           owner=project_item['owner'],
+                                                           name=project_item['name'],
+                                                           kick_off_date=project_item['kick_off_date'],
+                                                           deliver_date=project_item['deliver_date'],
+                                                           finish_date=project_item['finish_date'],
+                                                           scale=project_item['scale'],
+                                                           contract_price=project_item['contract_price'],
+                                                           project_incharge_name=project_item['project_incharge_name'])
+                    candidate_projects.save()
+
+            candidate_index += 1
+        for item in item_detail['other_tenderer_review']:
+            other_tenderer_review = OtherTendererReview(tender_id=list_item['info_id'],
+                                                        tenderer_name=item['tenderer_name'],
+                                                        price_or_vote_down=item['price_or_vote_down'],
+                                                        price_review_or_vote_down_reason=item['price_review_or_vote_down_reason'],
+                                                        review_score_or_description=item['review_score_or_description'])
+            tenderer_id = other_tenderer_review.save()
+            item['tenderer_id'] = tenderer_id
+        for item in item_detail['review_board_member']:
+            review_board_member = ReviewBoardMember(tender_id=list_item['info_id'],
+                                                    name=item['member_name'],
+                                                    company=item['member_company'])
+            review_board_member.save()

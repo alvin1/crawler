@@ -28,3 +28,6 @@ class FileHelper(object):
             return json.loads(content)
         except:
             return None
+
+    def write_json(self, path, content):
+        self.write(path, json.dumps(content, indent=4))

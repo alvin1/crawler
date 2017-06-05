@@ -1,9 +1,11 @@
 ### 安装向导
 #### 运行环境要求
 - python: 2.7.10
+- MySQL
 - pip
 - bs4
 - threadpool
+- MySQL-python
 
 #### 运行环境配置
 - 安装pip
@@ -15,6 +17,7 @@
     - tender_id: 投标ID
 	- tender_name: 项目及标段名称
 	- pubdate: 发布时间
+	- page_url: 内容网址
     - owner: 项目业主
     - owner_phone: 项目业主联系电话
     - tenderee: 招标人
@@ -82,3 +85,11 @@
     - tender_id: 投标ID
     - name: 姓名
     - company: 单位
+###需要确认的事项
+- 目标操作系统（Windows？具体的版本？Linux？）
+- 程序的部署由谁来做，远程桌面还是现场部署
+- 任务自行运行的方式（Windows计划任务？Crontab？）
+- 必需的组件安装工作安排（Python谁来装，MySQL谁来装）
+- 程序的交互方式（打包成exe？直接运行python文件？）
+- 验收标准
+- 数据不标准，是否需要格式化（比如最高限价有的带元，有的不带。用数字格式可以方便的做各种数学计算）
