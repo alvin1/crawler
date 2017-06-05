@@ -2,15 +2,30 @@
 #### 运行环境要求
 - python: 2.7.10
 - MySQL
+- Microsoft Visual C++ Compiler for Python 2.7
+- MySQL connector header files
 - pip
 - bs4
 - threadpool
 - MySQL-python
 
 #### 运行环境配置
+- 安装MySQL
+- 安装MySQL Connector C library
+    - mysql-connector-c-6.0.2-winx64.msi
+- 安装python
+    - python-2.7.13.amd64.msi
 - 安装pip
 
     ``python get-pip.py``
+- 安装MySQL-python
+    - 解压MySQL-pyhon-1.2.5.zip
+    - 进入MySQL-python-1.2.5文件夹
+    - 编辑site.cfg，修改connector的路径到实际安装路径
+    - python setup,py install
+- 安装其他依赖包
+
+    ``pip install -r requirements.txt``
 
 ### 数据库结构说明
 - tender_info：标的基本信息
