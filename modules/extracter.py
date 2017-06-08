@@ -86,8 +86,8 @@ class Extracter(object):
     def extract_detail(self, soup):
         detail = {}
         rows = soup.select('#_Sheet1 tr')
-        if len(soup.select('#_Sheet1')) == 0:
-          print soup
+        # if len(soup.select('#_Sheet1')) == 0:
+        #   print soup
 
         for item in Settings.DETAIL_COORDINATE:
             target_table = item['target_table']
@@ -132,8 +132,7 @@ class Extracter(object):
                 if 'title_row_offset' in item:
                     title_row_offset = item['title_row_offset']
 
-                data_of_range = rows[start_line + title_row_offset+ 1 : next_start_line]
-
+                data_of_range = rows[start_line + title_row_offset + 1 : next_start_line]
                 for data in data_of_range:
                     cells = data.select('td')
                     if len(cells) == 0:
@@ -142,8 +141,8 @@ class Extracter(object):
                     if 'identity' in item:
                         row_data['identity'] = item['identity']
                     for field in item['fields']:
-                        print(field)
-                        print(item)
+                        # print(field)
+                        # print(item)
                         content = cells[field['extract']['column']].contents
                         field_value = None
                         if len(content) > 0:

@@ -29,7 +29,8 @@ if __name__ == '__main__':
 
     soup = html_loader.get_page_soup(url='http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=1f46cabd-204a-4309-90d2-759b912da047&CategoryNum=005001003', page=1)
     detail = extracter.extract_detail(soup)
-    print(detail)
+    for item in detail["candidate_incharge"]:
+        print(item["incharge_name"].decode('utf8'))
     exit(0)
 
     last_extract_status = extracter.get_last_extract_status()

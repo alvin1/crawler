@@ -17,7 +17,7 @@ class FileHelper(object):
 
     def poke_dir(self, dir_path):
         if not os.path.exists(dir_path):
-            os.mkdir(dir_path)
+            os.makedirs(dir_path)
 
     def get_dir_from_path(self, path):
         return os.path.dirname(path)
