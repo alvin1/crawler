@@ -967,53 +967,59 @@ class Settings(object):
 
     DETAIL_COORDINATE = [
         {
-            'target_table': 'candidate',
+            'target_table': 'candidate_incharge',
             'multiple_lines': True,
-            'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f'],
-            'next_title_row_key': [
+            'title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
             ],
-            'title_row_offset': 1,
+            'next_title_row_key': [
+                u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
+                u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
+            ],
+            'title_row_offset': 2,
+            'identity': 'candidate_1',
             'fields': [
                 {
-                    'field_name': 'ranking',
-                    'field_title': u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f',
+                    'field_name': 'incharge_type',
                     'data_type': 'string',
                     'extract': {
                         'column': 0
                     }
                 },
                 {
-                    'field_name': 'candidate_name',
-                    'field_title': u'\u4e2d\u6807\u5019\u9009\u4eba\u540d\u79f0',
+                    'field_name': 'incharge_name',
                     'data_type': 'string',
                     'extract': {
                         'column': 1
                     }
                 },
                 {
-                    'field_name': 'tender_price',
-                    'field_title': u'\u6295\u6807\u62a5\u4ef7\uff08\u5143\uff09',
+                    'field_name': 'incharge_certificate_name',
                     'data_type': 'string',
                     'extract': {
                         'column': 2
                     }
                 },
                 {
-                    'field_name': 'tender_price_review',
-                    'field_title': u'\u7ecf\u8bc4\u5ba1\u7684\u6295\u6807\u4ef7\uff08\u5143\uff09',
+                    'field_name': 'incharge_certificate_no',
                     'data_type': 'string',
                     'extract': {
                         'column': 3
                     }
                 },
                 {
-                    'field_name': 'review_score',
-                    'field_title': u'\u7efc\u5408\u8bc4\u6807\u5f97\u5206',
-                    'data_type': 'decimal',
+                    'field_name': 'professional_titles',
+                    'data_type': 'string',
                     'extract': {
                         'column': 4
+                    }
+                },
+                {
+                    'field_name': 'professional_grade',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 5
                     }
                 }
             ]

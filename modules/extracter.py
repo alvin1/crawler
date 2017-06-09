@@ -86,8 +86,6 @@ class Extracter(object):
     def extract_detail(self, soup):
         detail = {}
         rows = soup.select('#_Sheet1 tr')
-        # if len(soup.select('#_Sheet1')) == 0:
-        #   print soup
 
         for item in Settings.DETAIL_COORDINATE:
             target_table = item['target_table']
@@ -141,8 +139,6 @@ class Extracter(object):
                     if 'identity' in item:
                         row_data['identity'] = item['identity']
                     for field in item['fields']:
-                        # print(field)
-                        # print(item)
                         content = cells[field['extract']['column']].contents
                         field_value = None
                         if len(content) > 0:

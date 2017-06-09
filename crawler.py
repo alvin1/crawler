@@ -1,7 +1,3 @@
-# import threadpool
-import time
-import json
-
 from modules.settings import Settings
 from modules.html_loader import HtmlLoader
 from modules.logger import Logger
@@ -72,13 +68,3 @@ if __name__ == '__main__':
                 continue
             detail = extracter.extract_detail(soup)
             extracter.save_extracted_data(item, detail)
-
-    """
-    pool = threadpool.ThreadPool(num_workers=Settings.MAX_CLIENTS)
-    thread_request = threadpool.makeRequests(callable_=worker,
-                                             args_list=[([current_page], None) for current_page in
-                                                        page_array])
-    [pool.putRequest(req) for req in thread_request]
-    pool.poll()
-    pool.wait()
-    """
