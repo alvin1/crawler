@@ -88,11 +88,11 @@ class Extracter(object):
 
         for item in Settings.DETAIL_COORDINATE:
             target_table = item['target_table']
-            multiple_lines = item['multiple_lines']
+            is_dynamic = item['dynamic']
 
             if target_table not in detail:
                 detail[target_table] = []
-            if not multiple_lines:
+            if not is_dynamic:
                 data = {}
                 if 'identity' in item:
                     data['identity'] = item['identity']

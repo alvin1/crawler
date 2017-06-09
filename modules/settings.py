@@ -20,7 +20,7 @@ class Settings(object):
     DETAIL_COORDINATE = [
         {
             'target_table': 'tender_info',
-            'multiple_lines': False,
+            'dynamic': False,
             'fields': [
                 {
                     'field_name': 'tender_name',
@@ -127,7 +127,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f'],
             'next_title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
@@ -179,7 +179,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
@@ -237,7 +237,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
@@ -295,7 +295,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c3\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e09\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
@@ -353,7 +353,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -432,7 +432,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -511,7 +511,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -590,7 +590,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -669,7 +669,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c3\u540d\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e09\u4e2d\u6807\u5019\u9009\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -748,7 +748,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge_projects',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c3\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9',
                 u'\u7b2c\u4e09\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u8d1f\u8d23\u4eba\u7c7b\u4f3c\u4e1a\u7ee9'
@@ -824,7 +824,7 @@ class Settings(object):
         },
         {
             'target_table': 'other_tenderer_review',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5'],
             'next_title_row_key': [u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879'],
             'fields': [
@@ -863,7 +863,7 @@ class Settings(object):
         },
         {
             'target_table': 'other_description',
-            'multiple_lines': False,
+            'dynamic': False,
             'title_row_key': u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879',
             'next_title_row_key': u'\u8bc4\u6807\u59d4\u5458\u4f1a\u6210\u5458\u540d\u5355',
             'fields': [
@@ -878,7 +878,7 @@ class Settings(object):
         },
         {
             'target_table': 'review_board_member',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [u'\u8bc4\u6807\u59d4\u5458\u4f1a\u6210\u5458\u540d\u5355'],
             'next_title_row_key': [u'\u76d1\u7763\u90e8\u95e8\u540d\u79f0\u53ca\u76d1\u7763\u7535\u8bdd'],
             'fields': [
@@ -916,7 +916,7 @@ class Settings(object):
         },
         {
             'target_table': 'review_department',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [u'\u9879\u76ee\u5ba1\u6279\u90e8\u95e8'],
             'next_title_row_key': [u'\u884c\u4e1a\u4e3b\u7ba1\u90e8\u95e8'],
             'data_element': 'td',
@@ -940,7 +940,7 @@ class Settings(object):
         },
         {
             'target_table': 'administration_department',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [u'\u884c\u4e1a\u4e3b\u7ba1\u90e8\u95e8'],
             'next_title_row_key': [u'\u5f02\u8bae\u6295\u8bc9\u6ce8\u610f\u4e8b\u9879'],
             'data_element': 'td',
@@ -968,7 +968,7 @@ class Settings(object):
     DETAIL_COORDINATE = [
         {
             'target_table': 'candidate_incharge',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
@@ -1026,7 +1026,7 @@ class Settings(object):
         },
         {
             'target_table': 'candidate_incharge',
-            'multiple_lines': True,
+            'dynamic': True,
             'title_row_key': [
                 u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
                 u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
