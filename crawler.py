@@ -23,12 +23,7 @@ if __name__ == '__main__':
     extracter = Extracter()
     logger = Logger()
 
-    soup = html_loader.get_page_soup(url='http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=1f46cabd-204a-4309-90d2-759b912da047&CategoryNum=005001003', page=1)
-    detail = extracter.extract_detail(soup)
-    for item in detail["candidate_incharge"]:
-        print(item["incharge_name"].decode('utf8'))
-    exit(0)
-
+    # get last extract status
     last_extract_status = extracter.get_last_extract_status()
 
     # get first page
@@ -47,16 +42,10 @@ if __name__ == '__main__':
     if records_need_to_extract % Settings.PAGE_SIZE != 0:
         pages += 1
 
-    page_array = range(2, pages + 1)
-    
-    for item in tender_list:
-        soup = html_loader.get_page_soup(url=item['page_url'], page=1)
-        if soup is None:
-            continue
-        detail = extracter.extract_detail(soup)
-        extracter.save_extracted_data(item, detail)
+    page_array = range(1, pages + 1)
 
-    for page in page_array:
+    # get data from earlier to current
+    for page in page_array.reverse():
         print('Get data of page %s' % page)
         soup = html_loader.get_page_soup(url=Settings.URL, page=page)
         if soup is None:

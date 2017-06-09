@@ -30,7 +30,6 @@ class Extracter(object):
         for item in soup.select('#MoreInfoList1_tdcontent tr'):
             a = item.select('a')[0]
             match = info_id_pattarn.match(a['href'])
-            # date = self.clean_content(item.select('td[width=80]')[0].string)
             date = self.clean_content(item.select('td')[2].string)
 
             list.append({
