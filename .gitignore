@@ -1,3 +1,4 @@
 .idea
 var
 *.pyc
+.DS_Store
