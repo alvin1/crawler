@@ -33,7 +33,7 @@ class Extracter(object):
             date = self.clean_content(item.select('td')[2].string)
 
             list.append({
-                'title': a['title'].encode("utf8"),
+                'title': a['title'].encode("gbk"),
                 'publish_date': date,
                 'page_url': "%s%s" % (Settings.DOMAIN, a['href']),
                 'page_index': page,
@@ -63,11 +63,11 @@ class Extracter(object):
             return ''
 
         if data_type == 'string':
-            return value.replace(u'\xa0', u' ').encode('utf8')
+            return value.replace(u'\xa0', u' ').encode('gbk')
         elif data_type == 'int':
             return int(value)
         elif data_type == 'datetime':
-            if len(value) >= 10:
+            if len(value) > 10:
                 return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
             else:
                 return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
@@ -84,7 +84,7 @@ class Extracter(object):
                         return start_line
             start_line += 1
         return None
-    
+
     def extract_detail_old(self, soup):
         detail = {}
         rows = soup.select('#_Sheet1 tr')
@@ -100,7 +100,7 @@ class Extracter(object):
                 if 'identity' in item:
                     data['identity'] = item['identity']
                 for field in item['fields']:
-                    field_name  = field['field_name']
+                    field_name = field['field_name']
                     data_type = field['data_type']
                     extract_rule = field['extract']
                     if 'row' in extract_rule:
@@ -244,6 +244,7 @@ class Extracter(object):
                     else:
                         incharge[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
                 candidate['incharge'].append(incharge)
+        # 2.2 extract the candidate projects and candidate incharge projects
         break_time = 0
         for candidate in details['candidate']:
             candidate['project_start'] = tmp_row_index + 1
@@ -265,12 +266,51 @@ class Extracter(object):
         details['candidate'][-1]['incharge_project_end'] = tmp_row_index
 
         for candidate in details['candidate']:
-            print(candidate['candidate_name'])
-            for row in rows_of_range[candidate['project_start']:candidate['project_end']]:
-                print(row)
-            print("---")
-            for row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
-                print(row)
+            candidate['projects'] = []
+            for project_row in rows_of_range[candidate['project_start']:candidate['project_end']]:
+                project = {}
+                columns = project_row.select('td')
+                for field in candidate_config['project_fields']:
+                    value_of_key = columns[field['extract']['column']].string
+                    if 'remove' in field['extract']:
+                        for remove_key in field['extract']['remove']:
+                            value_of_key = value_of_key.replace(remove_key, u'')
+                    if 'split_pattern' in field['extract']:
+                        match = field['extract']['split_pattern'].match(value_of_key)
+                        if match:
+                            for split_field in field['extract']['split_result']:
+                                split_data = match.group(split_field['key'])
+                                project[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                    else:
+                        project[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                candidate['projects'].append(project)
+            candidate['incharge_projects'] = []
+            for project_row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
+                project = {}
+                columns = project_row.select('td')
+                for field in candidate_config['inchage_project_fields']:
+                    value_of_key = columns[field['extract']['column']].string
+                    if 'remove' in field['extract']:
+                        for remove_key in field['extract']['remove']:
+                            value_of_key = value_of_key.replace(remove_key, u'')
+                    if 'split_pattern' in field['extract']:
+                        match = field['extract']['split_pattern'].match(value_of_key)
+                        if match:
+                            for split_field in field['extract']['split_result']:
+                                split_data = match.group(split_field['key'])
+                                project[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                    else:
+                        project[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                candidate['incharge_projects'].append(project)
+
+        # 3 extract other tenders list
+        other_tenders_config = Settings.DETAIL_COORDINATE['other_tenderer_review']
+        start_row = self.find_row_number_by_key(other_tenders_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(other_tenders_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row + 1:next_start_row]
+        print(start_row)
+        print(next_start_row)
+        print(rows_of_range)
 
         return details
 
@@ -323,7 +363,7 @@ class Extracter(object):
                 incharge_id = candidate_incharge.save()
                 incharge_item['incharge_id'] = incharge_id
 
-                if u'\u9879\u76ee\u8d1f\u8d23\u4eba' in incharge_item['incharge_type'].decode('utf8'):
+                if u'\u9879\u76ee\u8d1f\u8d23\u4eba' in incharge_item['incharge_type'].decode('gbk'):
                     for project_item in [project_item for project_item in item_detail['candidate_incharge_projects'] if
                                          project_item['identity'] == identity_key]:
 

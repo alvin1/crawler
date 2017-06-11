@@ -8,4 +8,4 @@ if __name__ == '__main__':
         exit(-1)
 
     value = sys.argv[1]
-    print({'encode': value.decode('utf8')})
+    print({'encode': value.decode('gbk')})

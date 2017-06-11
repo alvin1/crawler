@@ -1296,6 +1296,43 @@ class Settings(object):
                     }
                 }
             ]
+        },
+        'other_tenderer_review': {
+            'title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5'],
+            'next_title_row_key': [u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879'],
+            'fields': [
+                {
+                    'field_name': 'tenderer_name',
+                    'field_title': u'\u6295\u6807\u4eba\u540d\u79f0 ',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 0
+                    }
+                },
+                {
+                    'field_name': 'price_or_vote_down',
+                    'field_title': u'\u6295\u6807\u62a5\u4ef7\uff08\u5143\uff09',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }},
+                {
+                    'field_name': 'price_review_or_vote_down_reason',
+                    'field_title': u'\u7ecf\u8bc4\u5ba1\u7684\u6295\u6807\u4ef7\uff08\u5143\uff09',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 2
+                    }
+                },
+                {
+                    'field_name': 'review_score_or_description',
+                    'field_title': u'\u7efc\u5408\u8bc4\u6807\u5f97\u5206',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 3
+                    }
+                }
+            ]
         }
     }
 

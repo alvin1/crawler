@@ -19,4 +19,4 @@ if __name__ == '__main__':
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
     detail = extracter.extract_detail(soup)
-    format_print(detail)
+    # format_print(detail)
