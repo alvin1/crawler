@@ -60,7 +60,7 @@ class Extracter(object):
 
     def convert_type(self, data_type, value):
         if not value:
-            return ''
+            return None
 
         if data_type == 'string':
             return value.replace(u'\xa0', u' ').encode('gbk')
@@ -307,15 +307,121 @@ class Extracter(object):
         other_tenders_config = Settings.DETAIL_COORDINATE['other_tenderer_review']
         start_row = self.find_row_number_by_key(other_tenders_config['title_row_key'], rows)
         next_start_row = self.find_row_number_by_key(other_tenders_config['next_title_row_key'], rows)
-        rows_of_range = rows[start_row + 1:next_start_row]
-        print(start_row)
-        print(next_start_row)
-        print(rows_of_range)
+        rows_of_range = rows[start_row + 2:next_start_row]
+        details['other_tenderer_review'] = []
+        for row in rows_of_range:
+            other_tender = {}
+            for field in other_tenders_config['fields']:
+                value_of_key = row.select('td')[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            other_tender[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    other_tender[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['other_tenderer_review'].append(other_tender)
+
+        # 4 extract other_description
+        other_desc_config = Settings.DETAIL_COORDINATE['other_description']
+        start_row = self.find_row_number_by_key(other_desc_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(other_desc_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row + 2:next_start_row]
+        details['other_description'] = []
+        for row in rows_of_range:
+            other_desc = {}
+            for field in other_desc_config['fields']:
+                value_of_key = row.select('td')[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            other_desc[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    other_desc[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['other_description'].append(other_desc)
+
+        # 5 extract review_board_member
+        review_member_config = Settings.DETAIL_COORDINATE['review_board_member']
+        start_row = self.find_row_number_by_key(review_member_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(review_member_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row + 2:next_start_row]
+        details['review_board_member'] = []
+        for row in rows_of_range:
+            review_member = {}
+            for field in review_member_config['fields']:
+                value_of_key = row.select('td')[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            review_member[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    review_member[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['review_board_member'].append(review_member)
+
+        # 6 extract review_department
+        review_depart_config = Settings.DETAIL_COORDINATE['review_department']
+        start_row = self.find_row_number_by_key(review_depart_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(review_depart_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row:next_start_row]
+        details['review_department'] = []
+        for row in rows_of_range:
+            review_depart = {}
+            for field in review_depart_config['fields']:
+                value_of_key = row.select('td')[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            review_depart[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    review_depart[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['review_department'].append(review_depart)
+
+        # 7 extract administration_department
+        admin_depart_config = Settings.DETAIL_COORDINATE['administration_department']
+        start_row = self.find_row_number_by_key(admin_depart_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(admin_depart_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row:next_start_row]
+        details['administration_department'] = []
+        for row in rows_of_range:
+            admin_depart = {}
+            for field in admin_depart_config['fields']:
+                value_of_key = row.select('td')[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            admin_depart[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    admin_depart[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['administration_department'].append(admin_depart)
 
         return details
 
     def save_extracted_data(self, list_item, item_detail):
-        trender_info = TrenderInfo(tender_id=list_item['info_id'],
+        tender_info = TrenderInfo(tender_id=list_item['info_id'],
                                    tender_name=item_detail['tender_info'][0]['tender_name'],
                                    pubdate=list_item['publish_date'],
                                    page_url=list_item['page_url'],
@@ -330,15 +436,15 @@ class Extracter(object):
                                    tender_ceil_price=item_detail['tender_info'][0]['tender_ceil_price'],
                                    publicity_start=item_detail['tender_info'][0]['publicity_start'],
                                    publicity_end=item_detail['tender_info'][0]['publicity_end'],
-                                   other_description=item_detail['other_description'][0]['other_description'],
+                                   other_description=item_detail['other_description'][0]['other_description'] if len(item_detail['other_description']) == 1 else '',
                                    review_department=item_detail['review_department'][0]['review_department'],
                                    review_department_phone=item_detail['review_department'][0]['review_department_phone'],
                                    administration_department=item_detail['administration_department'][0]['administration_department'],
                                    administration_department_phone=item_detail['administration_department'][0]['administration_department_phone']
                                    )
-        trender_info.save()
+        tender_info.save()
 
-        candidate_index = 1
+        # candidate_index = 1
         for item in item_detail['candidate']:
             candidate = Candidate(tender_id=list_item['info_id'],
                                   ranking=item['ranking'],
@@ -348,9 +454,8 @@ class Extracter(object):
                                   review_score=item['review_score'])
             candidate_id = candidate.save()
             item['candidate_id'] = candidate_id
-            identity_key = "candidate_%s" % candidate_index
-            for incharge_item in [incharge_item for incharge_item in item_detail['candidate_incharge'] if
-                                  incharge_item['identity'] == identity_key]:
+            # identity_key = "candidate_%s" % candidate_index
+            for incharge_item in item['incharge']:
                 candidate_incharge = CandidateIncharge(tender_id=list_item['info_id'],
                                                        candidate_id=candidate_id,
                                                        incharge_id='',
@@ -362,39 +467,33 @@ class Extracter(object):
                                                        professional_titles=incharge_item['professional_titles'])
                 incharge_id = candidate_incharge.save()
                 incharge_item['incharge_id'] = incharge_id
+            for project_item in item['projects']:
+                candidate_projects = CandidateProjects(tender_id=list_item['info_id'],
+                                                       candidate_id=candidate_id,
+                                                       owner=project_item['owner'],
+                                                       name=project_item['name'],
+                                                       kick_off_date=project_item['kick_off_date'],
+                                                       deliver_date=project_item['deliver_date'],
+                                                       finish_date=project_item['finish_date'],
+                                                       scale=project_item['scale'],
+                                                       contract_price=project_item['contract_price'],
+                                                       project_incharge_name=project_item['project_incharge_name'])
+                candidate_projects.save()
+            for project_item in item['incharge_projects']:
+                candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['info_id'],
+                                                                        candidate_id=candidate_id,
+                                                                        incharge_id=incharge_id,
+                                                                        owner=project_item['owner'],
+                                                                        name=project_item['name'],
+                                                                        kick_off_date=project_item['kick_off_date'],
+                                                                        deliver_date=project_item['deliver_date'],
+                                                                        finish_date=project_item['finish_date'],
+                                                                        scale=project_item['scale'],
+                                                                        contract_price=project_item['contract_price'],
+                                                                        tech_incharge_name=project_item[
+                                                                            'tech_incharge_name'])
+                candidate_incharge_projects.save()
 
-                if u'\u9879\u76ee\u8d1f\u8d23\u4eba' in incharge_item['incharge_type'].decode('gbk'):
-                    for project_item in [project_item for project_item in item_detail['candidate_incharge_projects'] if
-                                         project_item['identity'] == identity_key]:
-
-                        candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['info_id'],
-                                                                                candidate_id=candidate_id,
-                                                                                incharge_id=incharge_id,
-                                                                                owner=project_item['owner'],
-                                                                                name=project_item['name'],
-                                                                                kick_off_date=project_item['kick_off_date'],
-                                                                                deliver_date=project_item['deliver_date'],
-                                                                                finish_date=project_item['finish_date'],
-                                                                                scale=project_item['scale'],
-                                                                                contract_price=project_item['contract_price'],
-                                                                                tech_incharge_name=project_item['tech_incharge_name'])
-                        candidate_incharge_projects.save()
-
-                for project_item in [project_item for project_item in item_detail['candidate_projects'] if
-                                      project_item['identity'] == identity_key]:
-                    candidate_projects = CandidateProjects(tender_id=list_item['info_id'],
-                                                           candidate_id=candidate_id,
-                                                           owner=project_item['owner'],
-                                                           name=project_item['name'],
-                                                           kick_off_date=project_item['kick_off_date'],
-                                                           deliver_date=project_item['deliver_date'],
-                                                           finish_date=project_item['finish_date'],
-                                                           scale=project_item['scale'],
-                                                           contract_price=project_item['contract_price'],
-                                                           project_incharge_name=project_item['project_incharge_name'])
-                    candidate_projects.save()
-
-            candidate_index += 1
         for item in item_detail['other_tenderer_review']:
             other_tenderer_review = OtherTendererReview(tender_id=list_item['info_id'],
                                                         tenderer_name=item['tenderer_name'],
