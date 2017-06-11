@@ -1,8 +1,12 @@
 import os
+import json
 from modules.file_helper import FileHelper
 from modules.html_loader import HtmlLoader
 from modules.extracter import Extracter
 
+
+def format_print(json_string):
+    print(json.dumps(json_string, indent=2))
 
 if __name__ == '__main__':
     file_helper = FileHelper()
@@ -14,4 +18,4 @@ if __name__ == '__main__':
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
     detail = extracter.extract_detail(soup)
-    print(detail)
+    format_print(detail['candidate'])

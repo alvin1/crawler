@@ -60,15 +60,18 @@ class Extracter(object):
 
     def convert_type(self, data_type, value):
         if not value:
-            return None
+            return ''
 
         if data_type == 'string':
-            return value.encode('utf8')
+            return value.replace(u'\xa0', u' ').encode('utf8')
         elif data_type == 'int':
             return int(value)
         elif data_type == 'datetime':
-            # return datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
-            return value
+            if len(value) >= 10:
+                return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
+            # return value
         elif data_type == 'decimal':
             return float(value)
 
@@ -82,7 +85,7 @@ class Extracter(object):
             start_line += 1
         return None
     
-    def extract_detail(self, soup):
+    def extract_detail_old(self, soup):
         detail = {}
         rows = soup.select('#_Sheet1 tr')
 
@@ -157,6 +160,111 @@ class Extracter(object):
                         detail[target_table].append(row_data)
 
         return detail
+
+    def extract_detail(self, soup):
+        details = {}
+
+        rows = soup.select('#_Sheet1 tr')
+        # 1. extract tender info
+        tender_config = Settings.DETAIL_COORDINATE['tender_info']
+        details['tender_info'] = []
+        tender_info = {}
+        for field in tender_config['fields']:
+            value_of_key = rows[field['extract']['row'] + 1].select('td')[field['extract']['column']].string
+            if 'remove' in field['extract']:
+                for remove_key in field['extract']['remove']:
+                    value_of_key = value_of_key.replace(remove_key, u'')
+            if 'split_pattern' in field['extract']:
+                match = field['extract']['split_pattern'].match(value_of_key)
+                if match:
+                    for split_field in field['extract']['split_result']:
+                        split_data = match.group(split_field['key'])
+                        tender_info[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+            else:
+                tender_info[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+        details['tender_info'].append(tender_info)
+
+        # 2. extract candidate list
+        candidate_config = Settings.DETAIL_COORDINATE['candidate']
+        details['candidate'] = []
+        start_row = self.find_row_number_by_key(candidate_config['title_row_key'], rows)
+        next_start_row = self.find_row_number_by_key(candidate_config['next_title_row_key'], rows)
+        rows_of_range = rows[start_row + 2:next_start_row]
+
+        tmp_row_index = 0
+        for row_data in rows_of_range:
+            tmp_row_index += 1
+            columns = row_data.select('td')
+            if len(columns) != len(candidate_config['fields']):
+                break
+
+            candidate = {}
+            for field in candidate_config['fields']:
+                value_of_key = columns[field['extract']['column']].string
+                if 'remove' in field['extract']:
+                    for remove_key in field['extract']['remove']:
+                        value_of_key = value_of_key.replace(remove_key, u'')
+                if 'split_pattern' in field['extract']:
+                    match = field['extract']['split_pattern'].match(value_of_key)
+                    if match:
+                        for split_field in field['extract']['split_result']:
+                            split_data = match.group(split_field['key'])
+                            candidate[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                else:
+                    candidate[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+            details['candidate'].append(candidate)
+        # 2.1 extract candidate_incharge list
+        for candidate in details['candidate']:
+            candidate['incharge_start'] = tmp_row_index + 2
+            tmp_row_index += 2
+            for row_data in rows_of_range[tmp_row_index:]:
+                columns = row_data.select('td')
+                if len(columns) != len(candidate_config['inchage_fields']):
+                    candidate['incharge_end'] = tmp_row_index
+                    tmp_row_index += 1
+                    break
+                tmp_row_index += 1
+        for candidate in details['candidate']:
+            candidate['incharge'] = []
+            incharge_rows = rows_of_range[candidate['incharge_start']:candidate['incharge_end']]
+            for incharge_row in incharge_rows:
+                columns = incharge_row.select('td')
+                incharge = {}
+                for field in candidate_config['inchage_fields']:
+                    value_of_key = columns[field['extract']['column']].string
+                    if 'remove' in field['extract']:
+                        for remove_key in field['extract']['remove']:
+                            value_of_key = value_of_key.replace(remove_key, u'')
+                    if 'split_pattern' in field['extract']:
+                        match = field['extract']['split_pattern'].match(value_of_key)
+                        if match:
+                            for split_field in field['extract']['split_result']:
+                                split_data = match.group(split_field['key'])
+                                incharge[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+                    else:
+                        incharge[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                candidate['incharge'].append(incharge)
+        break_time = 0
+        for candidate in details['candidate']:
+            candidate['project_start'] = tmp_row_index + 1
+            tmp_row_index += 1
+            for row_data in rows_of_range[tmp_row_index:]:
+                columns = row_data.select('td')
+                if len(columns) != len(candidate_config['project_fields']):
+                    print False
+                    candidate['project_end'] = tmp_row_index
+                    tmp_row_index += 1
+                    candidate['incharge_project_start'] = tmp_row_index + 1
+                    tmp_row_index += 1
+                    break_time += 1
+                    if break_time % 2 == 0:
+                        candidate['incharge_project_start'] = tmp_row_index
+                        tmp_row_index += 1
+                        break
+                print True
+                tmp_row_index += 1
+
+        return details
 
     def save_extracted_data(self, list_item, item_detail):
         trender_info = TrenderInfo(tender_id=list_item['info_id'],

@@ -965,21 +965,162 @@ class Settings(object):
     ]
     """
 
-    DETAIL_COORDINATE = [
-        {
-            'target_table': 'candidate_incharge',
-            'dynamic': True,
-            'title_row_key': [
-                u'\u7b2c1\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
-                u'\u7b2c\u4e00\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
-            ],
-            'next_title_row_key': [
-                u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
-                u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
-            ],
-            'title_row_offset': 2,
-            'identity': 'candidate_1',
+    DETAIL_COORDINATE = {
+        'tender_info': {
             'fields': [
+                {
+                    'field_name': 'tender_name',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 1,
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'owner',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 2,
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'owner_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 2,
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'tenderee',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 3,
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'tenderee_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 3,
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'tenderee_proxy',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 4,
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'tenderee_proxy_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 4,
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'tender_openning_location',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 5,
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'tender_openning_time',
+                    'data_type': 'datetime',
+                    'extract': {
+                        'row': 5,
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'publicity',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 6,
+                        'column': 1,
+                        'split_pattern': re.compile(u'(?P<START>.+)\xa0\u81f3\xa0(?P<END>.+)'),
+                        'split_result': [
+                            {
+                                'name': 'publicity_start',
+                                'key': 'START',
+                                'data_type': 'datetime'
+                            },
+                            {
+                                'name': 'publicity_end',
+                                'key': 'END',
+                                'data_type': 'datetime'
+                            }
+                        ]
+                    }
+                },
+                {
+                    'field_name': 'tender_ceil_price',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 6,
+                        'column': 3,
+                        'remove': [u'\u5143']
+                    }
+                }
+            ]
+        },
+        'candidate': {
+            'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f'],
+            'next_title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5'],
+            'has_title': True,
+            'fields': [
+                {
+                    'field_name': 'ranking',
+                    'field_title': u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 0
+                    }
+                },
+                {
+                    'field_name': 'candidate_name',
+                    'field_title': u'\u4e2d\u6807\u5019\u9009\u4eba\u540d\u79f0',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'tender_price',
+                    'field_title': u'\u6295\u6807\u62a5\u4ef7\uff08\u5143\uff09',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 2,
+                        'remove': [u'\u5143']
+                    }
+                },
+                {
+                    'field_name': 'tender_price_review',
+                    'field_title': u'\u7ecf\u8bc4\u5ba1\u7684\u6295\u6807\u4ef7\uff08\u5143\uff09',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 3,
+                        'remove': [u'\u5143']
+                    }
+                },
+                {
+                    'field_name': 'review_score',
+                    'field_title': u'\u7efc\u5408\u8bc4\u6807\u5f97\u5206',
+                    'data_type': 'decimal',
+                    'extract': {
+                        'column': 4
+                    }
+                }
+            ],
+            'inchage_fields': [
                 {
                     'field_name': 'incharge_type',
                     'data_type': 'string',
@@ -1022,67 +1163,141 @@ class Settings(object):
                         'column': 5
                     }
                 }
-            ]
-        },
-        {
-            'target_table': 'candidate_incharge',
-            'dynamic': True,
-            'title_row_key': [
-                u'\u7b2c2\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
-                u'\u7b2c\u4e8c\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
             ],
-            'next_title_row_key': [
-                u'\u7b2c3\u540d\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458',
-                u'\u7b2c\u4e09\u4e2d\u6807\u5019\u9009\u4eba\u9879\u76ee\u7ba1\u7406\u673a\u6784\u4e3b\u8981\u4eba\u5458'
-            ],
-            'identity': 'candidate_2',
-            'title_row_offset': 2,
-            'fields': [
+            'project_fields': [
                 {
-                    'field_name': 'incharge_type',
+                    'field_name': 'owner',
+                    'field_title': u'\u9879\u76ee\u4e1a\u4e3b',
                     'data_type': 'string',
                     'extract': {
                         'column': 0
                     }
                 },
                 {
-                    'field_name': 'incharge_name',
+                    'field_name': 'name',
+                    'field_title': u'\u9879\u76ee\u540d\u79f0 ',
                     'data_type': 'string',
                     'extract': {
                         'column': 1
                     }
                 },
                 {
-                    'field_name': 'incharge_certificate_name',
-                    'data_type': 'string',
+                    'field_name': 'kick_off_date',
+                    'field_title': u'\u5f00\u5de5\u65e5\u671f ',
+                    'data_type': 'datetime',
                     'extract': {
                         'column': 2
                     }
                 },
                 {
-                    'field_name': 'incharge_certificate_no',
-                    'data_type': 'string',
+                    'field_name': 'deliver_date',
+                    'field_title': u'\u4ea4\u5de5\u65e5\u671f',
+                    'data_type': 'datetime',
                     'extract': {
                         'column': 3
                     }
                 },
                 {
-                    'field_name': 'professional_titles',
-                    'data_type': 'string',
+                    'field_name': 'finish_date',
+                    'field_title': u'\u7ae3\u5de5\u65e5\u671f',
+                    'data_type': 'datetime',
                     'extract': {
                         'column': 4
                     }
                 },
                 {
-                    'field_name': 'professional_grade',
+                    'field_name': 'scale',
+                    'field_title': u'\u5efa\u8bbe\u89c4\u6a21',
                     'data_type': 'string',
                     'extract': {
                         'column': 5
                     }
+                },
+                {
+                    'field_name': 'contract_price',
+                    'field_title': u'\u5408\u540c\u4ef7\u683c\uff08\u5143\uff09',
+                    'data_type': 'decimal',
+                    'extract': {
+                        'column': 6
+                    }
+                },
+                {
+                    'field_name': 'project_incharge_name',
+                    'field_title': u'\u9879\u76ee\u8d1f\u8d23\u4eba',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 7
+                    }
+                }
+            ],
+            'inchage_project_fields': [
+                {
+                    'field_name': 'owner',
+                    'field_title': u'\u9879\u76ee\u4e1a\u4e3b',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 0
+                    }
+                },
+                {
+                    'field_name': 'name',
+                    'field_title': u'\u9879\u76ee\u540d\u79f0 ',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }
+                },
+                {
+                    'field_name': 'kick_off_date',
+                    'field_title': u'\u5f00\u5de5\u65e5\u671f ',
+                    'data_type': 'datetime',
+                    'extract': {
+                        'column': 2
+                    }
+                },
+                {
+                    'field_name': 'deliver_date',
+                    'field_title': u'\u4ea4\u5de5\u65e5\u671f',
+                    'data_type': 'datetime',
+                    'extract': {
+                        'column': 3
+                    }
+                },
+                {
+                    'field_name': 'finish_date',
+                    'field_title': u'\u7ae3\u5de5\u65e5\u671f',
+                    'data_type': 'datetime',
+                    'extract': {
+                        'column': 4
+                    }
+                },
+                {
+                    'field_name': 'scale',
+                    'field_title': u'\u5efa\u8bbe\u89c4\u6a21',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 5
+                    }
+                },
+                {
+                    'field_name': 'contract_price',
+                    'field_title': u'\u5408\u540c\u4ef7\u683c\uff08\u5143\uff09',
+                    'data_type': 'decimal',
+                    'extract': {
+                        'column': 6
+                    }
+                },
+                {
+                    'field_name': 'tech_incharge_name',
+                    'field_title': u'\u6280\u672f\u8d1f\u8d23\u4eba',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 7
+                    }
                 }
             ]
-        },
-    ]
+        }
+    }
 
     # Logging settings
     LOGGING_LEVEL = logging.DEBUG

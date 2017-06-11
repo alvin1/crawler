@@ -1,10 +1,11 @@
 import os
 import json
+import codecs
 
 
 class FileHelper(object):
-    def write(self, path, content):
-        with open(path, 'w') as f:
+    def write(self, path, content, append=False):
+        with codecs.open(path, 'w' if not append else 'a', 'utf8') as f:
             f.write(content)
 
     def read(self, path):
@@ -12,7 +13,7 @@ class FileHelper(object):
             return None
         if not os.path.isfile(path):
             return None
-        with open(path, 'r') as f:
+        with codecs.open(path, 'r', 'utf8') as f:
             return f.read()
 
     def poke_dir(self, dir_path):
