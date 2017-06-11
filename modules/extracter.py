@@ -247,22 +247,30 @@ class Extracter(object):
         break_time = 0
         for candidate in details['candidate']:
             candidate['project_start'] = tmp_row_index + 1
-            tmp_row_index += 1
             for row_data in rows_of_range[tmp_row_index:]:
                 columns = row_data.select('td')
-                if len(columns) != len(candidate_config['project_fields']):
-                    print False
-                    candidate['project_end'] = tmp_row_index
-                    tmp_row_index += 1
-                    candidate['incharge_project_start'] = tmp_row_index + 1
-                    tmp_row_index += 1
+                if len(columns) == 1:
                     break_time += 1
-                    if break_time % 2 == 0:
-                        candidate['incharge_project_start'] = tmp_row_index
+                    if break_time == 1:
+                        candidate['project_end'] = tmp_row_index
+                        tmp_row_index += 1
+                        candidate['incharge_project_start'] = tmp_row_index + 1
+                    else:
+                        candidate['incharge_project_end'] = tmp_row_index
+                        break_time = 0
                         tmp_row_index += 1
                         break
-                print True
-                tmp_row_index += 1
+                else:
+                    tmp_row_index += 1
+        details['candidate'][-1]['incharge_project_end'] = tmp_row_index
+
+        for candidate in details['candidate']:
+            print(candidate['candidate_name'])
+            for row in rows_of_range[candidate['project_start']:candidate['project_end']]:
+                print(row)
+            print("---")
+            for row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
+                print(row)
 
         return details
 
