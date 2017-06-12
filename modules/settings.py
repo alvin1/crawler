@@ -17,6 +17,160 @@ class Settings(object):
     DB_NAME = 'crawler'
 
     DETAIL_COORDINATE = {
+        'tender_name': {
+            'title_row_key': [u'\u9879\u76ee\u53ca\u6807\u6bb5\u540d\u79f0'],
+            'fields': [
+                {
+                    'field_name': 'tender_name',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }
+                }
+            ]
+        },
+        'owner': {
+            'title_row_key': [u'\u9879\u76ee\u4e1a\u4e3b\uff08\u62db\u6807\u4eba\uff09',
+                              u'\u9879\u76ee\u4e1a\u4e3b'],
+            'fields': [
+                {
+                    'field_name': 'owner',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }
+                }
+            ]
+        },
+        'owner_phone': {
+            'title_row_key': [u'\u9879\u76ee\u4e1a\u4e3b\uff08\u62db\u6807\u4eba\uff09\u8054\u7cfb\u7535\u8bdd',
+                              u'\u9879\u76ee\u4e1a\u4e3b\u8054\u7cfb\u7535\u8bdd'],
+            'fields': [
+                {
+                    'field_name': 'owner_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 3
+                    }
+                }
+            ]
+        },
+        'tenderee': {
+            'title_row_key': [u'\u62db\u6807\u4eba',
+                              u'\u9879\u76ee\u4e1a\u4e3b\uff08\u62db\u6807\u4eba\uff09'],
+            'fields': [
+                {
+                    'field_name': 'tenderee',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1
+                    }
+                }
+            ]
+        },
+        'tenderee_phone': {
+            'title_row_key': [u'\u9879\u76ee\u4e1a\u4e3b\uff08\u62db\u6807\u4eba\uff09\u8054\u7cfb\u7535\u8bdd',
+                              u'\u62db\u6807\u4eba\u8054\u7cfb\u7535\u8bdd'],
+            'fields': [
+                {
+                    'field_name': 'tenderee_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 3
+                    }
+                }
+            ]
+        },
+        'tenderee_proxy': {
+            'title_row_key': [u'\u62db\u6807\u4ee3\u7406\u673a\u6784'],
+            'fields': [
+                {
+                    'field_name': 'tenderee_proxy',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 4,
+                        'column': 1
+                    }
+                }
+            ]
+        },
+        'tenderee_proxy_phone': {
+            'title_row_key': [u'\u62db\u6807\u4ee3\u7406\u673a\u6784\u8054\u7cfb\u7535\u8bdd'],
+            'fields': [
+                {
+                    'field_name': 'tenderee_proxy_phone',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 4,
+                        'column': 3
+                    }
+                }
+            ]
+        },
+        'tender_openning_location': {
+            'title_row_key': [u'\u5f00\u6807\u5730\u70b9'],
+            'fields': [
+                {
+                    'field_name': 'tender_openning_location',
+                    'data_type': 'string',
+                    'extract': {
+                        'row': 5,
+                        'column': 1
+                    }
+                }
+            ]
+        },
+        'tender_openning_time': {
+            'title_row_key': [u'\u5f00\u6807\u65f6\u95f4'],
+            'fields': [
+                {
+                    'field_name': 'tender_openning_time',
+                    'data_type': 'datetime',
+                    'extract': {
+                        'row': 5,
+                        'column': 3
+                    }
+                }
+            ]
+        },
+        'publicity': {
+            'title_row_key': [u'\u516c\u793a\u671f'],
+            'fields': [
+                {
+                    'field_name': 'publicity',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 1,
+                        'split_pattern': re.compile(u'(?P<START>.+)\xa0\u81f3\xa0(?P<END>.+)'),
+                        'split_result': [
+                            {
+                                'name': 'publicity_start',
+                                'key': 'START',
+                                'data_type': 'datetime'
+                            },
+                            {
+                                'name': 'publicity_end',
+                                'key': 'END',
+                                'data_type': 'datetime'
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        'tender_ceil_price': {
+            'title_row_key': [u'\u6295\u6807\u6700\u9ad8\u9650\u4ef7(\u5143)'],
+            'fields': [
+                {
+                    'field_name': 'tender_ceil_price',
+                    'data_type': 'string',
+                    'extract': {
+                        'column': 3,
+                        'remove': [u'\u5143']
+                    }
+                }
+            ]
+        },
         'tender_info': {
             'fields': [
                 {

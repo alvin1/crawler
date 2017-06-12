@@ -85,92 +85,105 @@ class Extracter(object):
             start_line += 1
         return None
 
-    def extract_detail_old(self, soup):
-        detail = {}
-        rows = soup.select('#_Sheet1 tr')
-
-        for item in Settings.DETAIL_COORDINATE:
-            target_table = item['target_table']
-            is_dynamic = item['dynamic']
-
-            if target_table not in detail:
-                detail[target_table] = []
-            if not is_dynamic:
-                data = {}
-                if 'identity' in item:
-                    data['identity'] = item['identity']
-                for field in item['fields']:
-                    field_name = field['field_name']
-                    data_type = field['data_type']
-                    extract_rule = field['extract']
-                    if 'row' in extract_rule:
-                        row = extract_rule['row']
-                    else:
-                        row = self.find_row_number_by_key(title_row_key, rows)
-                    value_of_key = rows[row + 1].select('td')[extract_rule['column']].string
-
-                    if 'split_pattern' in extract_rule:
-                        match = extract_rule['split_pattern'].match(value_of_key)
-                        if match:
-                            for split_field in extract_rule['split_result']:
-                                split_data = match.group(split_field['key'])
-                                data[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                    else:
-                        data[field_name] = self.convert_type(data_type, value_of_key)
-                detail[target_table].append(data)
-            else:
-                title_row_key = item['title_row_key']
-                next_title_row_key = item['next_title_row_key']
-
-                start_line = self.find_row_number_by_key(title_row_key, rows)
-                next_start_line = self.find_row_number_by_key(next_title_row_key, rows)
-
-                if not start_line or not next_start_line:
-                    continue
-
-                title_row_offset = 0
-                if 'title_row_offset' in item:
-                    title_row_offset = item['title_row_offset']
-
-                data_of_range = rows[start_line + title_row_offset + 1 : next_start_line]
-                for data in data_of_range:
-                    cells = data.select('td')
-                    if len(cells) == 0:
-                        continue
-                    row_data = {}
-                    if 'identity' in item:
-                        row_data['identity'] = item['identity']
-                    for field in item['fields']:
-                        content = cells[field['extract']['column']].contents
-                        field_value = None
-                        if len(content) > 0:
-                            field_value = content[0]
-                        if 'field_title' in field and field['field_title'] == field_value:
-                            continue
-
-                        if 'split_pattern' in field['extract']:
-                            match = field['extract']['split_pattern'].match(field_value)
-                            if match:
-                                for split_field in field['extract']['split_result']:
-                                    split_data = match.group(split_field['key'])
-                                    row_data[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                        else:
-                            row_data[field['field_name']] = self.convert_type(field['data_type'], field_value)
-                    if ('identity' in item and len(row_data.items()) > 1) or ('identity' not in item and len(row_data.items()) > 0):
-                        detail[target_table].append(row_data)
-
-        return detail
+    def extract_field_value(self, row, field, data):
+        value_of_key = row.select('td')[field['extract']['column']].string
+        if 'remove' in field['extract']:
+            for remove_key in field['extract']['remove']:
+                value_of_key = value_of_key.replace(remove_key, u'')
+        if 'split_pattern' in field['extract']:
+            match = field['extract']['split_pattern'].match(value_of_key)
+            if match:
+                for split_field in field['extract']['split_result']:
+                    split_data = match.group(split_field['key'])
+                    data[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
+        else:
+            data[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
 
     def extract_detail(self, soup):
         details = {}
 
         rows = soup.select('#_Sheet1 tr')
+
         # 1. extract tender info
-        tender_config = Settings.DETAIL_COORDINATE['tender_info']
         details['tender_info'] = []
+        tender_name_config = Settings.DETAIL_COORDINATE['tender_name']
+        start_row = self.find_row_number_by_key(tender_name_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
         tender_info = {}
-        for field in tender_config['fields']:
-            value_of_key = rows[field['extract']['row'] + 1].select('td')[field['extract']['column']].string
+        for field in tender_name_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        owner_config = Settings.DETAIL_COORDINATE['owner']
+        start_row = self.find_row_number_by_key(owner_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in owner_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        owner_phone_config = Settings.DETAIL_COORDINATE['owner_phone']
+        start_row = self.find_row_number_by_key(owner_phone_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in owner_phone_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        tenderee_config = Settings.DETAIL_COORDINATE['tenderee']
+        start_row = self.find_row_number_by_key(tenderee_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in tenderee_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        tenderee_phone_config = Settings.DETAIL_COORDINATE['tenderee_phone']
+        start_row = self.find_row_number_by_key(tenderee_phone_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in tenderee_phone_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        tenderee_proxy_config = Settings.DETAIL_COORDINATE['tenderee_proxy']
+        start_row = self.find_row_number_by_key(tenderee_proxy_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in tenderee_proxy_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        tenderee_proxy_phone_config = Settings.DETAIL_COORDINATE['tenderee_proxy_phone']
+        start_row = self.find_row_number_by_key(tenderee_proxy_phone_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in tenderee_proxy_phone_config['fields']:
+            self.extract_field_value(rows_of_range, field, tender_info)
+
+        publicity_config = Settings.DETAIL_COORDINATE['publicity']
+        publicity_row = self.find_row_number_by_key(publicity_config['title_row_key'], rows)
+        if publicity_row is not None:
+            rows_of_range = rows[publicity_row]
+            for field in publicity_config['fields']:
+                self.extract_field_value(rows_of_range, field, tender_info)
+
+        tender_openning_location_config = Settings.DETAIL_COORDINATE['tender_openning_location']
+        start_row = self.find_row_number_by_key(tender_openning_location_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        field = tender_openning_location_config['fields'][0]
+        if publicity_row is not None:
+            field['extract']['column'] = 1
+        else:
+            field['extract']['column'] = 3
+        self.extract_field_value(rows_of_range, field, tender_info)
+
+        tender_openning_time_config = Settings.DETAIL_COORDINATE['tender_openning_time']
+        start_row = self.find_row_number_by_key(tender_openning_time_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        field = tender_openning_location_config['fields'][0]
+        if publicity_row is not None:
+            field['extract']['column'] = 3
+        else:
+            field['extract']['column'] = 1
+        self.extract_field_value(rows_of_range, field, tender_info)
+
+        tender_ceil_price_config = Settings.DETAIL_COORDINATE['tender_ceil_price']
+        start_row = self.find_row_number_by_key(tender_ceil_price_config['title_row_key'], rows)
+        rows_of_range = rows[start_row]
+        for field in tender_ceil_price_config['fields']:
+            if self.find_row_number_by_key(publicity_config['title_row_key'], rows) is not None:
+                value_of_key = rows_of_range.select('td')[field['extract']['column']].string
+            else:
+                value_of_key = rows_of_range.select('td')[1].string
             if 'remove' in field['extract']:
                 for remove_key in field['extract']['remove']:
                     value_of_key = value_of_key.replace(remove_key, u'')
@@ -182,6 +195,7 @@ class Extracter(object):
                         tender_info[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
             else:
                 tender_info[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+
         details['tender_info'].append(tender_info)
 
         # 2. extract candidate list
@@ -200,18 +214,7 @@ class Extracter(object):
 
             candidate = {}
             for field in candidate_config['fields']:
-                value_of_key = columns[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            candidate[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    candidate[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row_data, field, candidate)
             details['candidate'].append(candidate)
         # 2.1 extract candidate_incharge list
         for candidate in details['candidate']:
@@ -228,21 +231,9 @@ class Extracter(object):
             candidate['incharge'] = []
             incharge_rows = rows_of_range[candidate['incharge_start']:candidate['incharge_end']]
             for incharge_row in incharge_rows:
-                columns = incharge_row.select('td')
                 incharge = {}
                 for field in candidate_config['inchage_fields']:
-                    value_of_key = columns[field['extract']['column']].string
-                    if 'remove' in field['extract']:
-                        for remove_key in field['extract']['remove']:
-                            value_of_key = value_of_key.replace(remove_key, u'')
-                    if 'split_pattern' in field['extract']:
-                        match = field['extract']['split_pattern'].match(value_of_key)
-                        if match:
-                            for split_field in field['extract']['split_result']:
-                                split_data = match.group(split_field['key'])
-                                incharge[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                    else:
-                        incharge[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                    self.extract_field_value(incharge_row, field, incharge)
                 candidate['incharge'].append(incharge)
         # 2.2 extract the candidate projects and candidate incharge projects
         break_time = 0
@@ -269,38 +260,14 @@ class Extracter(object):
             candidate['projects'] = []
             for project_row in rows_of_range[candidate['project_start']:candidate['project_end']]:
                 project = {}
-                columns = project_row.select('td')
                 for field in candidate_config['project_fields']:
-                    value_of_key = columns[field['extract']['column']].string
-                    if 'remove' in field['extract']:
-                        for remove_key in field['extract']['remove']:
-                            value_of_key = value_of_key.replace(remove_key, u'')
-                    if 'split_pattern' in field['extract']:
-                        match = field['extract']['split_pattern'].match(value_of_key)
-                        if match:
-                            for split_field in field['extract']['split_result']:
-                                split_data = match.group(split_field['key'])
-                                project[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                    else:
-                        project[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                    self.extract_field_value(project_row, field, project)
                 candidate['projects'].append(project)
             candidate['incharge_projects'] = []
             for project_row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
                 project = {}
-                columns = project_row.select('td')
                 for field in candidate_config['inchage_project_fields']:
-                    value_of_key = columns[field['extract']['column']].string
-                    if 'remove' in field['extract']:
-                        for remove_key in field['extract']['remove']:
-                            value_of_key = value_of_key.replace(remove_key, u'')
-                    if 'split_pattern' in field['extract']:
-                        match = field['extract']['split_pattern'].match(value_of_key)
-                        if match:
-                            for split_field in field['extract']['split_result']:
-                                split_data = match.group(split_field['key'])
-                                project[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                    else:
-                        project[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                    self.extract_field_value(project_row, field, project)
                 candidate['incharge_projects'].append(project)
 
         # 3 extract other tenders list
@@ -312,18 +279,7 @@ class Extracter(object):
         for row in rows_of_range:
             other_tender = {}
             for field in other_tenders_config['fields']:
-                value_of_key = row.select('td')[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            other_tender[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    other_tender[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row, field, other_tender)
             details['other_tenderer_review'].append(other_tender)
 
         # 4 extract other_description
@@ -335,18 +291,7 @@ class Extracter(object):
         for row in rows_of_range:
             other_desc = {}
             for field in other_desc_config['fields']:
-                value_of_key = row.select('td')[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            other_desc[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    other_desc[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row, field, other_desc)
             details['other_description'].append(other_desc)
 
         # 5 extract review_board_member
@@ -358,18 +303,7 @@ class Extracter(object):
         for row in rows_of_range:
             review_member = {}
             for field in review_member_config['fields']:
-                value_of_key = row.select('td')[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            review_member[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    review_member[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row, field, review_member)
             details['review_board_member'].append(review_member)
 
         # 6 extract review_department
@@ -381,18 +315,7 @@ class Extracter(object):
         for row in rows_of_range:
             review_depart = {}
             for field in review_depart_config['fields']:
-                value_of_key = row.select('td')[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            review_depart[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    review_depart[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row, field, review_depart)
             details['review_department'].append(review_depart)
 
         # 7 extract administration_department
@@ -404,18 +327,7 @@ class Extracter(object):
         for row in rows_of_range:
             admin_depart = {}
             for field in admin_depart_config['fields']:
-                value_of_key = row.select('td')[field['extract']['column']].string
-                if 'remove' in field['extract']:
-                    for remove_key in field['extract']['remove']:
-                        value_of_key = value_of_key.replace(remove_key, u'')
-                if 'split_pattern' in field['extract']:
-                    match = field['extract']['split_pattern'].match(value_of_key)
-                    if match:
-                        for split_field in field['extract']['split_result']:
-                            split_data = match.group(split_field['key'])
-                            admin_depart[split_field['name']] = self.convert_type(split_field['data_type'], split_data)
-                else:
-                    admin_depart[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
+                self.extract_field_value(row, field, admin_depart)
             details['administration_department'].append(admin_depart)
 
         return details
