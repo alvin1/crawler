@@ -1,0 +1,2184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>四川省政府政务服务和公共资源交易服务中心</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/tab.js"></script>
+</head>
+
+<body class="bg3" style="background-color:#f2f2f2">
+<div id="container">
+<div><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <title>四川省政府政务服务和公共资源交易服务中心</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/default.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery.flexslider.js"></script>
+  <script>
+	   /*searchStart*/
+		function Clear()
+	    {
+			document.all.txtkey.value="";
+			document.all.txtkey.className="overSelect";
+		}
+function blurout()
+	    {
+			document.all.txtkey.value="点击站内搜索";
+			document.all.txtkey.className="outSelect";
+		}
+function CheckSearch()
+		{
+			if(event.keyCode=="13")
+			{   
+				if(document.all.txtKey.value!="")
+				{
+					search();
+				}
+				else
+				{
+					alert("搜索字段不能为空！");
+				}
+			}
+		}
+function search()
+		{
+			var tim=10
+			if(tim==10)
+			{
+				tim=0;
+				  if (document.getElementById("txtKey").value == "" || document.getElementById("txtKey").value == "关键字") {
+                alert("请输入关键词");
+            }
+            else {
+                var t = document.getElementById("txtKey").value;
+                if (t.indexOf("<") > -1 || t.indexOf(">") > -1 || t.indexOf("'") > -1|| t.indexOf("_") > -1|| t.indexOf("\\") > -1) {
+                    alert("请勿在关键字中输入非法字符!");
+                    return;
+                }
+                var openUrl = '/sczw/showinfo/searchresult.aspx?keyword=';
+                 
+               // openUrl += escape(t) + "&searchtype=title";
+				
+				 openUrl += escape(document.all.txtKey.value);
+				 for (var i = 0; i < document.all.CategoryNum.length; i++) {
+                    if (document.all.CategoryNum.options[i].selected)
+                        openUrl += '&CategoryNum=' + document.all.CategoryNum.options[i].value;
+                }
+				openUrl += "&searchtype=title";
+				 window.open(openUrl);
+            }
+			}
+			else
+		    {
+				alert("两次搜索的时间间隔不能少于十秒")
+		    }
+		}
+function Clear() {
+             document.all.txtKeys.value = ""
+}
+
+ 
+        /*searchEnd*/
+	</script>
+  </head>
+  <body class="bg">
+  
+<div id="header">
+    <div class="top clearFix">
+    <div class="left"></div>
+    <div class="right" style="float:right;"><a href="javascript:window.external.AddFavorite(location.href,document.title)" title="将本站加入到您的收藏夹"  target="_top" style="color:#fff" >加入收藏</a> | <a href="/sczw/Template/Default/../../lxwm" style="color:#fff" target="_blank">联系我们</a></div>
+  </div>
+  </div>
+<div id="header">
+    <div align="right" style="padding-top:10px; padding-right:1px;"><a href="/sczw/Template/Default/../../"><img src="/sczw/Template/Default/images/logo.png" /></a></div>
+  </div>
+<div id="header">
+    <div class="func clearFix">
+    <div class="find">
+       <span class="select_shelter">
+                    <select name="CategoryNum" id="CategoryNum"  class="findIE7">
+                    <option selected="true" value=""> &nbsp;全文检索 </option>
+                    <option value="001"> &nbsp;综合新闻 </option>
+                    <option value="003"> &nbsp;政务服务 </option>
+                    <option value="002"> &nbsp;交易服务 </option>
+                    <option value="004"> &nbsp;通知公告 </option>
+                    </select>
+        </span>
+      </div>
+    <div class="input">
+        <input class="txt" type="text" size="28" height="15" name="txtKey" id="txtKey" value="请输入关键词"  onfocus="value=''" onBlur="if(!value)value=defaultValue" onClick="Clear()" onKeyDown="CheckSearch()" style="padding-top:0px; solid; color:#666666" />
+      </div>
+    <div class="input" style="width:92px;">
+        <input type="button" name="" value="搜索"  class="btn" onClick="search()" style="cursor:pointer;"/>
+      </div>
+    <div class="input" style="width:94px;"><a href='/sczw/showinfo/SearchResultMz.aspx' class="search">&gt;&gt; 高级检索</a></div>
+
+    <div class="input2 btn1" style="width:94px; "><a href="#" id="aa" title="开启辅助工具条" style="color:#fff;">无障碍版</a>
+     <script type="text/javascript" src="/sczw//resource/ABT.js" id="ABT"></script>
+    </div>
+  </div>
+  </div>
+<script type="text/javascript" src="/sczw/Template/Default/js/tab.js"></script>
+</body>
+</html>
+</div>
+<div id="main" style="margin-top:36px;">
+  <table  border="0" cellspacing="0" cellpadding="0" width="1020" align="center">
+  <tr>
+    <td style="background-color:#F9F9F9"  width="1020" ><!--main-->
+      <table  border="0" cellspacing="0" cellpadding="0" id="Table4" align="center"  class="tab topd" >
+        <tr>
+          <td align="center" valign="top" bgcolor="#F9F9F9" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; border-bottom-style: none; border-top-style: none;"><!--正文开始-->
+            
+            <table id="tblInfo" cellspacing="1" cellpadding="1" width="100%" align="center" border="0" runat="server">
+            <tr>   <td  class="now" height="50">  
+             <table cellSpacing="0" cellPadding="0" border="0"><TR><TD align="center" width="15"></TD><TD align="left"><FONT color="#000000" class=currentpostionfont><b>您现在的位置：</b></FONT><A href='/sczw/'><FONT color="#000000" class=currentpostionfont>首页</FONT></A><FONT color="#FF7E00"> >> <a href='/sczw/jyfwpt'><FONT color="#FF7E00" class=currentpostionfont>交易服务平台</font></a> >> <a href='/sczw/jyfwpt/005001'><FONT color="#FF7E00" class=currentpostionfont>工程建设</font></a> >> <a href='/sczw/jyfwpt/005001/005001003'><FONT color="#FF7E00" class=currentpostionfont>中标结果</font></a></FONT></TD></TR></table>
+          </td></tr>
+              <tr>
+                <td id="tdTitle" align="center" runat="server" height="40"><b style="font-size: 26px;">
+                  通江县文峰小学新建女生宿舍、食堂、幼儿园、教师周转房项目
+                  </b> 
+                  <br />
+                  <br />
+                  
+                 
+                  
+              </tr>
+              <tr><td height="20px">
+                 <div  align="center" style="height: 28px;line-height: 28px; background-color: #EFEFEF;font-size: 12px; margin:0 50px;">
+                 <font color="#888888" class="webfont">【信息时间：
+                    2013/10/25
+                    &nbsp;&nbsp;阅读次数：
+                    <script src="/sczw/Upclicktimes.aspx?InfoID=b5e20669-a119-4da6-b7ca-ccb97456fbe3"></script>
+                    】<a href="javascript:void(0)" onclick="window.print();"><font color="#888888" class="webfont">【我要打印】</font></a><a href="javascript:window.close()"><font color="#888888" class="webfont">【关闭】</font></a>
+                                        </div>
+              </td></tr>
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td height="60" align="center"><div id="ivs_title">        <table border="0" cellspacing="0" cellpadding="0" width="100%">            <tbody>                <tr>                    <td style="display:none">                        通江县文峰小学新建女生宿舍、食堂、幼儿园、教师周转房项目。                    </td>                </tr>            </tbody>        </table>    </div> </td>
+              </tr>
+              
+              <tr>
+                <td height="450" valign="top" class="infodetail" id="TDContent" align="left"><div style="overflow-x: auto; width: 935px; margin: 0 auto; text-align: left;">
+                  <!--EpointContent-->
+                  <div id="ivs_content"><html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <meta charset="UTF-8">
+    <meta name="ProgId" content="Word.Document">
+    <meta name="Generator" content="Microsoft Word 14">
+    <meta name="Originator" content="Microsoft Word 14">
+    <!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+    <!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>系统管理员</o:Author>
+  <o:LastAuthor>系统管理员</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>0</o:TotalTime>
+  <o:Created>2013-04-15T01:14:00Z</o:Created>
+  <o:LastSaved>2013-04-15T01:14:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>217</o:Words>
+  <o:Characters>1241</o:Characters>
+  <o:Lines>10</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1456</o:CharactersWithSpaces>
+  <o:Version>14.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+    <!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-CN</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]-->
+    <!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+    <style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:黑体;
+	panose-1:2 1 6 9 6 1 1 1 1 1;
+	mso-font-alt:SimHei;
+	mso-font-charset:134;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-2147482945 953122042 22 0 262145 0;}
+@font-face
+	{font-family:黑体;
+	panose-1:2 1 6 9 6 1 1 1 1 1;
+	mso-font-alt:SimHei;
+	mso-font-charset:134;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-2147482945 953122042 22 0 262145 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:"\@黑体";
+	panose-1:2 1 6 9 6 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-2147482945 953122042 22 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:宋体;
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"页眉 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:none;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	border:none;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 1.0pt 0cm;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:宋体;
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-link:"页脚 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:宋体;
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	mso-text-animation:none;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:页眉;
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:9.0pt;}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:页脚;
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:9.0pt;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:"Calibri","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("新建%20Microsoft%20Word%20文档.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("新建%20Microsoft%20Word%20文档.files/header.htm") fcs;
+	mso-endnote-separator:url("新建%20Microsoft%20Word%20文档.files/header.htm") es;
+	mso-endnote-continuation-separator:url("新建%20Microsoft%20Word%20文档.files/header.htm") ecs;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+    <!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+    .style1
+    {
+        height: 36px;
+    }
+</style>
+<![endif]-->
+    <!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2049"/>
+</xml><![endif]-->
+    <!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+<body lang="ZH-CN" link="blue" vlink="purple" style='tab-interval: 21.0pt; text-justify-trim: punctuation'>
+    <div class="WordSection1" style='layout-grid: 15.6pt'>
+        <div align="center">
+            <table class="MsoNormalTable" border="0" cellspacing="1" cellpadding="0" width="100%"
+                style='width: 100.0%; mso-cellspacing: .7pt; mso-yfti-tbllook: 1184'>
+                <tr style='mso-yfti-irow: 2; mso-yfti-lastrow: yes; height: 187.5pt'>
+                    <td valign="top" style='padding: .75pt .75pt .75pt .75pt; height: 187.5pt'>
+                        <div align="center">
+                            <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="675"
+                                style='width: 506.25pt; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+                                <tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                        <a name="Sheet1"></a>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                    <td width="75" style='width: 56.25pt; padding: 0cm 0cm 0cm 0cm'>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 1; height: 18.75pt'>
+                                    <td colspan="9" style='border: none; border-bottom: solid black 1.0pt; mso-border-bottom-alt: solid black .75pt;
+                                        padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 15.0pt; font-family: 黑体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>中标候选人公示<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 2'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目及标段名称<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="7" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            通江县文峰小学新建女生宿舍、食堂、幼儿园、教师周转房项目</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 3'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主（招标人）<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            通江县文峰乡中心小学</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主（招标人）联系电话<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0827-7347005</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 4'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>招标代理机构<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川宏业建设工程项目管理有限公司</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>招标代理机构联系电话<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            028-62378519</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 5'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开标时间<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2013-10-23 10:30:00</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开标地点<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            巴中交易中心</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 6'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>投标最高限价<span lang="EN-US">(</span>元<span lang="EN-US">)<o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="7" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3548516.0000元</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 7; height: 18.75pt'>
+                                    <td rowspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>中标候选人及排序<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" rowspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>中标候选人名称<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td rowspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>投标报价<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td rowspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>经评审的投标价<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td rowspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>综合评标得分<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>拟任项目负责人<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 8; height: 18.75pt'>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>姓名<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>执业资格<span lang="EN-US">(</span>职称证书）<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>证书编号<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 9'>
+                                    <td style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第1名<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川广安福胜建筑工程有限公司</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3030318.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2832885.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0.0</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            姜超</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            二级执业证书</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            00198676</p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 9'>
+                                    <td style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第2名<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川省巴中市中信建筑工程有限公司</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3104755.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2838977.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0.0</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            王俊</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            二级建造师证</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            00002915</p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 9'>
+                                    <td style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第3名<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            巴中市四通建筑工程有限公司</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3136886.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2880531.0000元</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            苟健</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            二级建造师证</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt' class="style1">
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            00207136</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 11; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第一中标候选人类似业绩<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 12; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目负责人<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            普格县教育体育局</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            荞窝镇中心校校舍建设项目</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2010-07-20 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-03-05 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            本工程为框架、建筑面积4151.9㎡、建筑总高21.5m、承建工程基础、主体、抹灰、土建，装饰，安装</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3870790.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            何昌海</p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川省苍溪县职业高级中学</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            苍溪职中公共租赁住房建设项目</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-12-20 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2012-12-25 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            新建建筑面积约11366.6㎡，框架结构</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            14283449.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            吴化超</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 14; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第一中标候选人项目负责人类似业绩<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 15; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>技术负责人 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 17; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第二中标候选人类似业绩</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 18; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目负责人 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川省南江县第二中学</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            南江县第二中学重建工程</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2010-03-26 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-08-10 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            位于南江县第二中学校内，框架结构，总建筑面积3639.36㎡，施工总承包</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            3930663.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            张杰</p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川省巴中师范学校</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            四川省巴中职业教育中心恢复重建工程</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2009-11-30 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-08-19 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            位于四川省巴中师范学校内，框架结构，总建筑面积8800㎡ ，施工总承包</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            8159976.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            韩江</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 20; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第二中标候选人项目负责人类似业绩<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 21; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>技术负责人 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 23; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第三中标候选人类似业绩<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 24; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目负责人 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            巴中市公安消防支队</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            巴中市公安消防支队特勤消防站建设工程</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2010-10-06 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-12-12 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            全框架现浇结构，总面积5787㎡</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            5094228.0000</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            廖金兰</p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            南江县群众工作局（中国共产党南江县委员会群众工作部）</p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            南江县群众工作局、城乡市容和坏境卫生管理局办公用房灾后重建项目</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2009-09-25 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            2011-12-01 12:00:00</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            框架结构，建筑面积10748.74㎡。</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            7715472.5800</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            赖庆伦</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 26; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>第三中标候选人项目负责人类似业绩<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 27; height: 18.75pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目业主 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>开工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>竣工日期 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>建设规模 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>合同价格 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>技术负责人 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 13'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 29; height: 18.75pt'>
+                                    <td colspan="9" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="center" style='text-align: center; mso-pagination: widow-orphan'>
+                                            <span class="GramE"><span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial;
+                                                color: black; mso-font-kerning: 0pt'>废标单位</span></span><span style='font-size: 9.0pt;
+                                                    font-family: 宋体; mso-bidi-font-family: Arial; color: black; mso-font-kerning: 0pt'>及理由<span
+                                                        lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 30; height: 43.5pt'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 43.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>投标人名称 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                    <td colspan="4" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 43.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span class="GramE"><span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial;
+                                                color: black; mso-font-kerning: 0pt'>废标理由</span></span><span style='font-size: 9.0pt;
+                                                    font-family: 宋体; mso-bidi-font-family: Arial; color: black; mso-font-kerning: 0pt'>（投标文件被认定为不合格的具体事实及所依据招标文件中评审因素和评审标准的条款<span
+                                                        lang="EN-US">, </span>不得简单地表述为未响应招标文件实质性内容、某处有问题等）<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 43.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>备注 <span lang="EN-US">
+                                                    <o:p>
+                                                    </o:p></span></span></p>
+                                    </td>
+                                </tr>
+       <tr style='mso-yfti-irow: 31'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            通江县粮食建筑工程公司</p>
+                                    </td>
+                                    <td colspan="4" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            清单不一致；清单不一致；清单不一至；清单不一致；清单不一致；</p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr><tr style='mso-yfti-irow: 31'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            重庆龙建建筑工程（集团）有限公司</p>
+                                    </td>
+                                    <td colspan="4" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            电子文档未上传主要人员证书附件；没有提交人员简历；电子文档未上传主要人员证书附件；电子文档未上传主要人员证书附件资料；未上传主要人员证书附件</p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr>                         
+                                <tr style='mso-yfti-irow: 32'>
+                                    <td colspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>其他需说明事项<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="7" valign="top" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            </p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 33'>
+                                    <td colspan="2" rowspan="2" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>监督部门名称及监督电话<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>项目审批部门<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            通江县发展和改革局；</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>联系电话<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0827-7234006；</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 34; height: 18.75pt'>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>行业主管部门<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="3" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            通江县住房和城乡建设局；</p>
+                                    </td>
+                                    <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>联系电话<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="2" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 18.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            0827－7221123；</p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 35; height: 120.75pt'>
+                                    <td colspan="4" style='border: solid black 1.0pt; border-top: none; mso-border-top-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 120.75pt'>
+                                        <p class="MsoNormal" align="left" style='margin-bottom: 12.0pt; text-align: left;
+                                            mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>招标人主要负责人签字、盖章<span lang="EN-US">:<br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                </span>招标代理机构主要负责人签字、盖章：<span lang="EN-US"><br style='mso-special-character: line-break'>
+                                                    <![if !supportLineBreakNewLine]><br style='mso-special-character: line-break'>
+                                                    <![endif]><o:p></o:p></span></span></p>
+                                    </td>
+                                    <td colspan="5" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt;
+                                        border-right: solid black 1.0pt; mso-border-top-alt: solid black .75pt; mso-border-left-alt: solid black .75pt;
+                                        mso-border-alt: solid black .75pt; padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 120.75pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>备案部门备案：<span lang="EN-US">
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                                    </td>
+                                </tr>
+                                <tr style='mso-yfti-irow: 36; mso-yfti-lastrow: yes; height: 88.5pt'>
+                                    <td colspan="9" valign="top" style='border: none; mso-border-top-alt: solid black .75pt;
+                                        padding: 1.5pt 1.5pt 1.5pt 1.5pt; height: 88.5pt'>
+                                        <p class="MsoNormal" align="left" style='text-align: left; mso-pagination: widow-orphan'>
+                                            <span style='font-size: 9.0pt; font-family: 宋体; mso-bidi-font-family: Arial; color: black;
+                                                mso-font-kerning: 0pt'>注：<span lang="EN-US">1</span>、招标人或其委托的招标<span class="GramE">代理机</span>对填写的中标候选人公示内容的真实性、准确性和一致性负责。<span
+                                                    lang="EN-US"><br>
+                                                    2</span>、表中的“项目负责人”施工招标指项目经理、 监理招标指项目总监等。<span lang="EN-US"><br>
+                                                        3</span>、中标候选人公示纸质文本须加盖单位公章，多页还应加盖骑缝章。<span lang="EN-US"><br>
+                                                            4</span>、表中所填金额，单位均为人民币“元”。<span lang="EN-US"><o:p></o:p></span></span></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class="MsoNormal">
+            <span lang="EN-US">
+                <o:p>&nbsp;</o:p></span></p>
+    </div>
+</body>
+</html>
+</div><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/jquery.js'></script><script type="text/javascript"> var voiceconverturl = 'http://yyfw.epoint.com.cn/FrontVoice/DefaultFlash.aspx?altstop=1';</script><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/Voice.js'></script><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/KeyNavigate.js'></script>
+                  <!--EpointContent-->
+                </div></td>
+              </tr>
+              <tr>
+                <td align="center">
+                   
+                </td>
+              </tr>
+              <tr>
+                <td align="left">
+                  <br />
+                  </td>
+              </tr>
+              <tr id="trAttach" runat="server">
+                <td><table id="filedown" cellspacing="1" cellpadding="1" width="100%" border="0" runat="server">
+                  <tr>
+                    <td valign="top" align="left"></td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+            <!--正文结束--></td>
+        </tr>
+      </table>
+      <!--footer-->
+     </td>
+  </tr>
+</table>
+</div>
+      <div><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <title>四川省政府政务服务和公共资源交易服务中心</title>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?16f500e31df60ccd5170ba987a61c1f9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+<div id="footer">
+<div style="float:left; width:150px; padding-top:20px; line-height:35px; height:35px; text-align:center">
+<script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/23/000/0000/60436100/CA230000000604361000001.js' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+    <div class="last-wrap">
+    
+    <div class="left">四川省政府政务服务和公共资源交易服务中心主办     备案/许可证编号：蜀ICP备1202408<br/>
+        省政务服务和公共资源交易服务信息中心承办<br/>
+         交易大厅：成都市青羊区人民中路3段33号 政务大厅：成都市青羊区草市街2号<br/>
+        制作维护：江苏国泰新点软件有限公司 &nbsp;四川建设网有限责任公司&nbsp;&nbsp;&nbsp;<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257513975'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257513975%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>  
+        
+<br/>
+      </div>
+    <div class="right"><a href="/sczw/Template/Default/../../template/default/swsy.htm" target="_blank">设为首页</a> | <a href="javascript:window.external.AddFavorite(location.href,document.title)" title="将本站加入到您的收藏夹"  target="_top" style="color:#e4e4e4" >加入收藏</a> | <a href="/sczw/Template/Default/../../lxwm" target="_blank" style="color:#e4e4e4">联系我们</a> | <a href="http://tongji.baidu.com/web/welcome/login" target="_blank" style="color:#e4e4e4">百度统计</a></div>
+  <div class="right2" align="left"><!-- <a href="/sczw/Template/Default/../../cjwt" target="_blank" style="color:#e4e4e4">常见问题  </a>| <a href="/sczw/Template/Default/../../xxbs" target="_blank" style="color:#e4e4e4">信息报送</a> | -->
+   <a href="http://182.140.221.189:88/" target="_blank" style="color:#e4e4e4">考勤管理</a></div>
+
+  </div>
+  </div>
+  </div>
+
+</body>
+</html>
+</div>
+</div>
+</body>
+</html>

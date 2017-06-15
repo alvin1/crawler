@@ -1,7 +1,5 @@
 from datetime import datetime
-import json
 import re
-import uuid
 
 from .settings import Settings
 from .file_helper import FileHelper
@@ -21,7 +19,7 @@ class Extracter(object):
         self.file_helper.poke_dir(self.file_helper.get_dir_from_path(self.extracter_status_file))
 
     def clean_content(self, content):
-        return content.replace('\r\n', '').replace('\t', '')
+        return content.replace('\r\n', '').replace('\t', '').lstrip()
 
     def extract_list(self, soup, page):
         list = []
@@ -58,27 +56,53 @@ class Extracter(object):
             }
         return status
 
+    def get_content(self, soup):
+        if soup.string is not None:
+            return soup.string if soup.string != '\n' else u''
+
+        if len(soup.contents) == 0:
+            return u''
+
+        values = []
+        for item in soup.contents:
+            values.extend(self.get_content(item))
+        return values
+
+    def get_cell_content(self, td_soup):
+        if td_soup.string is not None:
+            return td_soup.string if td_soup.string != '\n' else u''
+
+        values = []
+        for item in td_soup.contents:
+            values.extend(self.get_content(item))
+        return self.clean_content(u"".join(values))
+
     def convert_type(self, data_type, value):
         if not value:
             return None
-
         if data_type == 'string':
-            return value.replace(u'\xa0', u' ').encode('gbk')
+            return value.replace(u'\xa0', u' ').replace(u'\u2022', '.').encode('gbk')
         elif data_type == 'int':
             return int(value)
         elif data_type == 'datetime':
+            if len(value.replace(u'\xa0', '')) == 0:
+                return None
+            value = value.replace(u'\xa0', '')
             if len(value) > 10:
                 return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
             else:
                 return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
             # return value
         elif data_type == 'decimal':
+            # if u'' in value:
+            #     return None
             return float(value)
 
     def find_row_number_by_key(self, key, rows):
         start_line = 0
+
         for row in rows:
-            for item in [item.string for item in row.select('td')]:
+            for item in [self.get_cell_content(item) for item in row.select('td')]:
                 for key_item in key:
                     if item and key_item in item:
                         return start_line
@@ -86,7 +110,7 @@ class Extracter(object):
         return None
 
     def extract_field_value(self, row, field, data):
-        value_of_key = row.select('td')[field['extract']['column']].string
+        value_of_key = self.get_cell_content(row.select('td')[field['extract']['column']])
         if 'remove' in field['extract']:
             for remove_key in field['extract']['remove']:
                 value_of_key = value_of_key.replace(remove_key, u'')
@@ -99,10 +123,18 @@ class Extracter(object):
         else:
             data[field['field_name']] = self.convert_type(field['data_type'], value_of_key)
 
+    def check_all_keys_blank(self, row):
+        for k,v in row.items():
+            if v is not None and v != u' ':
+                return False
+        return True
+
     def extract_detail(self, soup):
         details = {}
 
         rows = soup.select('#_Sheet1 tr')
+        if len(rows) == 0:
+            rows = soup.select('table .MsoNormalTable [width=675] tr')
 
         # 1. extract tender info
         details['tender_info'] = []
@@ -169,7 +201,7 @@ class Extracter(object):
         tender_openning_time_config = Settings.DETAIL_COORDINATE['tender_openning_time']
         start_row = self.find_row_number_by_key(tender_openning_time_config['title_row_key'], rows)
         rows_of_range = rows[start_row]
-        field = tender_openning_location_config['fields'][0]
+        field = tender_openning_time_config['fields'][0]
         if publicity_row is not None:
             field['extract']['column'] = 3
         else:
@@ -183,7 +215,7 @@ class Extracter(object):
             if self.find_row_number_by_key(publicity_config['title_row_key'], rows) is not None:
                 value_of_key = rows_of_range.select('td')[field['extract']['column']].string
             else:
-                value_of_key = rows_of_range.select('td')[1].string
+                value_of_key = self.get_cell_content(rows_of_range.select('td')[1])
             if 'remove' in field['extract']:
                 for remove_key in field['extract']['remove']:
                     value_of_key = value_of_key.replace(remove_key, u'')
@@ -206,35 +238,74 @@ class Extracter(object):
         rows_of_range = rows[start_row + 2:next_start_row]
 
         tmp_row_index = 0
+        incharge_in_same_line = False
         for row_data in rows_of_range:
             tmp_row_index += 1
             columns = row_data.select('td')
             if len(columns) != len(candidate_config['fields']):
+                incharge_in_same_line = True
+            if len(columns) == 1:
                 break
-
             candidate = {}
             for field in candidate_config['fields']:
                 self.extract_field_value(row_data, field, candidate)
             details['candidate'].append(candidate)
         # 2.1 extract candidate_incharge list
-        for candidate in details['candidate']:
-            candidate['incharge_start'] = tmp_row_index + 2
-            tmp_row_index += 2
-            for row_data in rows_of_range[tmp_row_index:]:
-                columns = row_data.select('td')
-                if len(columns) != len(candidate_config['inchage_fields']):
-                    candidate['incharge_end'] = tmp_row_index
+        if not incharge_in_same_line:
+            for candidate in details['candidate']:
+                candidate['incharge_start'] = tmp_row_index + 2
+                tmp_row_index += 2
+                for row_data in rows_of_range[tmp_row_index:]:
+                    columns = row_data.select('td')
+                    if len(columns) != len(candidate_config['inchage_fields']):
+                        candidate['incharge_end'] = tmp_row_index
+                        tmp_row_index += 1
+                        break
                     tmp_row_index += 1
+            for candidate in details['candidate']:
+                candidate['incharge'] = []
+                incharge_rows = rows_of_range[candidate['incharge_start']:candidate['incharge_end']]
+                for incharge_row in incharge_rows:
+                    incharge = {}
+                    for field in candidate_config['inchage_fields']:
+                        self.extract_field_value(incharge_row, field, incharge)
+                    candidate['incharge'].append(incharge)
+        else:
+            index = 0
+            for candidate in details['candidate']:
+                candidate['incharge'] = []
+                for incharge_row in rows_of_range[index: index + 1]:
+                    incharge = {
+                        'incharge_type': u'\u9879\u76ee\u8d1f\u8d23\u4eba'
+                    }
+                    fields = [
+                        {
+                            'field_name': 'incharge_name',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 5
+                            }
+                        },
+                        {
+                            'field_name': 'incharge_certificate_name',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 6
+                            }
+                        },
+                        {
+                            'field_name': 'incharge_certificate_no',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 7
+                            }
+                        }
+                    ]
+                    for field in fields:
+                        self.extract_field_value(incharge_row, field, incharge)
+                    candidate['incharge'].append(incharge)
                     break
-                tmp_row_index += 1
-        for candidate in details['candidate']:
-            candidate['incharge'] = []
-            incharge_rows = rows_of_range[candidate['incharge_start']:candidate['incharge_end']]
-            for incharge_row in incharge_rows:
-                incharge = {}
-                for field in candidate_config['inchage_fields']:
-                    self.extract_field_value(incharge_row, field, incharge)
-                candidate['incharge'].append(incharge)
+                index += 1
         # 2.2 extract the candidate projects and candidate incharge projects
         break_time = 0
         for candidate in details['candidate']:
@@ -254,21 +325,147 @@ class Extracter(object):
                         break
                 else:
                     tmp_row_index += 1
-        details['candidate'][-1]['incharge_project_end'] = tmp_row_index
+        if len(details['candidate']) > 0:
+            details['candidate'][-1]['incharge_project_end'] = tmp_row_index
 
         for candidate in details['candidate']:
             candidate['projects'] = []
             for project_row in rows_of_range[candidate['project_start']:candidate['project_end']]:
                 project = {}
-                for field in candidate_config['project_fields']:
+                fields = candidate_config['project_fields']
+                if len(project_row.select('td')) == 7:
+                    fields = [
+                        {
+                            'field_name': 'owner',
+                            'field_title': u'\u9879\u76ee\u4e1a\u4e3b',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 0
+                            }
+                        },
+                        {
+                            'field_name': 'name',
+                            'field_title': u'\u9879\u76ee\u540d\u79f0 ',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 1
+                            }
+                        },
+                        {
+                            'field_name': 'kick_off_date',
+                            'field_title': u'\u5f00\u5de5\u65e5\u671f ',
+                            'data_type': 'datetime',
+                            'extract': {
+                                'column': 2
+                            }
+                        },
+                        {
+                            'field_name': 'finish_date',
+                            'field_title': u'\u7ae3\u5de5\u65e5\u671f',
+                            'data_type': 'datetime',
+                            'extract': {
+                                'column': 3
+                            }
+                        },
+                        {
+                            'field_name': 'scale',
+                            'field_title': u'\u5efa\u8bbe\u89c4\u6a21',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 4
+                            }
+                        },
+                        {
+                            'field_name': 'contract_price',
+                            'field_title': u'\u5408\u540c\u4ef7\u683c\uff08\u5143\uff09',
+                            'data_type': 'decimal',
+                            'extract': {
+                                'column': 5
+                            }
+                        },
+                        {
+                            'field_name': 'project_incharge_name',
+                            'field_title': u'\u9879\u76ee\u8d1f\u8d23\u4eba',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 6
+                            }
+                        }
+                    ]
+                for field in fields:
                     self.extract_field_value(project_row, field, project)
-                candidate['projects'].append(project)
+                if not self.check_all_keys_blank(project):
+                    candidate['projects'].append(project)
+
             candidate['incharge_projects'] = []
             for project_row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
                 project = {}
-                for field in candidate_config['inchage_project_fields']:
+                fields = candidate_config['inchage_project_fields']
+                if len(project_row.select('td')) == 1:
+                    break
+                if len(project_row.select('td')) == 7:
+                    fields = [
+                        {
+                            'field_name': 'owner',
+                            'field_title': u'\u9879\u76ee\u4e1a\u4e3b',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 0
+                            }
+                        },
+                        {
+                            'field_name': 'name',
+                            'field_title': u'\u9879\u76ee\u540d\u79f0 ',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 1
+                            }
+                        },
+                        {
+                            'field_name': 'kick_off_date',
+                            'field_title': u'\u5f00\u5de5\u65e5\u671f ',
+                            'data_type': 'datetime',
+                            'extract': {
+                                'column': 2
+                            }
+                        },
+                        {
+                            'field_name': 'finish_date',
+                            'field_title': u'\u7ae3\u5de5\u65e5\u671f',
+                            'data_type': 'datetime',
+                            'extract': {
+                                'column': 3
+                            }
+                        },
+                        {
+                            'field_name': 'scale',
+                            'field_title': u'\u5efa\u8bbe\u89c4\u6a21',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 4
+                            }
+                        },
+                        {
+                            'field_name': 'contract_price',
+                            'field_title': u'\u5408\u540c\u4ef7\u683c\uff08\u5143\uff09',
+                            'data_type': 'decimal',
+                            'extract': {
+                                'column': 5
+                            }
+                        },
+                        {
+                            'field_name': 'tech_incharge_name',
+                            'field_title': u'\u6280\u672f\u8d1f\u8d23\u4eba',
+                            'data_type': 'string',
+                            'extract': {
+                                'column': 6
+                            }
+                        }
+                    ]
+                for field in fields:
                     self.extract_field_value(project_row, field, project)
-                candidate['incharge_projects'].append(project)
+                if not self.check_all_keys_blank(project):
+                    candidate['incharge_projects'].append(project)
 
         # 3 extract other tenders list
         other_tenders_config = Settings.DETAIL_COORDINATE['other_tenderer_review']
@@ -278,8 +475,15 @@ class Extracter(object):
         details['other_tenderer_review'] = []
         for row in rows_of_range:
             other_tender = {}
-            for field in other_tenders_config['fields']:
-                self.extract_field_value(row, field, other_tender)
+            if len(row.select('td')) == 3:
+                fields = other_tenders_config['fields'][0:2]
+                fields.append(other_tenders_config['fields'][3])
+                fields[-1]['extract']['column'] = 2
+                for field in fields:
+                    self.extract_field_value(row, field, other_tender)
+            else:
+                for field in other_tenders_config['fields']:
+                    self.extract_field_value(row, field, other_tender)
             details['other_tenderer_review'].append(other_tender)
 
         # 4 extract other_description
@@ -297,14 +501,15 @@ class Extracter(object):
         # 5 extract review_board_member
         review_member_config = Settings.DETAIL_COORDINATE['review_board_member']
         start_row = self.find_row_number_by_key(review_member_config['title_row_key'], rows)
-        next_start_row = self.find_row_number_by_key(review_member_config['next_title_row_key'], rows)
-        rows_of_range = rows[start_row + 2:next_start_row]
-        details['review_board_member'] = []
-        for row in rows_of_range:
-            review_member = {}
-            for field in review_member_config['fields']:
-                self.extract_field_value(row, field, review_member)
-            details['review_board_member'].append(review_member)
+        if start_row is not None:
+            next_start_row = self.find_row_number_by_key(review_member_config['next_title_row_key'], rows)
+            rows_of_range = rows[start_row + 2:next_start_row]
+            details['review_board_member'] = []
+            for row in rows_of_range:
+                review_member = {}
+                for field in review_member_config['fields']:
+                    self.extract_field_value(row, field, review_member)
+                details['review_board_member'].append(review_member)
 
         # 6 extract review_department
         review_depart_config = Settings.DETAIL_COORDINATE['review_department']
@@ -329,6 +534,7 @@ class Extracter(object):
             for field in admin_depart_config['fields']:
                 self.extract_field_value(row, field, admin_depart)
             details['administration_department'].append(admin_depart)
+            break
 
         return details
 
@@ -346,8 +552,8 @@ class Extracter(object):
                                    tender_openning_location=item_detail['tender_info'][0]['tender_openning_location'],
                                    tender_openning_time=item_detail['tender_info'][0]['tender_openning_time'],
                                    tender_ceil_price=item_detail['tender_info'][0]['tender_ceil_price'],
-                                   publicity_start=item_detail['tender_info'][0]['publicity_start'],
-                                   publicity_end=item_detail['tender_info'][0]['publicity_end'],
+                                   publicity_start=item_detail['tender_info'][0]['publicity_start'] if 'publicity_start' in item_detail['tender_info'][0] else None,
+                                   publicity_end=item_detail['tender_info'][0]['publicity_end'] if 'publicity_end' in item_detail['tender_info'][0] else None,
                                    other_description=item_detail['other_description'][0]['other_description'] if len(item_detail['other_description']) == 1 else '',
                                    review_department=item_detail['review_department'][0]['review_department'],
                                    review_department_phone=item_detail['review_department'][0]['review_department_phone'],
@@ -375,8 +581,8 @@ class Extracter(object):
                                                        incharge_name=incharge_item['incharge_name'],
                                                        incharge_certificate_name=incharge_item['incharge_certificate_name'],
                                                        incharge_certificate_no=incharge_item['incharge_certificate_no'],
-                                                       professional_grade=incharge_item['professional_grade'],
-                                                       professional_titles=incharge_item['professional_titles'])
+                                                       professional_grade=incharge_item['professional_grade'] if 'professional_grade' in incharge_item else None,
+                                                       professional_titles=incharge_item['professional_titles'] if 'professional_titles' in incharge_item else None)
                 incharge_id = candidate_incharge.save()
                 incharge_item['incharge_id'] = incharge_id
             for project_item in item['projects']:
@@ -385,7 +591,7 @@ class Extracter(object):
                                                        owner=project_item['owner'],
                                                        name=project_item['name'],
                                                        kick_off_date=project_item['kick_off_date'],
-                                                       deliver_date=project_item['deliver_date'],
+                                                       deliver_date=project_item['deliver_date'] if 'deliver_date' in project_item else None,
                                                        finish_date=project_item['finish_date'],
                                                        scale=project_item['scale'],
                                                        contract_price=project_item['contract_price'],
@@ -398,7 +604,7 @@ class Extracter(object):
                                                                         owner=project_item['owner'],
                                                                         name=project_item['name'],
                                                                         kick_off_date=project_item['kick_off_date'],
-                                                                        deliver_date=project_item['deliver_date'],
+                                                                        deliver_date=project_item['deliver_date'] if 'deliver_date' in project_item else None,
                                                                         finish_date=project_item['finish_date'],
                                                                         scale=project_item['scale'],
                                                                         contract_price=project_item['contract_price'],
@@ -410,12 +616,13 @@ class Extracter(object):
             other_tenderer_review = OtherTendererReview(tender_id=list_item['info_id'],
                                                         tenderer_name=item['tenderer_name'],
                                                         price_or_vote_down=item['price_or_vote_down'],
-                                                        price_review_or_vote_down_reason=item['price_review_or_vote_down_reason'],
+                                                        price_review_or_vote_down_reason=item['price_review_or_vote_down_reason'] if 'price_review_or_vote_down_reason' in item else None,
                                                         review_score_or_description=item['review_score_or_description'])
             tenderer_id = other_tenderer_review.save()
             item['tenderer_id'] = tenderer_id
-        for item in item_detail['review_board_member']:
-            review_board_member = ReviewBoardMember(tender_id=list_item['info_id'],
-                                                    name=item['member_name'],
-                                                    company=item['member_company'])
-            review_board_member.save()
+        if 'review_board_member' in item_detail:
+            for item in item_detail['review_board_member']:
+                review_board_member = ReviewBoardMember(tender_id=list_item['info_id'],
+                                                        name=item['member_name'],
+                                                        company=item['member_company'])
+                review_board_member.save()

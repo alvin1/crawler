@@ -14,6 +14,8 @@ if __name__ == '__main__':
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=1f46cabd-204a-4309-90d2-759b912da047&CategoryNum=005001003',
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=6bb1dbcc-134b-4bc1-9e85-4ac114d2f81b&CategoryNum=005001003',
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=a3b7960e-287a-47fe-9beb-db2495a7a9f0&CategoryNum=005001003',
+        'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=4679b8f1-f5a4-44b2-bde2-f70872076b8d&CategoryNum=005001003',
+        'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=b5e20669-a119-4da6-b7ca-ccb97456fbe3&CategoryNum=005001003'
     ]
 
     page_path = "debug_pages/"

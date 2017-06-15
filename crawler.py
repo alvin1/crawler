@@ -2,6 +2,7 @@ from modules.settings import Settings
 from modules.html_loader import HtmlLoader
 from modules.logger import Logger
 from modules.extracter import Extracter
+from modules.file_helper import FileHelper
 
 
 def worker(page):
@@ -22,6 +23,7 @@ if __name__ == '__main__':
     html_loader = HtmlLoader()
     extracter = Extracter()
     logger = Logger()
+    file_helper = FileHelper()
 
     # get last extract status
     last_extract_status = extracter.get_last_extract_status()
@@ -34,7 +36,7 @@ if __name__ == '__main__':
         exit(100)
 
     record_status = extracter.extract_record_status(soup)
-    tender_list = extracter.extract_list(soup, page=1)
+    # tender_list = extracter.extract_list(soup, page=1)
 
     records_need_to_extract = record_status['total_records'] - last_extract_status['total_records']
     pages = int(records_need_to_extract / Settings.PAGE_SIZE)
@@ -43,10 +45,12 @@ if __name__ == '__main__':
         pages += 1
 
     page_array = range(1, pages + 1)
+    page_array.reverse()
 
     # get data from earlier to current
-    for page in page_array.reverse():
+    for page in page_array:
         print('Get data of page %s' % page)
+        # file_helper.write('var/tmp/%s.html' % page, html_loader.get_page_content(url=Settings.URL, page=page))
         soup = html_loader.get_page_soup(url=Settings.URL, page=page)
         if soup is None:
             continue
@@ -56,4 +60,6 @@ if __name__ == '__main__':
             if soup is None:
                 continue
             detail = extracter.extract_detail(soup)
+            print('extract done')
             extracter.save_extracted_data(item, detail)
+            print('saved')
