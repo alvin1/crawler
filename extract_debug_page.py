@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 from modules.file_helper import FileHelper
 from modules.html_loader import HtmlLoader
 from modules.extracter import Extracter
@@ -30,20 +31,29 @@ def get_cell_content(td_soup):
     return u"".join(values).replace('\n', '').replace(u' ', u'')
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: %s <info_id>" % sys.argv[0])
+        exit(-1)
+    info_id = sys.argv[1]
+
     file_helper = FileHelper()
     html_loader = HtmlLoader()
     extracter = Extracter()
 
     page_dir = "debug_pages/"
     # page_path = os.path.join(page_dir, 'a9e29e7b-da58-47cc-a9a4-0d9340a62282' + '.html')
-    page_path = os.path.join(page_dir, 'b5e20669-a119-4da6-b7ca-ccb97456fbe3' + '.html')
+    page_path = os.path.join(page_dir, info_id + '.html')
+
+    if not os.path.exists(page_path) or not os.path.isfile(page_path):
+        print("info id not exists")
+        exit(-2)
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
     detail = extracter.extract_detail(soup)
-    format_print(detail)
+    # format_print(detail)
     list_item = {
-        'info_id': 'b5e20669-a119-4da6-b7ca-ccb97456fbe3',
+        'info_id': info_id,
         'publish_date': '2013-10-28 00:00:00',
-        'page_url': 'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=b5e20669-a119-4da6-b7ca-ccb97456fbe3&CategoryNum=005001003'
+        'page_url': 'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=' + info_id + '&CategoryNum=005001003'
     }
     extracter.save_extracted_data(list_item, detail)

@@ -94,9 +94,10 @@ class Extracter(object):
                 return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
             # return value
         elif data_type == 'decimal':
-            # if u'' in value:
-            #     return None
-            return float(value)
+            try:
+                return float(value)
+            except:
+                return None
 
     def find_row_number_by_key(self, key, rows):
         start_line = 0
@@ -239,11 +240,16 @@ class Extracter(object):
 
         tmp_row_index = 0
         incharge_in_same_line = False
+        title_row = rows[start_row ]
+        for col in title_row.select('td'):
+            col_value = self.get_cell_content(col)
+            if u'\u62df\u4efb\u9879\u76ee\u8d1f\u8d23\u4eba' == col_value:
+                incharge_in_same_line = True
+                break
+
         for row_data in rows_of_range:
             tmp_row_index += 1
             columns = row_data.select('td')
-            if len(columns) != len(candidate_config['fields']):
-                incharge_in_same_line = True
             if len(columns) == 1:
                 break
             candidate = {}
