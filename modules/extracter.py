@@ -12,6 +12,7 @@ from database.models.candidate_projects import CandidateProjects
 from database.models.other_tenderer_review import OtherTendererReview
 from database.models.review_board_member import ReviewBoardMember
 from database.models.failed_page import FailedPage
+from database.models.grab_status import GrabStatus
 
 class Extracter(object):
     def __init__(self):
@@ -48,14 +49,12 @@ class Extracter(object):
         }
 
     def get_last_extract_status(self):
-        status = self.file_helper.get_json(self.extracter_status_file)
-        if not status:
-            status = {
-                'info_id': '',
-                'total_records': 0,
-                'total_pages': 0
-            }
-        return status
+        status = GrabStatus()
+        return status.get()
+
+    def save_extract_status(self, page_num):
+        status = GrabStatus(page_num=page_num)
+        status.save()
 
     def get_content(self, soup):
         if soup.string is not None:
@@ -82,7 +81,7 @@ class Extracter(object):
         if not value:
             return None
         if data_type == 'string':
-            return value.replace(u'\xa0', u' ').replace(u'\u2022', '.').encode('gbk')
+            return value.replace(u'\xa0', u' ').replace(u'\u2022', '.').encode('utf8')
         elif data_type == 'int':
             return int(value)
         elif data_type == 'datetime':
@@ -565,7 +564,8 @@ class Extracter(object):
                                    review_department=item_detail['review_department'][0]['review_department'],
                                    review_department_phone=item_detail['review_department'][0]['review_department_phone'],
                                    administration_department=item_detail['administration_department'][0]['administration_department'],
-                                   administration_department_phone=item_detail['administration_department'][0]['administration_department_phone']
+                                   administration_department_phone=item_detail['administration_department'][0]['administration_department_phone'],
+                                   page_num=list_item['page_index']
                                    )
         tender_info.save()
 
@@ -640,3 +640,8 @@ class Extracter(object):
 
         failed_page = FailedPage(tender_id, page_url, failed_type)
         failed_page.save()
+
+    def get_trenders_by_page_num(self, page_num):
+        tender_info = TrenderInfo(page_num=page_num)
+        trenders = tender_info.get_tenders_by_page_num()
+        return [item['tender_id'] for item in trenders['data']]

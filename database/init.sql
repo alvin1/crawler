@@ -109,7 +109,21 @@ DROP TABLE IF EXISTS `failed_page`;
 CREATE TABLE `failed_page` (
   `tender_id` char(36) DEFAULT NULL,
   `page_url` varchar(1000) DEFAULT NULL,
-  `failed_type` varchar(10) DEFAULT NULL
+  `failed_type` varchar(10) DEFAULT NULL,
+  `page_num` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `grab_status`
+--
+
+DROP TABLE IF EXISTS `grab_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grab_status` (
+  `page_num` int(11) DEFAULT NULL,
+  `total_pages` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,6 +186,7 @@ CREATE TABLE `tender_info` (
   `review_department_phone` varchar(200) DEFAULT NULL,
   `administration_department` varchar(1000) DEFAULT NULL,
   `administration_department_phone` varchar(200) DEFAULT NULL,
+  `page_num` int(11) DEFAULT NULL,
   PRIMARY KEY (`tender_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -185,4 +200,4 @@ CREATE TABLE `tender_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-17 11:20:58
+-- Dump completed on 2017-06-18  1:34:07
