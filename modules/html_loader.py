@@ -2,6 +2,7 @@ import urllib
 import urllib2
 import httplib
 import time
+import socket
 from bs4 import BeautifulSoup
 
 from .settings import Settings
@@ -26,7 +27,7 @@ class HtmlLoader(object):
         self.file_helper.write_json(failed_path, failed_grabs)
 
     def get_page_content(self, url, page=1, retry_times = 0):
-        print(url)
+        print("%s -> %s" % (page, url))
         data = urllib.urlencode({
             '__VIEWSTATEGENERATOR': Settings.VIEWSTATEGENERATOR,
             '__EVENTTARGET': Settings.EVENTTARGET,
@@ -59,6 +60,32 @@ class HtmlLoader(object):
             self.get_page_content(url, page, retry_times)
         except httplib.BadStatusLine, e:
             print("httplib.BadStatusLine")
+            print("Load web page %s failed. message: %s" % (page, e))
+            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
+            retry_times += 1
+            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
+                print("Reached the max retry times, will record to error log")
+                self.save_failed_grab(url, page)
+
+            print("Sleep 3 seconds")
+            time.sleep(3)
+            print("Trying to get content again. Tried times: %s" % retry_times)
+            self.get_page_content(url, page, retry_times)
+        except socket.timeout as e:
+            print("Socket time out")
+            print("Load web page %s failed. message: %s" % (page, e))
+            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
+            retry_times += 1
+            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
+                print("Reached the max retry times, will record to error log")
+                self.save_failed_grab(url, page)
+
+            print("Sleep 3 seconds")
+            time.sleep(3)
+            print("Trying to get content again. Tried times: %s" % retry_times)
+            self.get_page_content(url, page, retry_times)
+        except Exception, e:
+            print("Load web page %s failed. message: %s" % (page, e))
             print("Load web page %s failed. message: %s" % (page, e))
             print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
             retry_times += 1

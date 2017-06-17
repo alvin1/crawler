@@ -8,7 +8,7 @@ class Settings(object):
     PAGE_SIZE = 20
     DOMAIN = 'http://www.spprec.com'
     URL = DOMAIN + '/sczw/jyfwpt/005001/005001003/MoreInfo.aspx?CategoryNum=005001003'
-    PAGE_WAIT_TIMEOUT = 6000
+    PAGE_WAIT_TIMEOUT = 60
     MAX_CLIENTS = 5
     DB_HOST = '127.0.0.1'
     DB_PORT = 3306

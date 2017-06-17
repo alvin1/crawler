@@ -56,7 +56,7 @@ if __name__ == '__main__':
             continue
         lists = extracter.extract_list(soup, page)
         for item in lists:
-            soup = html_loader.get_page_soup(url=item['page_url'], page=1)
+            soup = html_loader.get_page_soup(url=item['page_url'], page=page)
             if soup is None:
                 logger.error("The page content is blank, may have some issues when grab")
                 extracter.save_failed_page(item['info_id'], item['page_url'], 'grab')

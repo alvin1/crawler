@@ -2,3 +2,4 @@
 var
 *.pyc
 .DS_Store
+.vscode

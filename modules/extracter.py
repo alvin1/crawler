@@ -32,7 +32,7 @@ class Extracter(object):
             date = self.clean_content(item.select('td')[2].string)
 
             list.append({
-                'title': a['title'].encode("gbk"),
+                'title': self.convert_type('string', a['title']),
                 'publish_date': date,
                 'page_url': "%s%s" % (Settings.DOMAIN, a['href']),
                 'page_index': page,
