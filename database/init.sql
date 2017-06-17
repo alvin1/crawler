@@ -100,6 +100,20 @@ CREATE TABLE `candidate_projects` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `failed_page`
+--
+
+DROP TABLE IF EXISTS `failed_page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_page` (
+  `tender_id` char(36) DEFAULT NULL,
+  `page_url` varchar(1000) DEFAULT NULL,
+  `failed_type` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `other_tenderer_review`
 --
 
@@ -171,4 +185,4 @@ CREATE TABLE `tender_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-11 22:54:45
+-- Dump completed on 2017-06-17 11:20:58

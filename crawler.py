@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # get data from earlier to current
     for page in page_array:
         print('Get data of page %s' % page)
-        # file_helper.write('var/tmp/%s.html' % page, html_loader.get_page_content(url=Settings.URL, page=page))
+        logger.info("Grab data of page: %s" % page)
         soup = html_loader.get_page_soup(url=Settings.URL, page=page)
         if soup is None:
             continue
@@ -58,8 +58,16 @@ if __name__ == '__main__':
         for item in lists:
             soup = html_loader.get_page_soup(url=item['page_url'], page=1)
             if soup is None:
+                logger.error("The page content is blank, may have some issues when grab")
+                extracter.save_failed_page(item['info_id'], item['page_url'], 'grab')
                 continue
-            detail = extracter.extract_detail(soup)
-            print('extract done')
-            extracter.save_extracted_data(item, detail)
-            print('saved')
+            try:
+                detail = extracter.extract_detail(soup)
+                print('extract done')
+                extracter.save_extracted_data(item, detail)
+                print('saved')
+                logger.info("Grab data of page success")
+            except:
+                print('extract failed')
+                extracter.save_failed_page(item['info_id'], item['page_url'], 'extract')
+                logger.error('Grab data of page failed')

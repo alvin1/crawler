@@ -11,6 +11,7 @@ from database.models.candidate_incharge_projects import CandidateInChargeProject
 from database.models.candidate_projects import CandidateProjects
 from database.models.other_tenderer_review import OtherTendererReview
 from database.models.review_board_member import ReviewBoardMember
+from database.models.failed_page import FailedPage
 
 class Extracter(object):
     def __init__(self):
@@ -632,3 +633,10 @@ class Extracter(object):
                                                         name=item['member_name'],
                                                         company=item['member_company'])
                 review_board_member.save()
+
+    def save_failed_page(self, tender_id, page_url, failed_type):
+        if failed_type not in ['grab', 'extract']:
+            return
+
+        failed_page = FailedPage(tender_id, page_url, failed_type)
+        failed_page.save()

@@ -52,7 +52,6 @@ class HtmlLoader(object):
             retry_times += 1
             if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
                 print("Reached the max retry times, will record to error log")
-                self.save_failed_grab(url, page)
 
             print("Sleep 3 seconds")
             time.sleep(3)
