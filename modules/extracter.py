@@ -26,18 +26,18 @@ class Extracter(object):
     def extract_list(self, soup, page):
         list = []
 
-        info_id_pattarn = re.compile(u'.+InfoID=(?P<INFOID>.+)&.+')
+        tender_id_pattarn = re.compile(u'.+InfoID=(?P<INFOID>.+)&.+')
         for item in soup.select('#MoreInfoList1_tdcontent tr'):
             a = item.select('a')[0]
-            match = info_id_pattarn.match(a['href'])
+            match = tender_id_pattarn.match(a['href'])
             date = self.clean_content(item.select('td')[2].string)
 
             list.append({
                 'title': self.convert_type('string', a['title']),
                 'publish_date': date,
                 'page_url': "%s%s" % (Settings.DOMAIN, a['href']),
-                'page_index': page,
-                'info_id': match.group('INFOID') if match else ''
+                'page_num': page,
+                'tender_id': match.group('INFOID') if match else ''
             })
         return list
 
@@ -545,7 +545,7 @@ class Extracter(object):
         return details
 
     def save_extracted_data(self, list_item, item_detail):
-        tender_info = TrenderInfo(tender_id=list_item['info_id'],
+        tender_info = TrenderInfo(tender_id=list_item['tender_id'],
                                    tender_name=item_detail['tender_info'][0]['tender_name'],
                                    pubdate=list_item['publish_date'],
                                    page_url=list_item['page_url'],
@@ -565,13 +565,13 @@ class Extracter(object):
                                    review_department_phone=item_detail['review_department'][0]['review_department_phone'],
                                    administration_department=item_detail['administration_department'][0]['administration_department'],
                                    administration_department_phone=item_detail['administration_department'][0]['administration_department_phone'],
-                                   page_num=list_item['page_index']
+                                   page_num=list_item['page_num']
                                    )
         tender_info.save()
 
         # candidate_index = 1
         for item in item_detail['candidate']:
-            candidate = Candidate(tender_id=list_item['info_id'],
+            candidate = Candidate(tender_id=list_item['tender_id'],
                                   ranking=item['ranking'],
                                   candidate_name=item['candidate_name'],
                                   tender_price=item['tender_price'],
@@ -581,7 +581,7 @@ class Extracter(object):
             item['candidate_id'] = candidate_id
             # identity_key = "candidate_%s" % candidate_index
             for incharge_item in item['incharge']:
-                candidate_incharge = CandidateIncharge(tender_id=list_item['info_id'],
+                candidate_incharge = CandidateIncharge(tender_id=list_item['tender_id'],
                                                        candidate_id=candidate_id,
                                                        incharge_id='',
                                                        incharge_type=incharge_item['incharge_type'],
@@ -593,7 +593,7 @@ class Extracter(object):
                 incharge_id = candidate_incharge.save()
                 incharge_item['incharge_id'] = incharge_id
             for project_item in item['projects']:
-                candidate_projects = CandidateProjects(tender_id=list_item['info_id'],
+                candidate_projects = CandidateProjects(tender_id=list_item['tender_id'],
                                                        candidate_id=candidate_id,
                                                        owner=project_item['owner'],
                                                        name=project_item['name'],
@@ -605,7 +605,7 @@ class Extracter(object):
                                                        project_incharge_name=project_item['project_incharge_name'])
                 candidate_projects.save()
             for project_item in item['incharge_projects']:
-                candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['info_id'],
+                candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['tender_id'],
                                                                         candidate_id=candidate_id,
                                                                         incharge_id=incharge_id,
                                                                         owner=project_item['owner'],
@@ -620,7 +620,7 @@ class Extracter(object):
                 candidate_incharge_projects.save()
 
         for item in item_detail['other_tenderer_review']:
-            other_tenderer_review = OtherTendererReview(tender_id=list_item['info_id'],
+            other_tenderer_review = OtherTendererReview(tender_id=list_item['tender_id'],
                                                         tenderer_name=item['tenderer_name'],
                                                         price_or_vote_down=item['price_or_vote_down'],
                                                         price_review_or_vote_down_reason=item['price_review_or_vote_down_reason'] if 'price_review_or_vote_down_reason' in item else None,
@@ -629,19 +629,31 @@ class Extracter(object):
             item['tenderer_id'] = tenderer_id
         if 'review_board_member' in item_detail:
             for item in item_detail['review_board_member']:
-                review_board_member = ReviewBoardMember(tender_id=list_item['info_id'],
+                review_board_member = ReviewBoardMember(tender_id=list_item['tender_id'],
                                                         name=item['member_name'],
                                                         company=item['member_company'])
                 review_board_member.save()
 
-    def save_failed_page(self, tender_id, page_url, failed_type):
+    def save_failed_page(self, tender_id, page_url, failed_type, page_num, page_type, publish_date):
         if failed_type not in ['grab', 'extract']:
             return
 
-        failed_page = FailedPage(tender_id, page_url, failed_type)
+        failed_page = FailedPage(tender_id, page_url, failed_type, page_num, page_type, publish_date)
         failed_page.save()
 
     def get_trenders_by_page_num(self, page_num):
         tender_info = TrenderInfo(page_num=page_num)
         trenders = tender_info.get_tenders_by_page_num()
         return [item['tender_id'] for item in trenders['data']]
+
+    def update_tender_page_num(self, page_num):
+        tender_info = TrenderInfo(page_num=page_num)
+        tender_info.update_page_num()
+
+    def get_failed_grab_pages(self):
+        failed_page = FailedPage(failed_type='grab')
+        return failed_page.get_failed_pages()
+
+    def save_reprocess_status(self, page_url, page_num, status):
+        failed_page = FailedPage(page_url=page_url, page_num=page_num, status=1 if status else 0)
+        failed_page.update_reprocess_status()

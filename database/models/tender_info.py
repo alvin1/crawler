@@ -44,7 +44,6 @@ class TrenderInfo(object):
     def save(self):
         tender_id = self.get_tender_id()
         if tender_id is not None:
-            print('tender found, will not save again')
             return tender_id
 
         command = """INSERT INTO tender_info 
@@ -73,3 +72,9 @@ class TrenderInfo(object):
 
         result = self.db.query(command, params)
         return result
+
+    def update_page_num(self):
+        command = """UPDATE tender_info SET page_num = page_num + %s"""
+        params = (self.page_num,)
+
+        result = self.db.execute(command, params)

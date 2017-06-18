@@ -1,13 +1,14 @@
 import urllib
 import urllib2
 import httplib
-import time
+import re
 import socket
 from bs4 import BeautifulSoup
 
 from .settings import Settings
 from .logger import Logger
 from .file_helper import FileHelper
+from database.models.failed_page import FailedPage
 
 
 class HtmlLoader(object):
@@ -16,17 +17,17 @@ class HtmlLoader(object):
         self.file_helper = FileHelper()
 
     def save_failed_grab(self, url, page):
-        failed_path = 'var/status/failed_grab.json'
-        failed_grabs = self.file_helper.get_json(failed_path)
-        if failed_grabs is None:
-            failed_grabs = []
-        failed_grabs.append({
-            'url': url,
-            'page': page
-        })
-        self.file_helper.write_json(failed_path, failed_grabs)
+        info_id_pattarn = re.compile(u'.+InfoID=(?P<INFOID>.+)&.+')
+        match = info_id_pattarn.match(url)
 
-    def get_page_content(self, url, page=1, retry_times = 0):
+        if match:
+            failed_page = FailedPage(tender_id=match.group('INFOID'), page_url=url, failed_type='grab', page_num=page,
+                                     page_type='detail')
+        else:
+            failed_page = FailedPage(tender_id=None, page_url=url, failed_type='grab', page_num=page, page_type='list')
+        failed_page.save()
+
+    def get_page_content(self, url, page=1):
         print("%s -> %s" % (page, url))
         data = urllib.urlencode({
             '__VIEWSTATEGENERATOR': Settings.VIEWSTATEGENERATOR,
@@ -47,56 +48,17 @@ class HtmlLoader(object):
             response = opener.open(req, data, Settings.PAGE_WAIT_TIMEOUT)
             return response.read()
         except urllib2.URLError, e:
-            print("urllib2.URLError")
-            print("Load web page %s failed. message: %s" % (page, e))
-            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
-            retry_times += 1
-            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
-                print("Reached the max retry times, will record to error log")
-
-            print("Sleep 3 seconds")
-            time.sleep(3)
-            print("Trying to get content again. Tried times: %s" % retry_times)
-            self.get_page_content(url, page, retry_times)
+            self.logger.error("urllib2.URLError")
+            self.save_failed_grab(url, page)
         except httplib.BadStatusLine, e:
-            print("httplib.BadStatusLine")
-            print("Load web page %s failed. message: %s" % (page, e))
-            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
-            retry_times += 1
-            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
-                print("Reached the max retry times, will record to error log")
-                self.save_failed_grab(url, page)
-
-            print("Sleep 3 seconds")
-            time.sleep(3)
-            print("Trying to get content again. Tried times: %s" % retry_times)
-            self.get_page_content(url, page, retry_times)
+            self.logger.error("httplib.BadStatusLine")
+            self.save_failed_grab(url, page)
         except socket.timeout as e:
-            print("Socket time out")
-            print("Load web page %s failed. message: %s" % (page, e))
-            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
-            retry_times += 1
-            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
-                print("Reached the max retry times, will record to error log")
-                self.save_failed_grab(url, page)
-
-            print("Sleep 3 seconds")
-            time.sleep(3)
-            print("Trying to get content again. Tried times: %s" % retry_times)
-            self.get_page_content(url, page, retry_times)
+            self.logger.error("Socket time out")
+            self.save_failed_grab(url, page)
         except Exception, e:
-            print("Load web page %s failed. message: %s" % (page, e))
-            print("Load web page %s failed. message: %s" % (page, e))
-            print('retry_times = %s --> retry_times + 1 = %s' % (retry_times, retry_times + 1))
-            retry_times += 1
-            if Settings.RETRY_TIMES != 0 and retry_times > Settings.RETRY_TIMES:
-                print("Reached the max retry times, will record to error log")
-                self.save_failed_grab(url, page)
-
-            print("Sleep 3 seconds")
-            time.sleep(3)
-            print("Trying to get content again. Tried times: %s" % retry_times)
-            self.get_page_content(url, page, retry_times)
+            self.logger.error("Load web page %s failed" % (page))
+            self.save_failed_grab(url, page)
 
     def beautiful_page_content(self, content):
         return BeautifulSoup(content, "html.parser")

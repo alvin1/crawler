@@ -110,7 +110,12 @@ CREATE TABLE `failed_page` (
   `tender_id` char(36) DEFAULT NULL,
   `page_url` varchar(1000) DEFAULT NULL,
   `failed_type` varchar(10) DEFAULT NULL,
-  `page_num` int(11) DEFAULT NULL
+  `page_num` int(11) DEFAULT NULL,
+  `page_type` varchar(45) DEFAULT NULL,
+  `publish_date` datetime DEFAULT NULL,
+  `reprocessed` tinyint(1) NOT NULL DEFAULT '0',
+  `process_times` varchar(45) NOT NULL DEFAULT '0',
+  `last_process_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -123,7 +128,8 @@ DROP TABLE IF EXISTS `grab_status`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `grab_status` (
   `page_num` int(11) DEFAULT NULL,
-  `total_pages` int(11) DEFAULT NULL
+  `total_pages` int(11) DEFAULT NULL,
+  `grab_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -200,4 +206,4 @@ CREATE TABLE `tender_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-18  1:34:07
+-- Dump completed on 2017-06-18 14:00:23
