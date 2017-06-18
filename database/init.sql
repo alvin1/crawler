@@ -29,8 +29,8 @@ CREATE TABLE `candidate` (
   `candidate_id` char(36) NOT NULL,
   `ranking` varchar(10) DEFAULT NULL,
   `candidate_name` varchar(900) NOT NULL,
-  `tender_price` varchar(50) DEFAULT NULL,
-  `tender_price_review` varchar(50) DEFAULT NULL,
+  `tender_price` varchar(300) DEFAULT NULL,
+  `tender_price_review` varchar(300) DEFAULT NULL,
   `review_score` double DEFAULT NULL,
   PRIMARY KEY (`tender_id`,`candidate_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -72,7 +72,7 @@ CREATE TABLE `candidate_incharge_projects` (
   `kick_off_date` datetime DEFAULT NULL,
   `deliver_date` datetime DEFAULT NULL,
   `finish_date` datetime DEFAULT NULL,
-  `scale` varchar(300) DEFAULT NULL,
+  `scale` varchar(8000) DEFAULT NULL,
   `contract_price` double DEFAULT NULL,
   `tech_incharge_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -93,7 +93,7 @@ CREATE TABLE `candidate_projects` (
   `kick_off_date` datetime DEFAULT NULL,
   `deliver_date` datetime DEFAULT NULL,
   `finish_date` datetime DEFAULT NULL,
-  `scale` varchar(300) DEFAULT NULL,
+  `scale` varchar(8000) DEFAULT NULL,
   `contract_price` double DEFAULT NULL,
   `project_incharge_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -112,7 +112,7 @@ CREATE TABLE `failed_page` (
   `failed_type` varchar(10) DEFAULT NULL,
   `page_num` int(11) DEFAULT NULL,
   `page_type` varchar(45) DEFAULT NULL,
-  `publish_date` datetime DEFAULT NULL,
+  `pubdate` datetime DEFAULT NULL,
   `reprocessed` tinyint(1) NOT NULL DEFAULT '0',
   `process_times` varchar(45) NOT NULL DEFAULT '0',
   `last_process_time` datetime DEFAULT NULL

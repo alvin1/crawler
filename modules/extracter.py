@@ -34,7 +34,7 @@ class Extracter(object):
 
             list.append({
                 'title': self.convert_type('string', a['title']),
-                'publish_date': date,
+                'pubdate': date,
                 'page_url': "%s%s" % (Settings.DOMAIN, a['href']),
                 'page_num': page,
                 'tender_id': match.group('INFOID') if match else ''
@@ -52,8 +52,8 @@ class Extracter(object):
         status = GrabStatus()
         return status.get()
 
-    def save_extract_status(self, page_num):
-        status = GrabStatus(page_num=page_num)
+    def save_extract_status(self, page_num, total_pages):
+        status = GrabStatus(page_num=page_num, total_pages=total_pages)
         status.save()
 
     def get_content(self, soup):
@@ -126,7 +126,7 @@ class Extracter(object):
 
     def check_all_keys_blank(self, row):
         for k,v in row.items():
-            if v is not None and v != u' ':
+            if v is not None and v != ' ':
                 return False
         return True
 
@@ -547,7 +547,7 @@ class Extracter(object):
     def save_extracted_data(self, list_item, item_detail):
         tender_info = TrenderInfo(tender_id=list_item['tender_id'],
                                    tender_name=item_detail['tender_info'][0]['tender_name'],
-                                   pubdate=list_item['publish_date'],
+                                   pubdate=list_item['pubdate'],
                                    page_url=list_item['page_url'],
                                    owner=item_detail['tender_info'][0]['owner'],
                                    owner_phone=item_detail['tender_info'][0]['owner_phone'],
@@ -634,11 +634,11 @@ class Extracter(object):
                                                         company=item['member_company'])
                 review_board_member.save()
 
-    def save_failed_page(self, tender_id, page_url, failed_type, page_num, page_type, publish_date):
+    def save_failed_page(self, tender_id, page_url, failed_type, page_num, page_type, pubdate):
         if failed_type not in ['grab', 'extract']:
             return
 
-        failed_page = FailedPage(tender_id, page_url, failed_type, page_num, page_type, publish_date)
+        failed_page = FailedPage(tender_id, page_url, failed_type, page_num, page_type, pubdate)
         failed_page.save()
 
     def get_trenders_by_page_num(self, page_num):
@@ -655,5 +655,5 @@ class Extracter(object):
         return failed_page.get_failed_pages()
 
     def save_reprocess_status(self, page_url, page_num, status):
-        failed_page = FailedPage(page_url=page_url, page_num=page_num, status=1 if status else 0)
+        failed_page = FailedPage(page_url=page_url, page_num=page_num, reprocessed=(1 if status else 0))
         failed_page.update_reprocess_status()
