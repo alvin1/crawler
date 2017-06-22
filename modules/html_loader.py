@@ -61,7 +61,7 @@ class HtmlLoader(object):
             self.save_failed_grab(url, page)
 
     def beautiful_page_content(self, content):
-        return BeautifulSoup(content, "html.parser")
+        return BeautifulSoup(content, "html5lib", from_encoding="utf8")
 
     def get_page_soup(self, url, page=1):
         page_content = self.get_page_content(url, page)

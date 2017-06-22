@@ -49,10 +49,10 @@ CREATE TABLE `candidate_incharge` (
   `incharge_id` char(36) NOT NULL,
   `incharge_type` varchar(50) NOT NULL,
   `incharge_name` varchar(50) NOT NULL,
-  `incharge_certificate_name` varchar(300) DEFAULT NULL,
-  `incharge_certificate_no` varchar(50) DEFAULT NULL,
-  `professional_titles` varchar(300) DEFAULT NULL,
-  `professional_grade` varchar(50) DEFAULT NULL
+  `incharge_certificate_name` varchar(500) DEFAULT NULL,
+  `incharge_certificate_no` varchar(500) DEFAULT NULL,
+  `professional_titles` varchar(500) DEFAULT NULL,
+  `professional_grade` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

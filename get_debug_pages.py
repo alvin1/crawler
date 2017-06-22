@@ -17,6 +17,7 @@ if __name__ == '__main__':
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=4679b8f1-f5a4-44b2-bde2-f70872076b8d&CategoryNum=005001003',
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=b5e20669-a119-4da6-b7ca-ccb97456fbe3&CategoryNum=005001003',
         'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=dd88dfac-54b5-4534-a531-b3235db0c830&CategoryNum=005001003',
+        'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=d9bdfa83-7234-4ef1-b2ca-e67a800a38ff&CategoryNum=005001003',
     ]
 
     page_path = "debug_pages/"
@@ -27,4 +28,4 @@ if __name__ == '__main__':
         if match:
             page_id = match.group('INFOID')
             page_file_name = os.path.join(page_path, page_id + '.html')
-            file_helper.write(page_file_name, loader.get_page_content(page, 1, 3))
+            file_helper.write(page_file_name, loader.get_page_content(page, 1))

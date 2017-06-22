@@ -8,6 +8,7 @@
 - bs4
 - threadpool
 - MySQL-python
+- sudo pip install html5lib --upgrade --ignore-installed six
 
 #### 运行环境配置
 - 安装MySQL

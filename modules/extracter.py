@@ -42,7 +42,7 @@ class Extracter(object):
         return list
 
     def extract_record_status(self, soup):
-        record_status = soup.select('#MoreInfoList1_Pager font[color=blue]')
+        record_status = soup.select('#MoreInfoList1_Pager td b')
         return {
             'total_records': int(record_status[0].string),
             'total_pages': int(record_status[1].string)

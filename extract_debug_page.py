@@ -31,10 +31,10 @@ def get_cell_content(td_soup):
     return u"".join(values).replace('\n', '').replace(u' ', u'')
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: %s <info_id>" % sys.argv[0])
-        exit(-1)
-    info_id = sys.argv[1]
+    # if len(sys.argv) != 2:
+    #     print("Usage: %s <info_id>" % sys.argv[0])
+    #     exit(-1)
+    info_id = 'd9bdfa83-7234-4ef1-b2ca-e67a800a38ff'  # sys.argv[1]
 
     file_helper = FileHelper()
     html_loader = HtmlLoader()
@@ -49,11 +49,16 @@ if __name__ == '__main__':
         exit(-2)
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
+    file_helper.write('var/test.html', soup.prettify())
+    for row in soup.select('table [width=675]'):
+        print(row)
+
     detail = extracter.extract_detail(soup)
     # format_print(detail)
     list_item = {
-        'info_id': info_id,
-        'publish_date': '2013-10-28 00:00:00',
-        'page_url': 'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=' + info_id + '&CategoryNum=005001003'
+        'tender_id': info_id,
+        'pubdate': '2013-10-28 00:00:00',
+        'page_url': 'http://www.spprec.com/sczw/InfoDetail/Default.aspx?InfoID=' + info_id + '&CategoryNum=005001003',
+        'page_num': 0
     }
     extracter.save_extracted_data(list_item, detail)

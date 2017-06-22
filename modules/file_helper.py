@@ -5,7 +5,7 @@ import codecs
 
 class FileHelper(object):
     def write(self, path, content, append=False):
-        with codecs.open(path, 'w' if not append else 'a') as f:
+        with codecs.open(path, 'w' if not append else 'a', encoding='utf8') as f:
             f.write(content)
 
     def read(self, path):

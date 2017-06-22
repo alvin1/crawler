@@ -36,11 +36,9 @@ if __name__ == '__main__':
     logger = Logger()
     file_helper = FileHelper()
 
-    """
     # get last extract status
     last_status = extracter.get_last_extract_status()
-    last_extract_page = last_status['page_num']
-    total_pages_last_status = last_status['total_pages']
+
 
     # get first page
     logger.info('Get total records from first page')
@@ -50,23 +48,30 @@ if __name__ == '__main__':
         exit(100)
 
     record_status = extracter.extract_record_status(soup)
+    if last_status:
+        last_extract_page = last_status['page_num']
+        total_pages_last_status = last_status['total_pages']
+    else:
+        last_extract_page = record_status['total_pages']
+        total_pages_last_status = record_status['total_pages']
+
     if last_extract_page == 1:
         new_pages = record_status['total_pages'] - total_pages_last_status
         last_extract_page += new_pages
         extracter.update_tender_page_num(page_num=new_pages)
     last_page_data_in_db = extracter.get_trenders_by_page_num(page_num=last_extract_page)
 
-    last_page_need_grab = False
-    if last_extract_page is None:
-        last_extract_page = record_status['total_pages']
-    else:
-        # check the last page need to grab or not
-        if len(last_page_data_in_db) != Settings.PAGE_SIZE:
-            last_page_need_grab = True
+    # last_page_need_grab = False
+    # if last_extract_page is None:
+    #     last_extract_page = record_status['total_pages']
+    # else:
+    #     # check the last page need to grab or not
+    #     if len(last_page_data_in_db) != Settings.PAGE_SIZE:
+    #         last_page_need_grab = True
     logger.info('Grab data from page: %s' % last_extract_page)
     pages = last_extract_page
 
-    page_array = range(1, pages + (1 if last_page_need_grab else 0))
+    page_array = range(1, pages + 1)
     page_array.reverse()
 
     # get data from earlier to current
@@ -77,10 +82,9 @@ if __name__ == '__main__':
         if soup is None:
             continue
         lists = extracter.extract_list(soup, page)
-        if page == last_extract_page:
-            lists = [item for item in lists if item['tender_id'] not in last_page_data_in_db]
+        # if page == last_extract_page:
+        #     lists = [item for item in lists if item['tender_id'] not in last_page_data_in_db]
         process_list_page(lists)
-    """
 
     # trying to process the failed grab
     logger.info("Start to process the grab failed pages")
@@ -98,6 +102,7 @@ if __name__ == '__main__':
                     continue
                 lists = extracter.extract_list(soup, page['page_num'])
                 if process_list_page(lists):
+                    # need to fix, not need wait all the detail pages processed success
                     extracter.save_reprocess_status(page['page_url'], page['page_num'], True)
                 else:
                     extracter.save_reprocess_status(page['page_url'], page['page_num'], False)

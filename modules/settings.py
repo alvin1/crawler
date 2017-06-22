@@ -275,7 +275,8 @@ class Settings(object):
         },
         'candidate': {
             'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f'],
-            'next_title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5'],
+            'next_title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5',
+                                   u'\u5e9f\u6807\u5355\u4f4d\u53ca\u7406\u7531'],
             'has_title': True,
             'fields': [
                 {
@@ -629,7 +630,7 @@ class Settings(object):
     }
 
     # Logging settings
-    LOGGING_LEVEL = logging.DEBUG
+    LOGGING_LEVEL = logging.INFO
     LOGGING_MSG_FORMAT = '%(asctime)s - [%(filename)s:%(lineno)d] [%(levelname)s]: %(message)s'
     LOGGING_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
