@@ -6,21 +6,21 @@ from modules.extracter import Extracter
 from modules.file_helper import FileHelper
 
 def process_detail_page(item):
-    soup = html_loader.get_page_soup(url=item['page_url'], page=item['page_num'])
+    soup = html_loader.get_detail_page_soup(url=item['page_url'], page=item['page_num'])
     if soup is None:
         extracter.save_failed_page(item['tender_id'], item['page_url'], 'grab', item['page_num'], 'detail',
                                    item['pubdate'])
-        return
+        return False
 
     try:
         detail = extracter.extract_detail(soup)
         extracter.save_extracted_data(item, detail)
-        logger.info("Grab data of page success")
+        logger.info("Extract data of page success")
         return True
-    except:
+    except Exception, e:
         extracter.save_failed_page(item['tender_id'], item['page_url'], 'extract', item['page_num'], 'detail',
                                    item['pubdate'])
-        logger.error('Grab data of page failed')
+        logger.error('Extract data of page failed: \n%s' % e)
         return False
 
 def process_list_page(lists):
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     logger.info("Start to process the grab failed pages")
     for retry_times in range(1, Settings.RETRY_TIMES + 1):
         logger.info("Retrytime: %s" % retry_times)
-        failed_pages = extracter.get_failed_grab_pages()
+        failed_pages = extracter.get_failed_extract_pages()
         if len(failed_pages) == 0:
             break
 
@@ -100,12 +100,9 @@ if __name__ == '__main__':
                 if soup is None:
                     extracter.save_reprocess_status(page['page_url'], page['page_num'], False)
                     continue
+                extracter.save_reprocess_status(page['page_url'], page['page_num'], True)
                 lists = extracter.extract_list(soup, page['page_num'])
-                if process_list_page(lists):
-                    # need to fix, not need wait all the detail pages processed success
-                    extracter.save_reprocess_status(page['page_url'], page['page_num'], True)
-                else:
-                    extracter.save_reprocess_status(page['page_url'], page['page_num'], False)
+                process_list_page(lists)
             else:
                 if process_detail_page(page):
                     extracter.save_reprocess_status(page['page_url'], page['page_num'], True)

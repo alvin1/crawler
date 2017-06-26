@@ -78,8 +78,9 @@ class Extracter(object):
         return self.clean_content(u"".join(values))
 
     def convert_type(self, data_type, value):
-        if not value:
+        if value is None:
             return None
+
         if data_type == 'string':
             return value.replace(u'\xa0', u' ').replace(u'\u2022', '.').encode('utf8')
         elif data_type == 'int':
@@ -87,11 +88,12 @@ class Extracter(object):
         elif data_type == 'datetime':
             if len(value.replace(u'\xa0', '')) == 0:
                 return None
-            value = value.replace(u'\xa0', '')
+            value = value.replace(u'\xa0', '').replace(u'\u5e74', '-').replace(u'\u6708', '-').replace(
+                u'\u65e5', '').replace("/", "-")
             if len(value) > 10:
-                return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
+                return datetime.strptime(value, '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
             else:
-                return datetime.strptime(value.replace("/", "-"), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
+                return datetime.strptime(value.replace(' ',''), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
             # return value
         elif data_type == 'decimal':
             try:
@@ -143,6 +145,9 @@ class Extracter(object):
         start_row = self.find_row_number_by_key(tender_name_config['title_row_key'], rows)
         rows_of_range = rows[start_row]
         tender_info = {}
+        tender_info['pubdate'] = self.convert_type('datetime',
+                                                   soup.select("font.webfont")[0].contents[0].split('\n')[1].replace(
+                                                       ' ', ''))
         for field in tender_name_config['fields']:
             self.extract_field_value(rows_of_range, field, tender_info)
 
@@ -547,7 +552,8 @@ class Extracter(object):
     def save_extracted_data(self, list_item, item_detail):
         tender_info = TrenderInfo(tender_id=list_item['tender_id'],
                                    tender_name=item_detail['tender_info'][0]['tender_name'],
-                                   pubdate=list_item['pubdate'],
+                                   # pubdate=list_item['pubdate'],
+                                   pubdate=item_detail['tender_info'][0]['pubdate'],
                                    page_url=list_item['page_url'],
                                    owner=item_detail['tender_info'][0]['owner'],
                                    owner_phone=item_detail['tender_info'][0]['owner_phone'],
@@ -652,6 +658,10 @@ class Extracter(object):
 
     def get_failed_grab_pages(self):
         failed_page = FailedPage(failed_type='grab')
+        return failed_page.get_failed_pages()
+
+    def get_failed_extract_pages(self):
+        failed_page = FailedPage(failed_type='extract')
         return failed_page.get_failed_pages()
 
     def save_reprocess_status(self, page_url, page_num, status):

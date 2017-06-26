@@ -63,10 +63,35 @@ class HtmlLoader(object):
     def beautiful_page_content(self, content):
         return BeautifulSoup(content, "html5lib", from_encoding="utf8")
 
+    def get_detail_page(self, url, page):
+        print("%s -> %s" % (page, url))
+        try:
+            response = urllib2.urlopen(url=url, timeout=Settings.PAGE_WAIT_TIMEOUT)
+            return response.read()
+        except urllib2.URLError, e:
+            self.logger.error("urllib2.URLError")
+            self.save_failed_grab(url, page)
+        except httplib.BadStatusLine, e:
+            self.logger.error("httplib.BadStatusLine")
+            self.save_failed_grab(url, page)
+        except socket.timeout as e:
+            self.logger.error("Socket time out")
+            self.save_failed_grab(url, page)
+        except Exception, e:
+            self.logger.error("Load web page %s failed" % (page))
+            self.save_failed_grab(url, page)
+
     def get_page_soup(self, url, page=1):
         page_content = self.get_page_content(url, page)
         if page_content is None:
             self.save_failed_grab(url, page)
             return None
         
+        return self.beautiful_page_content(page_content)
+
+    def get_detail_page_soup(self, url, page=1):
+        page_content = self.get_detail_page(url, page)
+        if page_content is None:
+            self.save_failed_grab(url, page)
+            return None
         return self.beautiful_page_content(page_content)

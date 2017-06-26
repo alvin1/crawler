@@ -29,8 +29,8 @@ CREATE TABLE `candidate` (
   `candidate_id` char(36) NOT NULL,
   `ranking` varchar(10) DEFAULT NULL,
   `candidate_name` varchar(900) NOT NULL,
-  `tender_price` varchar(3000) DEFAULT NULL,
-  `tender_price_review` varchar(3000) DEFAULT NULL,
+  `tender_price` varchar(300) DEFAULT NULL,
+  `tender_price_review` varchar(300) DEFAULT NULL,
   `review_score` double DEFAULT NULL,
   PRIMARY KEY (`tender_id`,`candidate_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -206,4 +206,4 @@ CREATE TABLE `tender_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-27  7:29:27
+-- Dump completed on 2017-06-24  0:12:31

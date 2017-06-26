@@ -235,7 +235,7 @@ class Settings(object):
                 },
                 {
                     'field_name': 'tender_openning_time',
-                    'data_type': 'datetime',
+                    'data_type': 'string',
                     'extract': {
                         'row': 5,
                         'column': 3

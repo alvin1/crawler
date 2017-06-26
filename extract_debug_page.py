@@ -49,6 +49,8 @@ if __name__ == '__main__':
         exit(-2)
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
+    print soup.select("font.webfont")[0].contents[0].split('\n')[1].replace(' ','')
+    exit(0)
     file_helper.write('var/test.html', soup.prettify())
     for row in soup.select('table [width=675]'):
         print(row)
