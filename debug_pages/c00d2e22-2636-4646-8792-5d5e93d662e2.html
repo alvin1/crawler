@@ -1,0 +1,1028 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>四川省政府政务服务和公共资源交易服务中心</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/tab.js"></script>
+</head>
+
+<body class="bg3" style="background-color:#f2f2f2">
+<div id="container">
+<div><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <title>四川省政府政务服务和公共资源交易服务中心</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/default.js"></script>
+  <script type="text/javascript" src="/sczw/Template/Default/js/jquery.flexslider.js"></script>
+  <script>
+	   /*searchStart*/
+		function Clear()
+	    {
+			document.all.txtkey.value="";
+			document.all.txtkey.className="overSelect";
+		}
+function blurout()
+	    {
+			document.all.txtkey.value="点击站内搜索";
+			document.all.txtkey.className="outSelect";
+		}
+function CheckSearch()
+		{
+			if(event.keyCode=="13")
+			{   
+				if(document.all.txtKey.value!="")
+				{
+					search();
+				}
+				else
+				{
+					alert("搜索字段不能为空！");
+				}
+			}
+		}
+function search()
+		{
+			var tim=10
+			if(tim==10)
+			{
+				tim=0;
+				  if (document.getElementById("txtKey").value == "" || document.getElementById("txtKey").value == "关键字") {
+                alert("请输入关键词");
+            }
+            else {
+                var t = document.getElementById("txtKey").value;
+                if (t.indexOf("<") > -1 || t.indexOf(">") > -1 || t.indexOf("'") > -1|| t.indexOf("_") > -1|| t.indexOf("\\") > -1) {
+                    alert("请勿在关键字中输入非法字符!");
+                    return;
+                }
+                var openUrl = '/sczw/showinfo/searchresult.aspx?keyword=';
+                 
+               // openUrl += escape(t) + "&searchtype=title";
+				
+				 openUrl += escape(document.all.txtKey.value);
+				 for (var i = 0; i < document.all.CategoryNum.length; i++) {
+                    if (document.all.CategoryNum.options[i].selected)
+                        openUrl += '&CategoryNum=' + document.all.CategoryNum.options[i].value;
+                }
+				openUrl += "&searchtype=title";
+				 window.open(openUrl);
+            }
+			}
+			else
+		    {
+				alert("两次搜索的时间间隔不能少于十秒")
+		    }
+		}
+function Clear() {
+             document.all.txtKeys.value = ""
+}
+
+ 
+        /*searchEnd*/
+	</script>
+  </head>
+  <body class="bg">
+  
+<div id="header">
+    <div class="top clearFix">
+    <div class="left"></div>
+    <div class="right" style="float:right;"><a href="javascript:window.external.AddFavorite(location.href,document.title)" title="将本站加入到您的收藏夹"  target="_top" style="color:#fff" >加入收藏</a> | <a href="/sczw/Template/Default/../../lxwm" style="color:#fff" target="_blank">联系我们</a></div>
+  </div>
+  </div>
+<div id="header">
+    <div align="right" style="padding-top:10px; padding-right:1px;"><a href="/sczw/Template/Default/../../"><img src="/sczw/Template/Default/images/logo.png" /></a></div>
+  </div>
+<div id="header">
+    <div class="func clearFix">
+    <div class="find">
+       <span class="select_shelter">
+                    <select name="CategoryNum" id="CategoryNum"  class="findIE7">
+                    <option selected="true" value=""> &nbsp;全文检索 </option>
+                    <option value="001"> &nbsp;综合新闻 </option>
+                    <option value="003"> &nbsp;政务服务 </option>
+                    <option value="002"> &nbsp;交易服务 </option>
+                    <option value="004"> &nbsp;通知公告 </option>
+                    </select>
+        </span>
+      </div>
+    <div class="input">
+        <input class="txt" type="text" size="28" height="15" name="txtKey" id="txtKey" value="请输入关键词"  onfocus="value=''" onBlur="if(!value)value=defaultValue" onClick="Clear()" onKeyDown="CheckSearch()" style="padding-top:0px; solid; color:#666666" />
+      </div>
+    <div class="input" style="width:92px;">
+        <input type="button" name="" value="搜索"  class="btn" onClick="search()" style="cursor:pointer;"/>
+      </div>
+    <div class="input" style="width:94px;"><a href='/sczw/showinfo/SearchResultMz.aspx' class="search">&gt;&gt; 高级检索</a></div>
+
+    <div class="input2 btn1" style="width:94px; "><a href="#" id="aa" title="开启辅助工具条" style="color:#fff;">无障碍版</a>
+     <script type="text/javascript" src="/sczw//resource/ABT.js" id="ABT"></script>
+    </div>
+  </div>
+  </div>
+<script type="text/javascript" src="/sczw/Template/Default/js/tab.js"></script>
+</body>
+</html>
+</div>
+<div id="main" style="margin-top:36px;">
+  <table  border="0" cellspacing="0" cellpadding="0" width="1020" align="center">
+  <tr>
+    <td style="background-color:#F9F9F9"  width="1020" ><!--main-->
+      <table  border="0" cellspacing="0" cellpadding="0" id="Table4" align="center"  class="tab topd" >
+        <tr>
+          <td align="center" valign="top" bgcolor="#F9F9F9" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; border-bottom-style: none; border-top-style: none;"><!--正文开始-->
+            
+            <table id="tblInfo" cellspacing="1" cellpadding="1" width="100%" align="center" border="0" runat="server">
+            <tr>   <td  class="now" height="50">  
+             <table cellSpacing="0" cellPadding="0" border="0"><TR><TD align="center" width="15"></TD><TD align="left"><FONT color="#000000" class=currentpostionfont><b>您现在的位置：</b></FONT><A href='/sczw/'><FONT color="#000000" class=currentpostionfont>首页</FONT></A><FONT color="#FF7E00"> >> <a href='/sczw/jyfwpt'><FONT color="#FF7E00" class=currentpostionfont>交易服务平台</font></a> >> <a href='/sczw/jyfwpt/005001'><FONT color="#FF7E00" class=currentpostionfont>工程建设</font></a> >> <a href='/sczw/jyfwpt/005001/005001003'><FONT color="#FF7E00" class=currentpostionfont>中标结果</font></a></FONT></TD></TR></table>
+          </td></tr>
+              <tr>
+                <td id="tdTitle" align="center" runat="server" height="40"><b style="font-size: 26px;">
+                  青白江物流园区铁路专用线(一期)监理中标候选人公示
+                  </b> 
+                  <br />
+                  <br />
+                  
+                 
+                  
+              </tr>
+              <tr><td height="20px">
+                 <div  align="center" style="height: 28px;line-height: 28px; background-color: #EFEFEF;font-size: 12px; margin:0 50px;">
+                 <font color="#888888" class="webfont">【信息时间：
+                    2016/10/31
+                    &nbsp;&nbsp;阅读次数：
+                    <script src="/sczw/Upclicktimes.aspx?InfoID=c00d2e22-2636-4646-8792-5d5e93d662e2"></script>
+                    】<a href="javascript:void(0)" onclick="window.print();"><font color="#888888" class="webfont">【我要打印】</font></a><a href="javascript:window.close()"><font color="#888888" class="webfont">【关闭】</font></a>
+                                        </div>
+              </td></tr>
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td height="60" align="center"><div id="ivs_title">        <table border="0" cellspacing="0" cellpadding="0" width="100%">            <tbody>                <tr>                    <td style="display:none">                        青白江物流园区铁路专用线(一期)监理中标候选人公示。                    </td>                </tr>            </tbody>        </table>    </div> </td>
+              </tr>
+              
+              <tr>
+                <td height="450" valign="top" class="infodetail" id="TDContent" align="left"><div style="overflow-x: auto; width: 935px; margin: 0 auto; text-align: left;">
+                  <!--EpointContent-->
+                  <div id="ivs_content">
+<STYLE>
+/* Generator: eWebEditor */
+p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;font-size:10.0pt;font-family:"Times New Roman","serif";color:black;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter {margin:0cm;margin-bottom:.0001pt;font-size:9.0pt;font-family:"Times New Roman","serif";color:black;}
+.MsoChpDefault {font-size:12.0pt;color:black;}
+div.WordSection1 {page:WordSection1;}
+</STYLE>
+
+<P style="TEXT-ALIGN: center; TEXT-INDENT: 45pt; MARGIN-BOTTOM: 7.8pt; tab-stops: 498.0pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 18pt">青白江物流园区铁路专用线</SPAN></B><B><SPAN style="FONT-SIZE: 18pt">(</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 18pt">一期</SPAN></B><B><SPAN style="FONT-SIZE: 18pt">)</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 18pt">监理</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 18pt">中标候选人公示</SPAN></B><B></B></P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0 width=917>
+<TBODY>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.55pt; PADDING-RIGHT: 5.4pt; BACKGROUND: white; HEIGHT: 22.7pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P style="TEXT-ALIGN: left; tab-stops: 498.0pt" class=MsoNormal align=left><SPAN style="FONT-FAMILY: 宋体; COLOR: red; FONT-SIZE: 12pt">变更原因</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 605.8pt; PADDING-RIGHT: 5.4pt; BACKGROUND: white; HEIGHT: 22.7pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=808>
+<P style="tab-stops: 498.0pt" class=MsoNormal><SPAN style="FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN></P></TD></TR></TBODY></TABLE></DIV>
+<P style="TEXT-INDENT: 45pt; tab-stops: 498.0pt" class=MsoNormal><B></B></P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目及标段名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 595.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=794 colSpan=6>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">青白江物流园区铁路专用线</SPAN><SPAN>(</SPAN><SPAN style="FONT-FAMILY: 宋体">一期</SPAN><SPAN>)</SPAN><SPAN style="FONT-FAMILY: 宋体">监理</SPAN></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 235.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=314 colSpan=2>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">成都国际铁路港投资有限责任公司</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主联系电话</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P class=MsoNormal><SPAN>028-89336610</SPAN></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">招标人</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 235.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=314 colSpan=2>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">四川建兴工程造价咨询有限公司</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">招标人联系电话</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P class=MsoNormal><SPAN>028-86385412</SPAN></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">招标代理机构</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 235.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=314 colSpan=2>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">成都国际铁路港投资有限责任公司</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">招标代理机构联系电话</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P class=MsoNormal><SPAN>028-89336610</SPAN></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开标地点</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 235.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=314 colSpan=2>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">成都市青羊区人民中路</SPAN><SPAN>3</SPAN><SPAN style="FONT-FAMILY: 宋体">段</SPAN><SPAN>35</SPAN><SPAN style="FONT-FAMILY: 宋体">号</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开标时间</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P class=MsoNormal><SPAN>2016</SPAN><SPAN style="FONT-FAMILY: 宋体">年</SPAN><SPAN>10</SPAN><SPAN style="FONT-FAMILY: 宋体">月</SPAN><SPAN>27</SPAN><SPAN style="FONT-FAMILY: 宋体">日</SPAN><SPAN> 10</SPAN><SPAN style="FONT-FAMILY: 宋体">点</SPAN><SPAN>30</SPAN><SPAN style="FONT-FAMILY: 宋体">分</SPAN><SPAN>00</SPAN><SPAN style="FONT-FAMILY: 宋体">秒</SPAN></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 92.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=123>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">公</SPAN><SPAN><SPAN>&nbsp; </SPAN></SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">示</SPAN><SPAN><SPAN>&nbsp; </SPAN></SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 235.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=314 colSpan=2>
+<P class=MsoNormal><SPAN>2016</SPAN><SPAN style="FONT-FAMILY: 宋体">年</SPAN><SPAN>11</SPAN><SPAN style="FONT-FAMILY: 宋体">月</SPAN><SPAN>01</SPAN><SPAN style="FONT-FAMILY: 宋体">日</SPAN><SPAN> 00</SPAN><SPAN style="FONT-FAMILY: 宋体">点</SPAN><SPAN>00</SPAN><SPAN style="FONT-FAMILY: 宋体">分</SPAN><SPAN>00</SPAN><SPAN style="FONT-FAMILY: 宋体">秒</SPAN><SPAN style="FONT-FAMILY: 宋体">至</SPAN><SPAN>2016</SPAN><SPAN style="FONT-FAMILY: 宋体">年</SPAN><SPAN>11</SPAN><SPAN style="FONT-FAMILY: 宋体">月</SPAN><SPAN>03</SPAN><SPAN style="FONT-FAMILY: 宋体">日</SPAN><SPAN> 23</SPAN><SPAN style="FONT-FAMILY: 宋体">点</SPAN><SPAN>59</SPAN><SPAN style="FONT-FAMILY: 宋体">分</SPAN><SPAN>59</SPAN><SPAN style="FONT-FAMILY: 宋体">秒</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">投标最高限价（元）</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P class=MsoNormal><SPAN>0.8000</SPAN></P></TD></TR>
+<TR style="HEIGHT: 24.1pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><B><SPAN style="FONT-FAMILY: 宋体">中标候选人排序</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 162.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=217>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><B><SPAN style="FONT-FAMILY: 宋体">中标候选人名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 101.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=135>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><B><SPAN style="FONT-FAMILY: 宋体">投标报价（元）</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 125.6pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=167 colSpan=2>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><B><SPAN style="FONT-FAMILY: 宋体">经评审的投标价（元）</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 132.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=177>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><B><SPAN style="FONT-FAMILY: 宋体">综合评标得分</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 24.1pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 19pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">第一名</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 162.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=217>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><SPAN style="FONT-FAMILY: 宋体">成都大西南铁路监理有限公司</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 101.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=135>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>+80.00%</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 125.6pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=167 colSpan=2>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>+80.00%</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 132.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=177>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>94.40</SPAN></P></TD></TR>
+<TR style="HEIGHT: 24.1pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 165.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=220 colSpan=2>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 19pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">第二名</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 162.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=217>
+<P style="TEXT-ALIGN: left; LINE-HEIGHT: 19pt" class=MsoNormal align=left><SPAN style="FONT-FAMILY: 宋体">四川康立项目管理有限责任公司</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 101.25pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=135>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>+80.00%</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 125.6pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=167 colSpan=2>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>80.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 132.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.1pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=177>
+<P style="TEXT-ALIGN: right; LINE-HEIGHT: 19pt" class=MsoNormal align=right><SPAN>66.10</SPAN></P></TD></TR>
+<TR height=0>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=98></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=73></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=169></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=116></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=102></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=38></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=152></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 10.15pt; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 30.15pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 688.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 30.15pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=918 colSpan=6>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第一名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人项目管理机构主要人员（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">成都大西南铁路监理有限公司</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 24.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" rowSpan=2 width=182>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职务</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" rowSpan=2 width=201>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">姓名</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 222.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=297 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">执业或职业资格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 178.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=238 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职称</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">证书名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">证书编号</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职称专业</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">级别</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 24.8pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=182>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=201>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">雷国辉</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">全国注册监理工程师</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">51001150</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">铁路工程</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">高工</SPAN></P></TD></TR>
+<TR style="HEIGHT: 23.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=182>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">项目技术负责人</SPAN></B><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=201>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P class=MsoNormal>&nbsp;</P></TD></TR>
+<TR style="HEIGHT: 30.15pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 688.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 30.15pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=918 colSpan=6>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第二名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人项目管理机构主要人员（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">四川康立项目管理有限责任公司</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 24.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" rowSpan=2 width=182>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职务</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" rowSpan=2 width=201>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">姓名</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 222.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=297 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">执业或职业资格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 178.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=238 colSpan=2>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职称</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 21.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">证书名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">证书编号</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">职称专业</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 21.6pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">级别</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 24.8pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=182>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=201>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">杨东</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">全国注册监理工程师</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">51009830</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">铁路工程</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 24.8pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">工程师</SPAN></P></TD></TR>
+<TR style="HEIGHT: 23.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 136.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=182>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">项目技术负责人</SPAN></B><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 150.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=201>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 113.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=151>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 109.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=146>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 93.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=125>
+<P class=MsoNormal>&nbsp;</P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 85.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=114>
+<P class=MsoNormal>&nbsp;</P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 25.25pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 25.25pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=8>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第一名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人类似业绩（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">成都大西南铁路监理有限公司</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=210>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">交工时间</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">竣工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">建设规模</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">合同价格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">渝黔铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">重庆至贵阳铁路扩能改造工程</SPAN><SPAN>YQJL-3</SPAN><SPAN style="FONT-FAMILY: 宋体">标段</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-01-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>26833039.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">罗刚</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">贵广铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建贵阳至广州铁路站前工程施工监理</SPAN><SPAN>GGJL-1</SPAN><SPAN style="FONT-FAMILY: 宋体">标段</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2014-12-26<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>79860400.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">雷国辉</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">黄织铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建织金至毕节铁路</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-01-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>28801045.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">王永明</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">攀钢集团西昌钢钒有限公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">攀钢集团西昌钒钛资源综合利用项目铁路专用线工程站后部分</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-05-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>828189.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">向以近</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">四川白马循环流化床示范电站有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">四川白马</SPAN><SPAN>600MW CFB</SPAN><SPAN style="FONT-FAMILY: 宋体">示范工程铁路专用线工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-05-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>868400.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">陈建华</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">神华巴蜀江油天明发电有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">神华巴蜀江油国家煤炭应急储备基地铁路专用线工程施工及调试监理</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2015-10-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2690000.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">何浪</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">成都铁路局客站建设指挥部</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建贵阳至广州铁路贵阳北站站房工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2015-06-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>20459278.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">刘忠华</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">南涪铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">三江至南川铁路扩能改造工程全线施工监理标段</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2014-02-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>20606318.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">冉启明</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">渝利铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建铁路重庆至利川线工程施工监理</SPAN><SPAN>1</SPAN><SPAN style="FONT-FAMILY: 宋体">标段</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-12-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>41197000.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">王福生</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">黄织铁路有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建织金至纳雍铁路</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2016-01-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>22245100.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">黄勇</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">眉山金象化工产业园区开发服务有限公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">眉山金象化工产业园区铁路专用线</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-12-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2576560.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">陈显洪</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">成都铁路局成都建设指挥部</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">成都车站扩能改造站场及引入线工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2014-01-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>20927726.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">张军</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">成绵乐铁路客运专线有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">新建铁路成都至绵阳至乐山客运专线江油至眉山段工程</SPAN><SPAN>CMLJL-2</SPAN><SPAN style="FONT-FAMILY: 宋体">标段</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2014-12-20<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>57777867.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">张杰</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">成都铁路局工程管理所</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">攀钢集团西昌钒钛资源综合利用项目</SPAN><SPAN>-</SPAN><SPAN style="FONT-FAMILY: 宋体">铁路专用线（站前）工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-05-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>3105070.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">向以进</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">南充化学工业园投资建设开发有限责任公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">南充化学工业园区铁路专用线工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-01-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>11801200.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">杨恩</SPAN><B></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 22.8pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.6pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.8pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=8>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第一名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人项目负责人类似业绩（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">雷国辉</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=210>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">交工时间</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">竣工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">建设规模</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">合同价格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 25.25pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 25.25pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=8>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第二名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人类似业绩（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">四川康立项目管理有限责任公司</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=210>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">交工时间</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">竣工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">建设规模</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">合同价格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">中粮鹏利</SPAN><SPAN>(</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">成都</SPAN><SPAN>)</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">实业发展有限公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">佳悦路隧道</SPAN><SPAN>(</SPAN><SPAN style="FONT-FAMILY: 宋体">二标段</SPAN><SPAN>)</SPAN><SPAN style="FONT-FAMILY: 宋体">工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2015-12-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">总投资</SPAN><SPAN>0.79</SPAN><SPAN style="FONT-FAMILY: 宋体">亿</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>626477.00</SPAN><SPAN style="FONT-FAMILY: 宋体">元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">张文</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">成都市温江区经济信息和科学技术局</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">地铁</SPAN><SPAN>4</SPAN><SPAN style="FONT-FAMILY: 宋体">号线二期凤溪站</SPAN><SPAN>(</SPAN><SPAN style="FONT-FAMILY: 宋体">北侧</SPAN><SPAN>)</SPAN><SPAN style="FONT-FAMILY: 宋体">电力迁改工程</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2015-12-25<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">总投资</SPAN><SPAN>24.9949</SPAN><SPAN style="FONT-FAMILY: 宋体">万元</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>“</SPAN><SPAN style="FONT-FAMILY: 宋体">未提供信息</SPAN><SPAN>”<B></B></SPAN></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">货运大道</SPAN><SPAN>(</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">城投段</SPAN><SPAN>)</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">工程</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">成都城建投资管理集团有限责任公司</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-09-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">总投资</SPAN><SPAN>23747.57</SPAN><SPAN style="FONT-FAMILY: 宋体">万</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">李红梅</SPAN><B></B></P></TD></TR>
+<TR style="HEIGHT: 23.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=211>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">内疚投资控股集团有限公司</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.55pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">内江市汉安大道东延线道路建设项目</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN>2013-09-01<B></B></SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.05pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">总投资</SPAN><SPAN>2.42898</SPAN><SPAN style="FONT-FAMILY: 宋体">亿</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.55pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=85>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">邱胜平</SPAN><B></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 22.8pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.6pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.8pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=8>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">第二名</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">中标候选人项目负责人类似业绩（</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">杨东</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">）</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 23.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 157.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=210>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目业主</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 127.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=170>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">开工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 70.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=94>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">交工时间</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 71pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=95>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">竣工日期</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">建设规模</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.15pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">合同价格</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 63.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 23.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=84>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 18pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">项目负责人</SPAN></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.6pt; PADDING-RIGHT: 5.4pt; BACKGROUND: white; HEIGHT: 22.7pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=2>
+<P style="MARGIN-LEFT: 0.6pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">评标委员会成员名单</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 207.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=277>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">姓名</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.1pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">单位名称</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">王长林</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">西南交通大学</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">潘久诚</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">四川联华技术有限公司</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">王成</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">退休</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">肖红</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">成铁局建设处</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">李强</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">成都铁路局</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">史茜</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">成铁局工管所</SPAN></P></TD></TR>
+<TR style="HEIGHT: 4.5pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 206.7pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=276>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">胡绘新</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 480.35pt; PADDING-RIGHT: 5.4pt; HEIGHT: 4.5pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=640>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">四川恒鑫工程管理公司</SPAN></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 687.6pt; PADDING-RIGHT: 5.4pt; BACKGROUND: white; HEIGHT: 22.7pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=917 colSpan=2>
+<P style="MARGIN-LEFT: 0.6pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">监督部门名称及监督电话</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 476.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=636>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">单位名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 210.8pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=281>
+<P style="TEXT-ALIGN: center; MARGIN-LEFT: 0.6pt" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">联系电话</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 22.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 476.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=635>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN><SPAN>&nbsp;</SPAN></SPAN><SPAN style="FONT-FAMILY: 宋体">四川省发展和改革委员会</SPAN></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 211.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 22.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=282>
+<P style="TEXT-ALIGN: left" class=MsoNormal align=left><SPAN>/</SPAN></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 14.15pt; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 15.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 688.4pt; PADDING-RIGHT: 5.4pt; HEIGHT: 15.55pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=918 colSpan=4>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">其他投标人（除中标候选人之外的）评审情况</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 106.25pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 159.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 106.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=213>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">投标人名称</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.45pt; PADDING-RIGHT: 5.4pt; HEIGHT: 106.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">投标报价（元）</SPAN></B></P>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">或</SPAN></B></P>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">否决投标依据条款（投标文件被认定为不合格所依据的招标文件评标办法中的评审因素和评审标准的条款）</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 172.85pt; PADDING-RIGHT: 5.4pt; HEIGHT: 106.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=230>
+<P style="LINE-HEIGHT: 19pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">经评审的投标价（元）</SPAN></B></P>
+<P style="LINE-HEIGHT: 19pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">或</SPAN></B></P>
+<P class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">否决投标理由（投标文件被认定为不合格的具体事实</SPAN><SPAN>,</SPAN></B><B><SPAN style="FONT-FAMILY: 宋体">不得简单地表述为未响应招标文件实质性内容、某处有问题等）</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 161.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 106.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=215>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">综合评标得分</SPAN></B></P>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">或</SPAN></B></P>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">备</SPAN> </B><B><SPAN style="FONT-FAMILY: 宋体">注</SPAN></B></P></TD></TR>
+<TR style="HEIGHT: 28.25pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 159.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 28.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=213>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><SPAN style="FONT-FAMILY: 宋体">四川元丰建设项目管理有限公司</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 194.2pt; PADDING-RIGHT: 5.4pt; HEIGHT: 28.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=259>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">不满足招标文件前附表</SPAN><SPAN>1.4.1</SPAN><SPAN style="FONT-FAMILY: 宋体">条规定</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 172.95pt; PADDING-RIGHT: 5.4pt; HEIGHT: 28.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=231>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体">类似业绩不满足</SPAN><B></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 161.3pt; PADDING-RIGHT: 5.4pt; HEIGHT: 28.25pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=215>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 14.15pt; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 29.55pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 159.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 29.55pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=213>
+<P style="TEXT-ALIGN: center" class=MsoNormal align=center><B><SPAN style="FONT-FAMILY: 宋体">其他需说明情况</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 528.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 29.55pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=705>
+<P style="TEXT-ALIGN: left" class=MsoNormal align=left><B></B></P></TD></TR></TBODY></TABLE></DIV>
+<P class=MsoNormal>&nbsp;</P>
+<DIV align=center>
+<TABLE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 14.15pt; BORDER-TOP: medium none; BORDER-RIGHT: medium none" class=MsoNormalTable border=1 cellSpacing=0 cellPadding=0>
+<TBODY>
+<TR style="HEIGHT: 263.6pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 159.9pt; PADDING-RIGHT: 5.4pt; HEIGHT: 263.6pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=213>
+<P style="MARGIN-TOP: 6pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">异议投诉注意事项</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 528.5pt; PADDING-RIGHT: 5.4pt; HEIGHT: 263.6pt; BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" width=705 colSpan=2>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">1.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">投标人或者其他利害关系人对依法必须进行招标的项目的评标结果有异议的，应当在中标候选人公示期间提出。招标人应当自收到异议之日起</SPAN><SPAN style="FONT-SIZE: 12pt">3</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">日内作出答复；作出答复前，应当暂停招标投标活动。</SPAN></P>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">2.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">投标人或者其他利害关系人认为评标结果不符合法律、行政法规规定的，可以自知道或者应当知道之日起</SPAN><SPAN style="FONT-SIZE: 12pt">10</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">日内向有关行政监督部门投诉。投诉前应当先向招标人提出异议，异议答复期间不计算在前款规定的期限内。投诉书应当符合《工程建设项目招标投标活动投诉处理办法》规定。</SPAN></P>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">3.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对评标结果的投诉，涉及投标人弄虚作假骗取中标的由行业主管部门负责受理，涉及评标错误或评标无效的由项目审批部门负责受理。</SPAN></P>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">4.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">投诉人就同一事项向两个以上有权受理的行政监督部门投诉的，由最先收到投诉的行政监督部门负责处理。</SPAN></P>
+<P class=MsoNormal><SPAN style="FONT-SIZE: 12pt">5.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">应先提出异议没有提出异议，超过投诉时效等不符合受理条件的投诉，有关行政监督部门不予受理；</SPAN></P>
+<P class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">投诉人故意捏造事实、伪造证明材料或者以非法手段取得证明材料进行投诉，给他人造成损失的，依法承担赔偿责任。</SPAN></P></TD></TR>
+<TR style="HEIGHT: 58.7pt">
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 327.75pt; PADDING-RIGHT: 5.4pt; HEIGHT: 58.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" vAlign=top width=437 colSpan=2>
+<P style="MARGIN-TOP: 6pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">招标人主要负责人签字、盖单位章</SPAN><SPAN>:</SPAN></B></P></TD>
+<TD style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; PADDING-LEFT: 5.4pt; WIDTH: 360.65pt; PADDING-RIGHT: 5.4pt; HEIGHT: 58.7pt; BORDER-TOP: medium none; BORDER-RIGHT: black 1pt solid; PADDING-TOP: 0cm" vAlign=top width=481>
+<P style="MARGIN-TOP: 6pt" class=MsoNormal><B><SPAN style="FONT-FAMILY: 宋体">招标代理机构主要负责人签字、盖单位章：</SPAN></B></P>
+<P style="MARGIN-TOP: 6pt" class=MsoNormal>&nbsp;</P></TD></TR>
+<TR height=0>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=173></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=174></TD>
+<TD style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" width=381></TD></TR></TBODY></TABLE></DIV>
+<P style="LINE-HEIGHT: 20pt" class=MsoNormal><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">注：</SPAN><SPAN style="FONT-SIZE: 12pt">1.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">实行电子评标的，中标候选人公示的内容作为评标报告的一部分，由评标软件自动生成，评标委员会复核，招标人或其委托的招标代理机构电子签名和签章确认；还没有实行电子评标的，招标人应根据公示标准文本要求，严格按评标报告和投标文件真实完整地填报公示信息，不得隐瞒、歪曲应当公示的信息，并对填写的中标候选人公示内容的完整性、真实性、准确性和一致性负责。表中所有空格内容均须填写，不得空白，如确实不须填写或无法填写，应在空格中填写</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">无</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">2.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中标候选人是联合体的，</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中标候选人名称</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中联合体各方的名称均应填写。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">3.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中标候选人类似业绩</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">和</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中标候选人项目负责人类似业绩</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">应填写中标候选人在投标文件中所附所有业绩。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">4.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">项目负责人</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">施工招标指项目经理、监理招标指项目总监等；表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">项目技术负责人</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">是指项目主要技术人员或项目总工，如设计中只有多个专业技术负责人，应都作为项目技术负责人，扩展表格，分别填写。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">5.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">开工日期</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">和</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">交工日期</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">、</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">竣工日期</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">是指实际开工日期和实际交工日期、实际竣工日期。勘察、设计招标应填写其勘察、设计服务期的起（开工日期）止（交工日期）日期（不含施工服务期）。监理招标应填写其监理服务期的起（开工日期）止（竣工日期）日期（不含竣工验收后服务期）。采购招标应填写采购供货的起（开工日期）止（交工日期）日期。施工招标的开工日期、竣工日期是指《中华人民共和国标准施工招标文件》（</SPAN><SPAN style="FONT-SIZE: 12pt">2007</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">年版）中</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">通用合同条款</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">定义的时期；交工是指《公路工程竣（交）工验收办法》等规定的交工，已交工未竣工的，填交工日期，已经竣工的，交工日期和竣工时期都要填写；没有交工程序的，填</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">无</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt"><SPAN>&nbsp;&nbsp;&nbsp; </SPAN>6.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">日期（年月日）的格式统一以阿拉伯数字表示。如</SPAN><SPAN style="FONT-SIZE: 12pt">2015</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">年</SPAN><SPAN style="FONT-SIZE: 12pt">9</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">月</SPAN><SPAN style="FONT-SIZE: 12pt">1</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">日，填写为</SPAN><SPAN style="FONT-SIZE: 12pt">20150901</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">；又如</SPAN><SPAN style="FONT-SIZE: 12pt">2015</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">年</SPAN><SPAN style="FONT-SIZE: 12pt">9</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">月，填写为</SPAN><SPAN style="FONT-SIZE: 12pt">201509</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">；再如</SPAN><SPAN style="FONT-SIZE: 12pt">2015</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">年，填写为</SPAN><SPAN style="FONT-SIZE: 12pt">2015</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">，</SPAN><SPAN style="FONT-SIZE: 12pt">2015/9/15 9:00:00</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">填写为</SPAN><SPAN style="FONT-SIZE: 12pt">20150915</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">－</SPAN><SPAN style="FONT-SIZE: 12pt">9:00:00</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">7.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">合同价格</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">，是指承包人按合同约定完成了包括缺陷责任期内的全部承包工作后，发包人应付给承包人的金额，包括在履行合同过程中按合同约定进行的变更和调整。元指人民币元。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">8.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">表中的</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">建设规模</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">采购招标应填写主要货物的数量、类型、规格等技术参数。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">9.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">参与投标的所有投标人都需要公示，除中标候选人之外，其他投标人在</SPAN><SPAN style="FONT-SIZE: 12pt">“</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">其他投标人（除中标候选人之外的）评审情况</SPAN><SPAN style="FONT-SIZE: 12pt">”</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中填写。没有被否决的投标，填写投标人名称、投标报价（元）、经评审的投标价（元）、综合评标得分；被否决的投标，填写投标人名称、否决投标依据条款、否决投标理由、备注。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">10.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">所有的评标委员会成员（含业主评标代表）都需要填写；评标委员会成员有多个单位的，都需要填写。</SPAN></P>
+<P style="LINE-HEIGHT: 20pt; TEXT-INDENT: 24pt" class=MsoNormal><SPAN style="FONT-SIZE: 12pt">11.</SPAN><SPAN style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt">中标候选人公示纸质文本招标人须加盖单位公章，多页还应加盖骑缝章。</SPAN></P>
+<P style="MARGIN: 7.8pt 0cm" class=MsoNormal>&nbsp;</P></div><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/jquery.js'></script><script type="text/javascript"> var voiceconverturl = 'http://yyfw.epoint.com.cn/FrontVoice/DefaultFlash.aspx?altstop=1';</script><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/Voice.js'></script><script type='text/javascript' src='http://yyfw.epoint.com.cn/FrontVoice/JavaScript/KeyNavigate.js'></script>
+                  <!--EpointContent-->
+                </div></td>
+              </tr>
+              <tr>
+                <td align="center">
+                   
+                </td>
+              </tr>
+              <tr>
+                <td align="left">
+                  <br />
+                  </td>
+              </tr>
+              <tr id="trAttach" runat="server">
+                <td><table id="filedown" cellspacing="1" cellpadding="1" width="100%" border="0" runat="server">
+                  <tr>
+                    <td valign="top" align="left"></td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+            <!--正文结束--></td>
+        </tr>
+      </table>
+      <!--footer-->
+     </td>
+  </tr>
+</table>
+</div>
+      <div><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <title>四川省政府政务服务和公共资源交易服务中心</title>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="/sczw/Template/Default/css/style.css"/>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?16f500e31df60ccd5170ba987a61c1f9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+<div id="footer">
+<div style="float:left; width:150px; padding-top:20px; line-height:35px; height:35px; text-align:center">
+<script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/23/000/0000/60436100/CA230000000604361000001.js' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+    <div class="last-wrap">
+    
+    <div class="left">四川省政府政务服务和公共资源交易服务中心主办     备案/许可证编号：蜀ICP备1202408<br/>
+        省政务服务和公共资源交易服务信息中心承办<br/>
+         交易大厅：成都市青羊区人民中路3段33号 政务大厅：成都市青羊区草市街2号<br/>
+        制作维护：江苏国泰新点软件有限公司 &nbsp;四川建设网有限责任公司&nbsp;&nbsp;&nbsp;<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257513975'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257513975%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>  
+        
+<br/>
+      </div>
+    <div class="right"><a href="/sczw/Template/Default/../../template/default/swsy.htm" target="_blank">设为首页</a> | <a href="javascript:window.external.AddFavorite(location.href,document.title)" title="将本站加入到您的收藏夹"  target="_top" style="color:#e4e4e4" >加入收藏</a> | <a href="/sczw/Template/Default/../../lxwm" target="_blank" style="color:#e4e4e4">联系我们</a> | <a href="http://tongji.baidu.com/web/welcome/login" target="_blank" style="color:#e4e4e4">百度统计</a></div>
+  <div class="right2" align="left"><!-- <a href="/sczw/Template/Default/../../cjwt" target="_blank" style="color:#e4e4e4">常见问题  </a>| <a href="/sczw/Template/Default/../../xxbs" target="_blank" style="color:#e4e4e4">信息报送</a> | -->
+   <a href="http://182.140.221.189:88/" target="_blank" style="color:#e4e4e4">考勤管理</a></div>
+
+  </div>
+  </div>
+  </div>
+
+</body>
+</html>
+</div>
+</div>
+</body>
+</html>

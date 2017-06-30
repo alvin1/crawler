@@ -1,5 +1,6 @@
 from datetime import datetime
 import re
+import json
 
 from .settings import Settings
 from .file_helper import FileHelper
@@ -21,7 +22,11 @@ class Extracter(object):
         self.file_helper.poke_dir(self.file_helper.get_dir_from_path(self.extracter_status_file))
 
     def clean_content(self, content):
-        return content.replace('\r\n', '').replace('\t', '').lstrip()
+        if content is None:
+            return None
+
+        new_content = content.replace('\r\n', '').replace('\t', '').lstrip()
+        return re.sub(r'\t.+', '', re.sub(r'\n.+', '', new_content))
 
     def extract_list(self, soup, page):
         list = []
@@ -88,12 +93,15 @@ class Extracter(object):
         elif data_type == 'datetime':
             if len(value.replace(u'\xa0', '')) == 0:
                 return None
-            value = value.replace(u'\xa0', '').replace(u'\u5e74', '-').replace(u'\u6708', '-').replace(
-                u'\u65e5', '').replace("/", "-")
-            if len(value) > 10:
-                return datetime.strptime(value, '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
-            else:
-                return datetime.strptime(value.replace(' ',''), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
+            try:
+                value = value.replace(u'\xa0', '').replace(u'\u5e74', '-').replace(u'\u6708', '-').replace(
+                    u'\u65e5', '').replace("/", "-")
+                if len(value) > 10:
+                    return datetime.strptime(value, '%Y-%m-%d %H:%M:%S').strftime("%Y-%m-%d %H:%M:%S")
+                else:
+                    return datetime.strptime(value.replace(' ',''), '%Y-%m-%d').strftime("%Y-%m-%d %H:%M:%S")
+            except:
+                return value
             # return value
         elif data_type == 'decimal':
             try:
@@ -105,16 +113,17 @@ class Extracter(object):
         start_line = 0
 
         for row in rows:
-            for item in [self.get_cell_content(item) for item in row.select('td')]:
+            for item in [self.get_cell_content(item).replace('\t', '').replace('\n', '').replace(' ', '') for item in row.select('td')]:
                 for key_item in key:
-                    if item and key_item in item:
+                    # if item and key_item in item:
+                    if item and key_item == item:
                         return start_line
             start_line += 1
         return None
 
     def extract_field_value(self, row, field, data):
         value_of_key = self.get_cell_content(row.select('td')[field['extract']['column']])
-        if 'remove' in field['extract']:
+        if value_of_key and 'remove' in field['extract']:
             for remove_key in field['extract']['remove']:
                 value_of_key = value_of_key.replace(remove_key, u'')
         if 'split_pattern' in field['extract']:
@@ -138,7 +147,8 @@ class Extracter(object):
         rows = soup.select('#_Sheet1 tr')
         if len(rows) == 0:
             rows = soup.select('table .MsoNormalTable [width=675] tr')
-
+            if len(rows) == 0:
+                rows = soup.select('#ivs_content table tr')
         # 1. extract tender info
         details['tender_info'] = []
         tender_name_config = Settings.DETAIL_COORDINATE['tender_name']
@@ -222,7 +232,7 @@ class Extracter(object):
                 value_of_key = rows_of_range.select('td')[field['extract']['column']].string
             else:
                 value_of_key = self.get_cell_content(rows_of_range.select('td')[1])
-            if 'remove' in field['extract']:
+            if value_of_key and 'remove' in field['extract']:
                 for remove_key in field['extract']['remove']:
                     value_of_key = value_of_key.replace(remove_key, u'')
             if 'split_pattern' in field['extract']:
@@ -319,8 +329,12 @@ class Extracter(object):
                 index += 1
         # 2.2 extract the candidate projects and candidate incharge projects
         break_time = 0
+        candidate_index = -1
         for candidate in details['candidate']:
             candidate['project_start'] = tmp_row_index + 1
+            if len(rows_of_range[tmp_row_index:]) == 0:
+                break
+            candidate_index += 1
             for row_data in rows_of_range[tmp_row_index:]:
                 columns = row_data.select('td')
                 if len(columns) == 1:
@@ -336,11 +350,15 @@ class Extracter(object):
                         break
                 else:
                     tmp_row_index += 1
+
         if len(details['candidate']) > 0:
-            details['candidate'][-1]['incharge_project_end'] = tmp_row_index
+            details['candidate'][candidate_index]['incharge_project_end'] = tmp_row_index
 
         for candidate in details['candidate']:
             candidate['projects'] = []
+            candidate['incharge_projects'] = []
+            if 'project_start' not in candidate or 'project_end' not in candidate:
+                continue
             for project_row in rows_of_range[candidate['project_start']:candidate['project_end']]:
                 project = {}
                 fields = candidate_config['project_fields']
@@ -408,7 +426,6 @@ class Extracter(object):
                 if not self.check_all_keys_blank(project):
                     candidate['projects'].append(project)
 
-            candidate['incharge_projects'] = []
             for project_row in rows_of_range[candidate['incharge_project_start']:candidate['incharge_project_end']]:
                 project = {}
                 fields = candidate_config['inchage_project_fields']
@@ -549,95 +566,99 @@ class Extracter(object):
 
         return details
 
+    def get_data_from_dict(self, dict, key, default=''):
+        if key in dict:
+            return dict[key]
+        return default
+
     def save_extracted_data(self, list_item, item_detail):
-        tender_info = TrenderInfo(tender_id=list_item['tender_id'],
-                                   tender_name=item_detail['tender_info'][0]['tender_name'],
-                                   # pubdate=list_item['pubdate'],
-                                   pubdate=item_detail['tender_info'][0]['pubdate'],
-                                   page_url=list_item['page_url'],
-                                   owner=item_detail['tender_info'][0]['owner'],
-                                   owner_phone=item_detail['tender_info'][0]['owner_phone'],
-                                   tenderee=item_detail['tender_info'][0]['tenderee'],
-                                   tenderee_phone=item_detail['tender_info'][0]['tenderee_phone'],
-                                   tenderee_proxy=item_detail['tender_info'][0]['tenderee_proxy'],
-                                   tenderee_proxy_phone=item_detail['tender_info'][0]['tenderee_proxy_phone'],
-                                   tender_openning_location=item_detail['tender_info'][0]['tender_openning_location'],
-                                   tender_openning_time=item_detail['tender_info'][0]['tender_openning_time'],
-                                   tender_ceil_price=item_detail['tender_info'][0]['tender_ceil_price'],
-                                   publicity_start=item_detail['tender_info'][0]['publicity_start'] if 'publicity_start' in item_detail['tender_info'][0] else None,
-                                   publicity_end=item_detail['tender_info'][0]['publicity_end'] if 'publicity_end' in item_detail['tender_info'][0] else None,
-                                   other_description=item_detail['other_description'][0]['other_description'] if len(item_detail['other_description']) == 1 else '',
-                                   review_department=item_detail['review_department'][0]['review_department'],
-                                   review_department_phone=item_detail['review_department'][0]['review_department_phone'],
-                                   administration_department=item_detail['administration_department'][0]['administration_department'],
-                                   administration_department_phone=item_detail['administration_department'][0]['administration_department_phone'],
-                                   page_num=list_item['page_num']
+        tender_info = TrenderInfo(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
+                                   tender_name=self.get_data_from_dict(item_detail['tender_info'][0], 'tender_name'),
+                                   pubdate=self.get_data_from_dict(item_detail['tender_info'][0], 'pubdate'),
+                                   page_url=self.get_data_from_dict(list_item, 'page_url'),
+                                   owner=self.get_data_from_dict(item_detail['tender_info'][0], 'owner'),
+                                   owner_phone=self.get_data_from_dict(item_detail['tender_info'][0], 'owner_phone'),
+                                   tenderee=self.get_data_from_dict(item_detail['tender_info'][0], 'tenderee'),
+                                   tenderee_phone=self.get_data_from_dict(item_detail['tender_info'][0], 'tenderee_phone'),
+                                   tenderee_proxy=self.get_data_from_dict(item_detail['tender_info'][0], 'tenderee_proxy'),
+                                   tenderee_proxy_phone=self.get_data_from_dict(item_detail['tender_info'][0], 'tenderee_proxy_phone'),
+                                   tender_openning_location=self.get_data_from_dict(item_detail['tender_info'][0], 'tender_openning_location'),
+                                   tender_openning_time=self.get_data_from_dict(item_detail['tender_info'][0], 'tender_openning_time'),
+                                   tender_ceil_price=self.get_data_from_dict(item_detail['tender_info'][0], 'tender_ceil_price'),
+                                   publicity_start=self.get_data_from_dict(item_detail['tender_info'][0], 'publicity_start', None),
+                                   publicity_end=self.get_data_from_dict(item_detail['tender_info'][0], 'publicity_end', None),
+                                   other_description=self.get_data_from_dict(item_detail['other_description'][0], 'other_description') if len(item_detail['other_description']) == 1 else '',
+                                   review_department=self.get_data_from_dict(item_detail['review_department'][0], 'review_department'),
+                                   review_department_phone=self.get_data_from_dict(item_detail['review_department'][0], 'review_department_phone'),
+                                   administration_department=self.get_data_from_dict(item_detail['administration_department'][0], 'administration_department'),
+                                   administration_department_phone=self.get_data_from_dict(item_detail['administration_department'][0], 'administration_department_phone'),
+                                   page_num=self.get_data_from_dict(list_item, 'page_num')
                                    )
         tender_info.save()
 
         # candidate_index = 1
         for item in item_detail['candidate']:
-            candidate = Candidate(tender_id=list_item['tender_id'],
-                                  ranking=item['ranking'],
-                                  candidate_name=item['candidate_name'],
-                                  tender_price=item['tender_price'],
-                                  tender_price_review=item['tender_price_review'],
-                                  review_score=item['review_score'])
+            candidate = Candidate(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
+                                  ranking=self.get_data_from_dict(item, 'ranking'),
+                                  candidate_name=self.get_data_from_dict(item, 'candidate_name'),
+                                  tender_price=self.get_data_from_dict(item, 'tender_price'),
+                                  tender_price_review=self.get_data_from_dict(item, 'tender_price_review'),
+                                  review_score=self.get_data_from_dict(item, 'review_score'))
             candidate_id = candidate.save()
             item['candidate_id'] = candidate_id
             # identity_key = "candidate_%s" % candidate_index
             for incharge_item in item['incharge']:
-                candidate_incharge = CandidateIncharge(tender_id=list_item['tender_id'],
+                candidate_incharge = CandidateIncharge(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
                                                        candidate_id=candidate_id,
                                                        incharge_id='',
-                                                       incharge_type=incharge_item['incharge_type'],
-                                                       incharge_name=incharge_item['incharge_name'],
-                                                       incharge_certificate_name=incharge_item['incharge_certificate_name'],
-                                                       incharge_certificate_no=incharge_item['incharge_certificate_no'],
-                                                       professional_grade=incharge_item['professional_grade'] if 'professional_grade' in incharge_item else None,
-                                                       professional_titles=incharge_item['professional_titles'] if 'professional_titles' in incharge_item else None)
+                                                       incharge_type=self.get_data_from_dict(incharge_item, 'incharge_type'),
+                                                       incharge_name=self.get_data_from_dict(incharge_item, 'incharge_name'),
+                                                       incharge_certificate_name=self.get_data_from_dict(incharge_item, 'incharge_certificate_name'),
+                                                       incharge_certificate_no=self.get_data_from_dict(incharge_item, 'incharge_certificate_no'),
+                                                       professional_grade=self.get_data_from_dict(incharge_item, 'professional_grade', None),
+                                                       professional_titles=self.get_data_from_dict(incharge_item, 'professional_titles', None))
                 incharge_id = candidate_incharge.save()
                 incharge_item['incharge_id'] = incharge_id
             for project_item in item['projects']:
-                candidate_projects = CandidateProjects(tender_id=list_item['tender_id'],
+                candidate_projects = CandidateProjects(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
                                                        candidate_id=candidate_id,
-                                                       owner=project_item['owner'],
-                                                       name=project_item['name'],
-                                                       kick_off_date=project_item['kick_off_date'],
-                                                       deliver_date=project_item['deliver_date'] if 'deliver_date' in project_item else None,
-                                                       finish_date=project_item['finish_date'],
-                                                       scale=project_item['scale'],
-                                                       contract_price=project_item['contract_price'],
-                                                       project_incharge_name=project_item['project_incharge_name'])
+                                                       owner=self.get_data_from_dict(project_item, 'owner'),
+                                                       name=self.get_data_from_dict(project_item, 'name'),
+                                                       kick_off_date=self.get_data_from_dict(project_item, 'kick_off_date'),
+                                                       deliver_date=self.get_data_from_dict(project_item, 'deliver_date', None),
+                                                       finish_date=self.get_data_from_dict(project_item, 'finish_date'),
+                                                       scale=self.get_data_from_dict(project_item, 'scale'),
+                                                       contract_price=self.get_data_from_dict(project_item, 'contract_price'),
+                                                       project_incharge_name=self.get_data_from_dict(project_item, 'project_incharge_name'))
                 candidate_projects.save()
             for project_item in item['incharge_projects']:
-                candidate_incharge_projects = CandidateInChargeProjects(tender_id=list_item['tender_id'],
+                candidate_incharge_projects = CandidateInChargeProjects(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
                                                                         candidate_id=candidate_id,
                                                                         incharge_id=incharge_id,
-                                                                        owner=project_item['owner'],
-                                                                        name=project_item['name'],
-                                                                        kick_off_date=project_item['kick_off_date'],
-                                                                        deliver_date=project_item['deliver_date'] if 'deliver_date' in project_item else None,
-                                                                        finish_date=project_item['finish_date'],
-                                                                        scale=project_item['scale'],
-                                                                        contract_price=project_item['contract_price'],
-                                                                        tech_incharge_name=project_item[
-                                                                            'tech_incharge_name'])
+                                                                        owner=self.get_data_from_dict(project_item, 'owner'),
+                                                                        name=self.get_data_from_dict(project_item, 'name'),
+                                                                        kick_off_date=self.get_data_from_dict(project_item, 'kick_off_date'),
+                                                                        deliver_date=self.get_data_from_dict(project_item, 'deliver_date', None),
+                                                                        finish_date=self.get_data_from_dict(project_item, 'finish_date'),
+                                                                        scale=self.get_data_from_dict(project_item, 'scale'),
+                                                                        contract_price=self.get_data_from_dict(project_item, 'contract_price'),
+                                                                        tech_incharge_name=self.get_data_from_dict(project_item,
+                                                                            'tech_incharge_name'))
                 candidate_incharge_projects.save()
 
         for item in item_detail['other_tenderer_review']:
-            other_tenderer_review = OtherTendererReview(tender_id=list_item['tender_id'],
-                                                        tenderer_name=item['tenderer_name'],
-                                                        price_or_vote_down=item['price_or_vote_down'],
-                                                        price_review_or_vote_down_reason=item['price_review_or_vote_down_reason'] if 'price_review_or_vote_down_reason' in item else None,
-                                                        review_score_or_description=item['review_score_or_description'])
+            other_tenderer_review = OtherTendererReview(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
+                                                        tenderer_name=self.get_data_from_dict(item, 'tenderer_name'),
+                                                        price_or_vote_down=self.get_data_from_dict(item, 'price_or_vote_down'),
+                                                        price_review_or_vote_down_reason=self.get_data_from_dict(item, 'price_review_or_vote_down_reason', None),
+                                                        review_score_or_description=self.get_data_from_dict(item, 'review_score_or_description'))
             tenderer_id = other_tenderer_review.save()
             item['tenderer_id'] = tenderer_id
         if 'review_board_member' in item_detail:
             for item in item_detail['review_board_member']:
-                review_board_member = ReviewBoardMember(tender_id=list_item['tender_id'],
-                                                        name=item['member_name'],
-                                                        company=item['member_company'])
+                review_board_member = ReviewBoardMember(tender_id=self.get_data_from_dict(list_item, 'tender_id'),
+                                                        name=self.get_data_from_dict(item, 'member_name'),
+                                                        company=self.get_data_from_dict(item, 'member_company'))
                 review_board_member.save()
 
     def save_failed_page(self, tender_id, page_url, failed_type, page_num, page_type, pubdate):

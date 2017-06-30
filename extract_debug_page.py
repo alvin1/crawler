@@ -7,7 +7,7 @@ from modules.extracter import Extracter
 
 
 def format_print(json_string):
-    print(json.dumps(json_string, indent=2, encoding='gbk'))
+    print(json.dumps(json_string, indent=2, encoding='utf8'))
 
 def get_content(soup):
     if soup.string is not None:
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # if len(sys.argv) != 2:
     #     print("Usage: %s <info_id>" % sys.argv[0])
     #     exit(-1)
-    info_id = 'd9bdfa83-7234-4ef1-b2ca-e67a800a38ff'  # sys.argv[1]
+    info_id = '3f0a2dd7-1e13-4929-961b-a07808811650'  # sys.argv[1]
 
     file_helper = FileHelper()
     html_loader = HtmlLoader()
@@ -49,14 +49,8 @@ if __name__ == '__main__':
         exit(-2)
 
     soup = html_loader.beautiful_page_content(file_helper.read(page_path))
-    print soup.select("font.webfont")[0].contents[0].split('\n')[1].replace(' ','')
-    exit(0)
-    file_helper.write('var/test.html', soup.prettify())
-    for row in soup.select('table [width=675]'):
-        print(row)
-
     detail = extracter.extract_detail(soup)
-    # format_print(detail)
+    format_print(detail)
     list_item = {
         'tender_id': info_id,
         'pubdate': '2013-10-28 00:00:00',

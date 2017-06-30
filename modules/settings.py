@@ -122,7 +122,7 @@ class Settings(object):
             'fields': [
                 {
                     'field_name': 'tender_openning_time',
-                    'data_type': 'string',
+                    'data_type': 'datetime',
                     'extract': {
                         'column': 3
                     }
@@ -155,7 +155,8 @@ class Settings(object):
             ]
         },
         'tender_ceil_price': {
-            'title_row_key': [u'\u6295\u6807\u6700\u9ad8\u9650\u4ef7(\u5143)'],
+            'title_row_key': [u'\u6295\u6807\u6700\u9ad8\u9650\u4ef7(\u5143)',
+                              u'\u6295\u6807\u6700\u9ad8\u9650\u4ef7\uff08\u5143\uff09'],
             'fields': [
                 {
                     'field_name': 'tender_ceil_price',
@@ -274,7 +275,8 @@ class Settings(object):
             ]
         },
         'candidate': {
-            'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f'],
+            'title_row_key': [u'\u4e2d\u6807\u5019\u9009\u4eba\u53ca\u6392\u5e8f',
+                              u'\u4e2d\u6807\u5019\u9009\u4eba\u6392\u5e8f'],
             'next_title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5',
                                    u'\u5e9f\u6807\u5355\u4f4d\u53ca\u7406\u7531'],
             'has_title': True,
@@ -502,7 +504,8 @@ class Settings(object):
         'other_tenderer_review': {
             'title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5',
                               u'\u5e9f\u6807\u5355\u4f4d\u53ca\u7406\u7531'],
-            'next_title_row_key': [u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879'],
+            'next_title_row_key': [u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879',
+                                   u'\u5176\u4ed6\u9700\u8bf4\u660e\u60c5\u51b5'],
             'fields': [
                 {
                     'field_name': 'tenderer_name',
@@ -538,8 +541,10 @@ class Settings(object):
             ]
         },
         'other_description': {
-            'title_row_key': u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879',
-            'next_title_row_key': u'\u8bc4\u6807\u59d4\u5458\u4f1a\u6210\u5458\u540d\u5355',
+            'title_row_key': [u'\u5176\u4ed6\u6295\u6807\u4eba\uff08\u9664\u4e2d\u6807\u5019\u9009\u4eba\u4e4b\u5916\u7684\uff09\u8bc4\u5ba1\u60c5\u51b5',
+                              u'\u5176\u4ed6\u9700\u8bf4\u660e\u4e8b\u9879'],
+            'next_title_row_key': [u'\u8bc4\u6807\u59d4\u5458\u4f1a\u6210\u5458\u540d\u5355',
+                                   u'\u76d1\u7763\u90e8\u95e8\u540d\u79f0\u53ca\u76d1\u7763\u7535\u8bdd'],
             'fields': [
                 {
                     'field_name': 'other_description',
@@ -587,7 +592,8 @@ class Settings(object):
             ]
         },
         'review_department': {
-            'title_row_key': [u'\u9879\u76ee\u5ba1\u6279\u90e8\u95e8'],
+            'title_row_key': [u'\u9879\u76ee\u5ba1\u6279\u90e8\u95e8',
+                              u'\u8054\u7cfb\u7535\u8bdd'],
             'next_title_row_key': [u'\u884c\u4e1a\u4e3b\u7ba1\u90e8\u95e8'],
             'fields': [
                 {
